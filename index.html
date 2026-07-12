@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="sp3hbCPiwG9lFHeZf06y-oNrHcWPVMDfUQzmZnFVwSw" />
+<title>Kubikovač guľatiny – výpočet objemu dreva kompatibilný s STN 48 0009 | AGROBERIT s.r.o.</title>
+<meta name="description" content="Profesionálny program na kubíkovanie guľatiny kompatibilné s STN 48 0009. Doklad o pôvode dreva LA 43, odpočty, cenník podľa triedy, štatistiky. Windows, Android aj Linux. Funguje offline.">
+<meta name="keywords" content="kubíkovanie guľatiny, výpočet objemu dreva, objem guľatiny, kalkulačka objemu dreva, program na kubíkovanie, kubíkovač, STN 48 0009, doklad o pôvode dreva, LA 43, drevo, píla, lesníctvo">
+<meta name="author" content="AGROBERIT s. r. o.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kubikovac.github.io/">
+<link rel="icon" type="image/png" sizes="256x256" href="obrazky/ikona.png">
+<link rel="shortcut icon" href="obrazky/ikona.png">
+<link rel="apple-touch-icon" href="obrazky/ikona.png">
+<!-- náhľad pri zdieľaní (Facebook, Messenger, WhatsApp…) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kubikovač guľatiny">
+<meta property="og:title" content="Kubikovač guľatiny – výpočet objemu dreva kompatibilný s STN 48 0009">
+<meta property="og:description" content="Profesionálny program na kubíkovanie guľatiny kompatibilné s STN 48 0009. Doklad LA 43, cenník podľa triedy, štatistiky. Windows, Android aj Linux.">
+<meta property="og:url" content="https://kubikovac.github.io/">
+<meta property="og:image" content="https://kubikovac.github.io/obrazky/desktop.png">
+<meta property="og:locale" content="sk_SK">
+<meta name="twitter:card" content="summary_large_image">
+<!-- štruktúrované dáta pre Google (softvér + firma) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kubikovač guľatiny",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows, Android, Linux",
+  "description": "Program na výpočet objemu guľatiny (kubíkovanie) kompatibilný s STN 48 0009 – úradný doklad LA 43, odpočty, cenník podľa kvalitatívnej triedy, štatistiky. Funguje offline.",
+  "url": "https://kubikovac.github.io/",
+  "inLanguage": "sk",
+  "offers": { "@type": "Offer", "price": "129", "priceCurrency": "EUR" },
+  "publisher": { "@type": "Organization", "name": "AGROBERIT s. r. o.", "email": "agroberit@gmail.com" }
+}
+</script>
+<style>
+  :root{
+    --zelena:#2b6a30; --zelena2:#357a3b; --pozadie:#f5f7f1; --papier:#fff;
+    --ciara:#e0e5da; --text:#1b2718; --seda:#5d6c57; --amber:#c8871a;
+    --tien:0 1px 3px rgba(20,30,15,.08),0 10px 30px rgba(20,30,15,.06);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --zelena:#243120; --zelena2:#4a9a51; --pozadie:#12160f; --papier:#1b211a;
+    --ciara:#313a2d; --text:#e8eee2; --seda:#9aab90; --amber:#e0b24a;
+    --tien:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);}}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:var(--pozadie);color:var(--text);line-height:1.6}
+  a{color:inherit}
+  .obal{max-width:1080px;margin:0 auto;padding:0 20px}
+  .ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
+  /* hlavička */
+  header{background:var(--zelena);color:#fff}
+  .hlavaVrch{display:flex;align-items:center;gap:12px;padding:14px 0}
+  .hlavaVrch img{width:34px;height:34px}
+  .hlavaVrch .firma{margin-left:auto;font-size:.82rem;opacity:.85}
+  .hero{padding:46px 0 54px;text-align:center}
+  .hero h1{font-size:2.5rem;margin:0 0 10px;letter-spacing:.3px;text-wrap:balance}
+  .hero p.pod{font-size:1.2rem;opacity:.92;max-width:34ch;margin:0 auto 26px;text-wrap:balance}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:#241a00;font-weight:700;
+    text-decoration:none;padding:14px 26px;border-radius:12px;font-size:1.05rem;box-shadow:var(--tien)}
+  .cta.druhy{background:rgba(255,255,255,.16);color:#fff}
+  .hero .tlac{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cena-hint{margin-top:16px;font-size:.95rem;opacity:.85}
+  /* náhľad */
+  .nahlad{margin:-40px auto 0;max-width:960px;padding:0 20px}
+  .nahlad>img{width:100%;border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block}
+  .p1okno{margin:16px auto 0;max-width:680px}
+  .p1okno img{width:100%;border-radius:10px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
+  .p1okno figcaption{text-align:center;color:var(--seda);font-size:.9rem;margin-top:8px}
+  section{padding:52px 0}
+  h2{font-size:1.7rem;text-align:center;margin:0 0 8px;text-wrap:balance}
+  .podnadpis{text-align:center;color:var(--seda);max-width:52ch;margin:0 auto 34px}
+  /* funkcie */
+  .funkcie{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .karta{background:var(--papier);border:1px solid var(--ciara);border-radius:14px;padding:22px;box-shadow:var(--tien)}
+  .karta .znak{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;
+    background:var(--zelena);color:#fff;border-radius:11px;margin-bottom:12px}
+  .karta .znak .ic{width:22px;height:22px}
+  .karta h3{margin:0 0 6px;font-size:1.1rem}
+  .karta p{margin:0;color:var(--seda);font-size:.95rem}
+  .karta.zvyraz{border-color:var(--zelena2);box-shadow:0 0 0 1px var(--zelena2),var(--tien)}
+  .karta.zvyraz .znak{background:var(--zelena2)}
+  /* platformy / stiahnutie */
+  .pruh{background:var(--papier);border-top:1px solid var(--ciara);border-bottom:1px solid var(--ciara)}
+  .stiahni{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .stiahni a{display:inline-flex;align-items:center;gap:10px;background:var(--zelena2);color:#fff;text-decoration:none;
+    padding:13px 20px;border-radius:11px;font-weight:600}
+  .stiahni a small{font-weight:400;opacity:.85}
+  /* kroky */
+  .kroky{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:k}
+  .krok{background:var(--papier);border:1px solid var(--ciara);border-radius:14px;padding:22px;position:relative}
+  .krok::before{counter-increment:k;content:counter(k);position:absolute;top:-14px;left:20px;width:30px;height:30px;
+    background:var(--amber);color:#241a00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .krok h3{margin:6px 0 6px;font-size:1.05rem}
+  .krok p{margin:0;color:var(--seda);font-size:.94rem}
+  /* cena */
+  .cena-obal{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+  .cenkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;padding:28px 30px;min-width:260px;box-shadow:var(--tien)}
+  .cenkarta.hlavna{border-color:var(--amber);border-width:2px}
+  .cenkarta .stitok{display:inline-block;background:var(--amber);color:#241a00;font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+  .cenkarta .suma{font-size:2.2rem;font-weight:800;margin:2px 0}
+  .cenkarta .suma small{font-size:.95rem;font-weight:500;color:var(--seda)}
+  .cenkarta ul{list-style:none;padding:0;margin:14px 0 0;color:var(--seda);font-size:.95rem}
+  .cenkarta li{padding:4px 0;display:flex;gap:8px}
+  .cenkarta li .ic{color:var(--zelena2);margin-top:.15em}
+  .bonus{text-align:center;color:var(--seda);margin-top:18px}
+  /* galéria ukážok */
+  .galeria{display:grid;gap:22px;max-width:900px;margin:0 auto}
+  .galeria figure{margin:0}
+  .galeria img{width:100%;border-radius:12px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
+  .galeria figcaption{text-align:center;color:var(--seda);font-size:.92rem;margin-top:10px}
+  .galeria.dvojica{grid-template-columns:1fr 1fr;max-width:1040px;align-items:start}
+  .ukazka-nadpis{text-align:center;font-size:1.15rem;margin:38px 0 16px}
+  .mobilUkazka{max-width:320px;margin:0 auto}
+  .mobilUkazka img{width:100%;border-radius:20px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
+  .mobilUkazka figcaption{text-align:center;color:var(--seda);font-size:.92rem;margin-top:12px}
+  /* riešenia na mieru */
+  .namieru{text-align:center}
+  /* pätka */
+  footer{background:var(--zelena);color:#fff;padding:30px 0;margin-top:20px}
+  footer .obal{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:.9rem;opacity:.92}
+  footer a{font-weight:600}
+  footer .odd{margin-left:auto}
+  @media (max-width:760px){
+    .hero h1{font-size:1.9rem}.funkcie,.kroky{grid-template-columns:1fr}
+    .galeria.dvojica{grid-template-columns:1fr}
+    .nahlad{margin-top:-26px}
+  }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Kubikovač guľatiny","url":"https://kubikovac.github.io/"}
+</script>
+</head>
+<body>
+<header>
+  <div class="obal hlavaVrch">
+    <img src="obrazky/ikona.png" alt="Kubikovač">
+    <strong>Kubikovač guľatiny</strong>
+    <span class="firma">AGROBERIT s.&nbsp;r.&nbsp;o.</span>
+  </div>
+  <div class="obal hero">
+    <h1>Kubíkovanie guľatiny bez papiera a chýb</h1>
+    <p class="pod">Presný výpočet objemu guľatiny <strong>meranej s kôrou</strong>, kompatibilný s STN 48 0009 — v kancelárii aj v teréne.</p>
+    <div class="tlac">
+      <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
+      <a class="cta druhy" href="#stiahnut">Stiahnuť</a>
+    </div>
+    <div class="cena-hint">Od 129 € jednorazovo — licencia navždy · alebo 49 € / rok</div>
+  </div>
+</header>
+
+<div class="nahlad"><img src="obrazky/desktop.png" alt="Ukážka programu Kubikovač guľatiny s dolnou lištou súhrnu objemov">
+  <figure class="p1okno">
+    <img src="obrazky/cena_triedy.png" alt="Podklad k fakturácii – cena podľa kvalitatívnej triedy">
+    <figcaption>Podklad k fakturácii: program vezme cenu €/m³ podľa <strong>kvalitatívnej triedy</strong> každého kusa a spočíta cenu dokladu.</figcaption>
+  </figure>
+  <figure class="p1okno">
+    <img src="obrazky/sumar_1p.png" alt="Súhrn so zapnutým odpočtom prídavku 1 %">
+    <figcaption>Voliteľný odpočet <strong>prídavku na dĺžku 1 %</strong> (najviac 10 cm na výrez, STN): program vás upozorní a objemy počíta zo skrátenej dĺžky.</figcaption>
+  </figure>
+</div>
+
+<section class="obal">
+  <h2>Všetko na kubíkovanie na jednom mieste</h2>
+  <p class="podnadpis">Od merania kusov po úradný doklad — rýchlo, prehľadne a spoľahlivo.</p>
+  <div class="funkcie">
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-doklad"/></svg></span>
+      <h3>Kompatibilné s STN 48 0009</h3>
+      <p>Objem guľatiny <strong>meranej s kôrou</strong> (priemer aj dĺžka s kôrou) pre smrek, jedľu, borovicu, smrekovec, buk, dub, topoľ aj príbuzné dreviny. Objem počíta z Huberovho vzorca so zrážkou kôry; výsledky sú kompatibilné s STN 48 0009.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-teren"/></svg></span>
+      <h3>Terénny režim</h3>
+      <p>Veľké polia na rýchle zadávanie v lese, bežiaci súčet objemu a kusov. Rukavice ani slnko nevadia.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-tlac"/></svg></span>
+      <h3>Úradný doklad LA 43</h3>
+      <p>Doklad o pôvode dreva na jeden klik — na šírku aj na výšku, vytlačíte alebo uložíte do PDF.</p>
+    </div>
+    <div class="karta zvyraz">
+      <span class="znak"><svg class="ic"><use href="#i-vyber"/></svg></span>
+      <h3>Rýchly doklad pre naloženú drevinu</h3>
+      <p>Pri nakladaní na odvoz jednoducho zaškrtnete, ktoré kusy sa naložili — a LA 43 sa vytvorí len pre ne. Za pár sekúnd.</p>
+    </div>
+    <div class="karta zvyraz">
+      <span class="znak"><svg class="ic"><use href="#i-doklady"/></svg></span>
+      <h3>Samostatný doklad pre každú drevinu</h3>
+      <p>Máte všetko v jednom zozname? Program automaticky rozdelí dreviny a vytvorí samostatný LA 43 pre každú z nich.</p>
+    </div>
+    <div class="karta zvyraz">
+      <span class="znak"><svg class="ic"><use href="#i-skratit"/></svg></span>
+      <h3>Skrátenie dĺžok o ľubovoľnú hodnotu</h3>
+      <p>Zadáte, o koľko metrov skrátiť namerané dĺžky, a objem sa hneď prepočíta — s náhľadom pred a po.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-minus"/></svg></span>
+      <h3>Odpočty hniloby a odrezkov</h3>
+      <p>Zadáte chybnú časť kusa a program ukáže hrubý aj čistý objem po odpočte — všetko zdokladované.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-percent"/></svg></span>
+      <h3>Prídavok na dĺžku 1 %</h3>
+      <p>Voliteľne odpočíta prídavok na dĺžku 1 % na výrez, najviac 10 cm. Objem sa počíta zo skrátenej dĺžky.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-euro"/></svg></span>
+      <h3>Cenník podľa triedy a fakturácia</h3>
+      <p>Zadáte cenu €/m³ na drevinu aj podľa kvalitatívnej triedy (I, II, III.A–D). Program vyberie cenu podľa triedy kusa a spočíta podklad k faktúre.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-graf"/></svg></span>
+      <h3>Súčty a štatistiky</h3>
+      <p>Priebežné súčty podľa drevín, počet kusov, objem a cena — prehľad naprieč zákazkami.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-sort"/></svg></span>
+      <h3>Triedenie a výber na viac úrovní</h3>
+      <p>Zoradíte kusy podľa dreviny, dĺžky, priemeru či objemu — aj kombinovane. Označené kusy použijete na doklad či prepočet.</p>
+    </div>
+    <div class="karta zvyraz">
+      <span class="znak"><svg class="ic"><use href="#i-spoj"/></svg></span>
+      <h3>Spojenie viacerých dokladov</h3>
+      <p>Načítané uložené súbory pridáte do aktuálneho dokladu — z viacerých zoznamov spravíte jeden.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-zalozky"/></svg></span>
+      <h3>Viac dokladov naraz a archív</h3>
+      <p>Otvorené doklady v záložkách, archív s uložením a vyhľadávaním — nič sa nestratí.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-tema"/></svg></span>
+      <h3>Tmavý režim a veľké písmo</h3>
+      <p>Prehľadné aj na ostrom slnku alebo pre slabší zrak — jedným tlačidlom zväčšíte celé ovládanie.</p>
+    </div>
+    <div class="karta">
+      <span class="znak"><svg class="ic"><use href="#i-zar"/></svg></span>
+      <h3>Windows · Android · Linux — aj offline</h3>
+      <p>Ten istý program na počítači aj v mobile, funguje bez internetu. Doklady prenesiete medzi zariadeniami. Aktualizácie zdarma.</p>
+    </div>
+  </div>
+</section>
+
+<section class="obal">
+  <h2>Ukážky z programu</h2>
+  <p class="podnadpis">Od rýchleho zadávania kusov v teréne až po hotový úradný doklad.</p>
+
+  <h3 class="ukazka-nadpis">Terénny režim v mobile</h3>
+  <figure class="mobilUkazka">
+    <img src="obrazky/mobil.png" alt="Terénny režim mobilnej aplikácie Kubikovač">
+    <figcaption>Veľké polia, výber dreviny a bežiaci súčet objemu — kus zadáte aj jednou rukou.</figcaption>
+  </figure>
+
+  <h3 class="ukazka-nadpis">Odpočet hniloby a odrezkov</h3>
+  <div class="galeria">
+    <figure>
+      <img src="obrazky/odpocet.png" alt="Odpočet hniloby a odrezku – hrubý a čistý objem">
+      <figcaption>Zadáte chybnú časť kusa (hniloba, odrezok) a program ukáže hrubý aj čistý objem po odpočte — napr. 2,00 − 0,25 → 1,75 m³.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="ukazka-nadpis">Úradný doklad LA 43 — na šírku aj na výšku</h3>
+  <div class="galeria dvojica">
+    <figure>
+      <img src="obrazky/la43_sirka.png" alt="Doklad o pôvode dreva LA 43 na šírku">
+      <figcaption>Na šírku — 4 stĺpce kusov na stranu</figcaption>
+    </figure>
+    <figure>
+      <img src="obrazky/la43_vyska.png" alt="Doklad o pôvode dreva LA 43 na výšku s 3 stĺpcami">
+      <figcaption>Na výšku — 3 stĺpce kusov na stranu</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="pruh"><section class="obal" id="stiahnut">
+  <h2>Stiahnutie</h2>
+  <p class="podnadpis">Vyberte verziu pre svoj systém. Po inštalácii dostanete kód zariadenia — pošlite nám ho a vydáme vám licenciu.</p>
+  <div class="stiahni">
+    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-win"/></svg> Windows <small>.exe</small></a>
+    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-and"/></svg> Android <small>.apk</small></a>
+    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-lin"/></svg> Linux <small>.deb</small></a>
+  </div>
+</section></div>
+
+<section class="obal">
+  <h2>Ako to funguje</h2>
+  <p class="podnadpis">Od objednávky po prvý doklad za pár minút.</p>
+  <div class="kroky">
+    <div class="krok"><h3>Objednáte a nainštalujete</h3><p>Napíšete nám, dostanete faktúru a odkaz na stiahnutie. Inštalácia je bežná — Ďalej, Dokončiť.</p></div>
+    <div class="krok"><h3>Aktivujete licenciu</h3><p>Program ukáže kód zariadenia, pošlete nám ho a my vám vydáme licenciu presne na vaše zariadenie.</p></div>
+    <div class="krok"><h3>Kubíkujete</h3><p>Zadávate kusy, program počíta objem, robí súčty a tlačí doklady. Funguje aj offline.</p></div>
+  </div>
+</section>
+
+<div class="pruh"><section class="obal">
+  <h2>Cena</h2>
+  <p class="podnadpis">Jednoducho a férovo — bez skrytých poplatkov.</p>
+  <div class="cena-obal">
+    <div class="cenkarta hlavna">
+      <span class="stitok">Odporúčané</span>
+      <div>Jednorazová licencia</div>
+      <div class="suma">129 €</div>
+      <div><small>licencia navždy, na 1 zariadenie</small></div>
+      <ul>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Všetky funkcie a dreviny</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Windows, Android aj Linux</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Aktualizácie zdarma</li>
+      </ul>
+    </div>
+    <div class="cenkarta">
+      <div>Ročné predplatné</div>
+      <div class="suma">49 € <small>/ rok</small></div>
+      <div><small>nižší vstup, priebežné aktualizácie</small></div>
+      <ul>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Rovnaké funkcie</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Kedykoľvek zrušíte</li>
+      </ul>
+    </div>
+  </div>
+  <p class="bonus">Používate program na počítači aj v mobile? <strong>Druhé zariadenie so zľavou −50 %.</strong></p>
+  <div style="text-align:center;margin-top:22px">
+    <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať e-mailom</a>
+  </div>
+</section></div>
+
+<section class="obal namieru">
+  <h2>Riešenia na mieru</h2>
+  <p class="podnadpis">Potrebujete niečo navyše? Program prispôsobíme podľa vašich potrieb — vlastné tlačové zostavy,
+    úprava cenníka, prepojenie s vašou evidenciou či ďalšie funkcie. Napíšte nám, čo potrebujete, a pripravíme riešenie.</p>
+  <a class="cta" href="mailto:agroberit@gmail.com?subject=Rie%C5%A1enie%20na%20mieru%20%E2%80%93%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20rie%C5%A1enie%20na%20mieru.%20Pop%C3%AD%C5%A1em%20po%C5%BEiadavku%3A%0A%0A">Napíšte nám požiadavku</a>
+</section>
+
+<footer><div class="obal">
+  <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171</span>
+  <span>·</span>
+  <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a>
+  <span class="odd">Kubikovač guľatiny — výpočet kompatibilný s STN 48 0009</span>
+</div>
+<div class="obal" style="font-size:.78rem;opacity:.7;padding-top:6px">STN 48 0009 je technická norma; Kubikovač je nezávislý softvérový nástroj, ktorého výpočet je s ňou kompatibilný.</div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-doklad" viewBox="0 0 24 24"><path d="M6 3h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tlac" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></symbol>
+  <symbol id="i-teren" viewBox="0 0 24 24"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></symbol>
+  <symbol id="i-graf" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21v-6M11 21v-12M16 21v-9"/></symbol>
+  <symbol id="i-skratit" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.5 15.5M14.5 14.5 20 20M8.5 8.5 12 12"/></symbol>
+  <symbol id="i-zar" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.3A6 6 0 1 0 17.5 17.7"/><path d="M4 10.5h9M4 13.5h8"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M6 4v15M6 19l-2.5-2.5M6 19l2.5-2.5"/><path d="M12 6h9M12 11h6M12 16h3"/></symbol>
+  <symbol id="i-zalozky" viewBox="0 0 24 24"><path d="M4 8h5l2-2h9v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4 11h16"/></symbol>
+  <symbol id="i-tema" viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 1 1 10.5 4a6.3 6.3 0 0 0 9.5 9.5z"/></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24"><path d="M12 3l7 2.5v5.2c0 4.3-3 7.6-7 9.3-4-1.7-7-5-7-9.3V5.5z"/><path d="M9.3 12l1.9 1.9L15 10"/></symbol>
+  <symbol id="i-vyber" viewBox="0 0 24 24"><rect x="3" y="4" width="6.5" height="6.5" rx="1.4"/><path d="M4.6 7.2 6 8.6 8 6"/><rect x="3" y="13.5" width="6.5" height="6.5" rx="1.4"/><path d="M12.5 7h8.5M12.5 16.7h8.5"/></symbol>
+  <symbol id="i-doklady" viewBox="0 0 24 24"><path d="M8 3h6l4 4v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M4 7v13a1 1 0 0 0 1 1h9" opacity=".55"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></symbol>
+  <symbol id="i-spoj" viewBox="0 0 24 24"><path d="M4 5v4a3 3 0 0 0 3 3h9"/><path d="M4 19v-4a3 3 0 0 1 3-3"/><path d="M13 8l4 4-4 4"/></symbol>
+  <symbol id="i-win" viewBox="0 0 24 24"><path d="M3 5.5 10.5 4v7.5H3z M11.5 3.8 21 2.5V11.5h-9.5z M3 12.5h7.5V20L3 18.5z M11.5 12.5H21V21.5l-9.5-1.3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-and" viewBox="0 0 24 24"><path d="M5 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M17 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M7 9h10v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z M9 19v2a1 1 0 0 0 2 0v-2 M13 19v2a1 1 0 0 0 2 0v-2 M8 8a4 4 0 0 1 8 0"/><path d="M9 5.5 8 4M15 5.5 16 4"/></symbol>
+  <symbol id="i-lin" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/><path d="M9.5 9h.01M14.5 9h.01"/></symbol>
+</svg>
+</body>
+</html>
