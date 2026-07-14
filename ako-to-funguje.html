@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ako funguje Kubikovač guľatiny – prehliadka programu krok po kroku</title>
+<meta name="description" content="Kompletná prehliadka programu Kubikovač guľatiny: zadávanie kusov, terénny režim na mobile, odpočty, úradný doklad LA 43, cenník podľa triedy, prídavok 1 %, štatistiky a archív. Kompatibilné s STN 48 0009.">
+<link rel="canonical" href="https://kubikovac.github.io/ako-to-funguje.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<style>
+  :root{
+    --zelena:#2b6a30; --zelena2:#357a3b; --pozadie:#f5f7f1; --papier:#fff;
+    --ciara:#e0e5da; --text:#1b2718; --seda:#5d6c57; --amber:#c8871a;
+    --jemna:#eef2ea;
+    --tien:0 1px 3px rgba(20,30,15,.08),0 14px 38px rgba(20,30,15,.11);
+    --tienJemny:0 1px 3px rgba(20,30,15,.06),0 8px 22px rgba(20,30,15,.06);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --zelena:#243120; --zelena2:#4a9a51; --pozadie:#12160f; --papier:#1b211a;
+    --ciara:#313a2d; --text:#e8eee2; --seda:#9aab90; --amber:#e0b24a;
+    --jemna:#20281e;
+    --tien:0 1px 3px rgba(0,0,0,.5),0 14px 38px rgba(0,0,0,.45);
+    --tienJemny:0 1px 3px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.3);
+  }}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:var(--pozadie);
+    color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--zelena2)}
+  img{max-width:100%;display:block}
+
+  /* progres lišta */
+  #progres{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--zelena2),var(--amber));transition:width .08s linear}
+
+  /* horná lišta */
+  header{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--pozadie) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--ciara)}
+  .hbar{max-width:1100px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:12px}
+  .hbar img{width:30px;height:30px;border-radius:7px}
+  .hbar b{font-size:1.02rem;letter-spacing:.2px}
+  .hbar .sp{margin-left:auto}
+  .tl{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:var(--zelena2);
+    color:#fff;padding:8px 15px;border-radius:9px;font-size:.92rem;font-weight:600;white-space:nowrap}
+  .tl.vedl{background:transparent;color:var(--text);border:1px solid var(--ciara)}
+  .tl:hover{filter:brightness(1.06)}
+  @media (max-width:560px){.hbar .vedl{display:none}}
+
+  /* hero */
+  .hero{text-align:center;padding:62px 22px 26px;max-width:840px;margin:0 auto}
+  .odznak{display:inline-block;background:color-mix(in srgb,var(--zelena2) 15%,transparent);
+    color:var(--zelena2);font-weight:700;font-size:.82rem;letter-spacing:.6px;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.14;margin:.1em 0 .35em}
+  .hero p{font-size:clamp(1.02rem,2.6vw,1.2rem);color:var(--seda);margin:0 auto;max-width:660px}
+  .hero .meta{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:26px;color:var(--seda);font-size:.95rem}
+  .hero .meta b{color:var(--text)}
+  .hero .sipka{margin-top:26px;color:var(--seda);font-size:1.6rem;animation:hop 1.7s infinite}
+  @keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+  /* kroky */
+  main{max-width:1100px;margin:0 auto;padding:6px 22px 8px}
+  .krok{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center;
+    padding:56px 0;border-top:1px solid var(--ciara)}
+  .krok:first-of-type{border-top:0}
+  .krok .text{max-width:470px}
+  .krok.opacny .obraz{order:-1}
+  .stitok{display:inline-flex;align-items:center;gap:9px;margin-bottom:13px}
+  .cislo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+    border-radius:11px;background:var(--zelena);color:#fff;font-weight:800;font-size:1.02rem}
+  .stitok small{color:var(--seda);font-weight:600;letter-spacing:.4px;text-transform:uppercase;font-size:.76rem}
+  .krok h2{font-size:clamp(1.4rem,3.4vw,1.85rem);margin:.05em 0 .4em;line-height:1.22}
+  .krok .popis{color:var(--seda);font-size:1.04rem;margin:0 0 16px}
+  .krok ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+  .krok li{display:flex;gap:10px;align-items:flex-start;font-size:.99rem}
+  .krok li svg{flex:none;width:19px;height:19px;margin-top:3px;color:var(--zelena2)}
+  .tipbox{margin-top:16px;background:var(--jemna);border:1px solid var(--ciara);border-radius:10px;
+    padding:10px 13px;font-size:.92rem;color:var(--seda)}
+  .tipbox b{color:var(--text)}
+  .obraz{border-radius:14px;overflow:hidden;border:1px solid var(--ciara);box-shadow:var(--tien);
+    background:var(--papier);transition:transform .35s ease}
+  .obraz:hover{transform:translateY(-4px)}
+  .obraz.duo{display:grid;grid-template-columns:1.35fr 1fr;background:var(--pozadie)}
+  .obraz.duo img{border-right:1px solid var(--ciara)}
+  .obraz.duo img:last-child{border-right:0}
+  .popiska{font-size:.85rem;color:var(--seda);text-align:center;margin-top:10px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero .sipka{animation:none}.obraz:hover{transform:none}}
+
+  /* mriežka všetkých funkcií */
+  .vsetko{padding:64px 22px;border-top:1px solid var(--ciara)}
+  .vsetko .obal{max-width:1100px;margin:0 auto}
+  .vsetko h2{text-align:center;font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 8px}
+  .vsetko .pod{text-align:center;color:var(--seda);margin:0 auto 34px;max-width:560px}
+  .mriezka{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:13px}
+  .fkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:12px;padding:15px 16px;
+    box-shadow:var(--tienJemny);display:flex;gap:12px;align-items:flex-start}
+  .fkarta .zn{flex:none;width:34px;height:34px;border-radius:9px;background:var(--jemna);
+    display:flex;align-items:center;justify-content:center;color:var(--zelena2);font-size:1.05rem}
+  .fkarta b{display:block;font-size:.97rem;line-height:1.3;margin-bottom:2px}
+  .fkarta span{font-size:.86rem;color:var(--seda);line-height:1.45;display:block}
+
+  /* ako začať */
+  .zacni{padding:64px 22px;border-top:1px solid var(--ciara)}
+  .zacni .obal{max-width:900px;margin:0 auto;text-align:center}
+  .zacni h2{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 34px}
+  .zkroky{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left}
+  .zkrok{background:var(--papier);border:1px solid var(--ciara);border-radius:13px;padding:20px;box-shadow:var(--tienJemny)}
+  .zkrok .zc{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+    border-radius:50%;background:var(--zelena2);color:#fff;font-weight:800;margin-bottom:10px}
+  .zkrok b{display:block;margin-bottom:4px}
+  .zkrok p{margin:0;font-size:.92rem;color:var(--seda)}
+  @media (max-width:720px){.zkroky{grid-template-columns:1fr}}
+
+  /* záver */
+  .zaver{text-align:center;padding:60px 22px 34px;max-width:820px;margin:0 auto}
+  .zaver h2{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 10px}
+  .zaver p{color:var(--seda);font-size:1.06rem;margin:0 auto 26px;max-width:560px}
+  .platformy{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 30px}
+  .plat{display:flex;align-items:center;gap:9px;background:var(--papier);border:1px solid var(--ciara);
+    border-radius:11px;padding:12px 18px;font-weight:600;box-shadow:var(--tienJemny)}
+  .plat svg{width:22px;height:22px;color:var(--zelena2)}
+  .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .cta a{font-size:1.04rem;padding:13px 26px}
+  footer{text-align:center;color:var(--seda);font-size:.86rem;padding:28px 22px 46px;border-top:1px solid var(--ciara)}
+
+  @media (max-width:820px){
+    .krok{grid-template-columns:1fr;gap:22px;padding:42px 0}
+    .krok.opacny .obraz{order:0}
+    .krok .text{max-width:none}
+  }
+  @media (max-width:520px){.obraz.duo{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="progres"></div>
+
+<header>
+  <div class="hbar">
+    <img src="obrazky/ikona.png" alt="Kubikovač">
+    <b>Kubikovač guľatiny</b>
+    <span class="sp"></span>
+    <a class="tl vedl" href="/">Domov</a>
+    <a class="tl" href="https://github.com/berforge/kubikovac-releases/releases/latest">Stiahnuť</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="odznak rv">Prehliadka programu</span>
+  <h1 class="rv">Od nameraného kusa po úradný doklad za pár minút</h1>
+  <p class="rv">Kubikovač spočíta objem guľatiny s kôrou, pripraví doklad o pôvode dreva LA 43,
+     odpočty aj cenu. Beží v kancelárii aj v lese na mobile — a úplne bez internetu.</p>
+  <div class="meta rv">
+    <span><b>7 krokov</b> pracovného postupu</span>
+    <span><b>15 funkcií</b> v prehľade</span>
+    <span>kompatibilné s <b>STN 48 0009</b></span>
+  </div>
+  <div class="sipka rv">↓</div>
+</section>
+
+<main>
+
+  <!-- 1: zadávanie -->
+  <div class="krok rv" id="k1">
+    <div class="text">
+      <div class="stitok"><span class="cislo">1</span><small>Krok 1 · Zadávanie</small></div>
+      <h2>Zadáš kusy, objem sa počíta sám</h2>
+      <p class="popis">Do prehľadnej tabuľky zapíšeš drevinu, dĺžku a priemer. Objem každého kusa
+        aj súčty program dopočíta okamžite — s kôrou, kompatibilne s STN 48 0009.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Smrek, jedľa, borovica, smrekovec, buk, dub, topoľ a ~20 príbuzných drevín</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Tenká guľatina od 5 cm, hrubá do 145 cm — ľubovoľná dĺžka</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Automatické číslovanie kusov, nový riadok si pamätá drevinu</li>
+      </ul>
+      <div class="tipbox">💡 <b>Tip:</b> Kvalitatívnu triedu (I, II, III.A–D) vyberieš rovno pri kuse — program z nej neskôr spočíta cenu.</div>
+    </div>
+    <div class="obraz"><img src="obrazky/desktop.png" alt="Tabuľka s výpočtom objemu guľatiny"></div>
+  </div>
+
+  <!-- 2: terén -->
+  <div class="krok opacny rv" id="k2">
+    <div class="text">
+      <div class="stitok"><span class="cislo">2</span><small>Krok 2 · V lese</small></div>
+      <h2>Terénny režim na mobile — offline</h2>
+      <p class="popis">V lese prepneš na terénny režim: veľké polia, zadáš dĺžku a priemer,
+        ťukneš <b>+</b> a kus je zapísaný. Signál netreba — všetko beží v telefóne.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Veľké dotykové tlačidlá — do rukavíc aj na ostrom slnku</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Bežiaci súčet kusov a objemu, potvrdenie posledného kusa</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Voliteľné polia navyše: číslo kusa, trieda, poznámka</li>
+      </ul>
+      <div class="tipbox">💡 <b>Tip:</b> Enter na klávesnici pridá kus a skočí na ďalší — dávkové zadávanie bez ťukania.</div>
+    </div>
+    <div class="obraz"><img src="obrazky/mobil.png" alt="Terénny režim na mobile"></div>
+  </div>
+
+  <!-- 3: odpočty -->
+  <div class="krok rv" id="k3">
+    <div class="text">
+      <div class="stitok"><span class="cislo">3</span><small>Krok 3 · Odpočty</small></div>
+      <h2>Hniloba a odrezky — hrubý aj čistý objem</h2>
+      <p class="popis">Ku kusu pridáš odpočet (hnilobu, odrezok) a program ukáže hrubý objem,
+        odpočet aj <b>čistý objem</b> — presne to, čo sa platí. Všetko ostáva zdokladované.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Ľubovoľný počet odpočtov na kus, s poznámkou</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Odpočet z rozmerov alebo ručne zadaným objemom</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Kontrola preklepov — záporný či prehnaný odpočet program zachytí</li>
+      </ul>
+    </div>
+    <div class="obraz"><img src="obrazky/odpocet.png" alt="Odpočet hniloby a čistý objem"></div>
+  </div>
+
+  <!-- 4: LA43 -->
+  <div class="krok opacny rv" id="k4">
+    <div class="text">
+      <div class="stitok"><span class="cislo">4</span><small>Krok 4 · Doklad</small></div>
+      <h2>Úradný doklad LA 43 na jeden klik</h2>
+      <p class="popis">Vyplníš hlavičku a program vytlačí alebo uloží do PDF <b>Doklad o pôvode
+        dreva LA 43</b> — na šírku aj na výšku. Vieš vytlačiť aj samostatný doklad pre každú drevinu.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Tlač na papier alebo PDF — na šírku aj na výšku (3 stĺpce)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Samostatný LA 43 pre jednotlivú drevinu jedným prepínačom</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Rýchly doklad pre naloženú drevinu — označíš kusy a vytlačíš len tie</li>
+      </ul>
+    </div>
+    <div>
+      <div class="obraz duo">
+        <img src="obrazky/la43_sirka.png" alt="Doklad LA 43 na šírku">
+        <img src="obrazky/la43_vyska.png" alt="Doklad LA 43 na výšku">
+      </div>
+      <div class="popiska">Jeden doklad, dve rozloženia — na šírku aj na výšku</div>
+    </div>
+  </div>
+
+  <!-- 5: cenník -->
+  <div class="krok rv" id="k5">
+    <div class="text">
+      <div class="stitok"><span class="cislo">5</span><small>Krok 5 · Cena</small></div>
+      <h2>Cenník podľa triedy — podklad k faktúre</h2>
+      <p class="popis">Zadáš ceny €/m³ pre drevinu aj kvalitatívnu triedu (I, II, III.A–D).
+        Program vyberie správnu sadzbu pre každý kus a spočíta cenu celého dokladu.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Základná cena na drevinu + ceny podľa tried</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Cena za doklad aj súhrnná štatistika naprieč dokladmi</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Export do CSV v slovenskom formáte — rovno do Excelu</li>
+      </ul>
+    </div>
+    <div class="obraz"><img src="obrazky/cena_triedy.png" alt="Cenník podľa kvalitatívnej triedy"></div>
+  </div>
+
+  <!-- 6: prídavok -->
+  <div class="krok opacny rv" id="k6">
+    <div class="text">
+      <div class="stitok"><span class="cislo">6</span><small>Krok 6 · Prídavok 1 %</small></div>
+      <h2>Voliteľný prídavok na dĺžku 1 %</h2>
+      <p class="popis">Meriaš celé kusy aj s prídavkom? Program z nameranej dĺžky určí menovitú
+        (nameraná ÷ 1,01 — napr. 4,04 m → 4,00 m) a z nej počíta objem.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Dva režimy: najviac 10 cm na výrez, alebo 1 % z celej dĺžky</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Súhrn vždy ukáže, ktorý režim je aktívny — žiadne prekvapenia</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Skrátenie dĺžok o ľubovoľnú hodnotu — pre celý doklad či výber</li>
+      </ul>
+    </div>
+    <div>
+      <div class="obraz"><img src="obrazky/sumar_1p.png" alt="Súhrn so zapnutým prídavkom 1 %"></div>
+      <div class="popiska">Žlté upozornenie v súhrne — hneď vidno, že prídavok je zapnutý</div>
+    </div>
+  </div>
+
+  <!-- 7: archív -->
+  <div class="krok rv" id="k7">
+    <div class="text">
+      <div class="stitok"><span class="cislo">7</span><small>Krok 7 · Archív</small></div>
+      <h2>Doklady v záložkách, archív a štatistiky</h2>
+      <p class="popis">Pracuješ na viacerých dokladoch naraz v záložkách. Uložené doklady nájdeš
+        v archíve s vyhľadávaním a štatistikou naprieč zákazkami.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Viac otvorených dokladov, spojenie viacerých do jedného</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Triedenie na viac úrovní, výber kusov na samostatný doklad</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Automatické zálohy a obnova — o doklady neprídeš</li>
+      </ul>
+      <div class="tipbox">💡 <b>Tip:</b> Rozpracovaný doklad sa priebežne ukladá sám — aj po zavretí okna pokračuješ tam, kde si skončil.</div>
+    </div>
+    <div class="obraz"><img src="obrazky/desktop.png" alt="Záložky dokladov a súhrn"></div>
+  </div>
+
+</main>
+
+<!-- všetkých 15 funkcií -->
+<section class="vsetko rv">
+  <div class="obal">
+    <h2>Všetko, čo v programe nájdeš</h2>
+    <p class="pod">Kompletný prehľad funkcií — od výpočtu cez doklady až po štatistiky.</p>
+    <div class="mriezka">
+      <div class="fkarta"><span class="zn">📐</span><div><b>Kompatibilné s STN 48 0009</b><span>Objem guľatiny meranej s kôrou pre všetky bežné dreviny.</span></div></div>
+      <div class="fkarta"><span class="zn">🌲</span><div><b>Terénny režim</b><span>Veľké polia, bežiaci súčet — rýchle zadávanie v lese.</span></div></div>
+      <div class="fkarta"><span class="zn">📄</span><div><b>Úradný doklad LA 43</b><span>Tlač aj PDF, na šírku aj na výšku, na jeden klik.</span></div></div>
+      <div class="fkarta"><span class="zn">🚚</span><div><b>Rýchly doklad pre naloženú drevinu</b><span>Označíš kusy na aute a vytlačíš doklad len pre ne.</span></div></div>
+      <div class="fkarta"><span class="zn">🌳</span><div><b>Samostatný doklad pre každú drevinu</b><span>Jedným prepínačom rozdelí LA 43 podľa drevín.</span></div></div>
+      <div class="fkarta"><span class="zn">✂️</span><div><b>Skrátenie dĺžok</b><span>Skráti všetky či vybrané kusy o zadanú hodnotu s náhľadom.</span></div></div>
+      <div class="fkarta"><span class="zn">➖</span><div><b>Odpočty hniloby a odrezkov</b><span>Hrubý aj čistý objem po odpočte — všetko zdokladované.</span></div></div>
+      <div class="fkarta"><span class="zn">％</span><div><b>Prídavok na dĺžku 1 %</b><span>Menovitá dĺžka z nameranej (÷ 1,01), max 10 cm alebo bez limitu.</span></div></div>
+      <div class="fkarta"><span class="zn">💶</span><div><b>Cenník podľa triedy</b><span>Ceny €/m³ na drevinu aj triedu I–III.D, cena dokladu.</span></div></div>
+      <div class="fkarta"><span class="zn">📊</span><div><b>Súčty a štatistiky</b><span>Po drevinách aj celkovo, naprieč všetkými zákazkami.</span></div></div>
+      <div class="fkarta"><span class="zn">🔀</span><div><b>Triedenie a výber na viac úrovní</b><span>Podľa dreviny, dĺžky, priemeru, objemu — aj kombinovane.</span></div></div>
+      <div class="fkarta"><span class="zn">🔗</span><div><b>Spojenie viacerých dokladov</b><span>Viac uložených dokladov spojíš do jedného.</span></div></div>
+      <div class="fkarta"><span class="zn">🗂️</span><div><b>Záložky a archív</b><span>Viac dokladov naraz, archív s vyhľadávaním a zálohami.</span></div></div>
+      <div class="fkarta"><span class="zn">🌙</span><div><b>Tmavý režim a veľké písmo</b><span>Čitateľné na slnku aj pre slabší zrak — jedným tlačidlom.</span></div></div>
+      <div class="fkarta"><span class="zn">💻</span><div><b>Windows · Android · Linux</b><span>Ten istý program všade, offline, doklady prenositeľné.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ako začať -->
+<section class="zacni rv">
+  <div class="obal">
+    <h2>Ako začať — tri kroky</h2>
+    <div class="zkroky">
+      <div class="zkrok"><span class="zc">1</span><b>Objednáš a nainštaluješ</b>
+        <p>Stiahneš inštalátor pre Windows, Android alebo Linux a nainštaluješ ako bežný program.</p></div>
+      <div class="zkrok"><span class="zc">2</span><b>Aktivuješ licenciu</b>
+        <p>Program ukáže kód zariadenia — pošleš ho a obratom dostaneš licenčný súbor. Nahráš, hotovo.</p></div>
+      <div class="zkrok"><span class="zc">3</span><b>Kubíkuješ</b>
+        <p>Zadávaš kusy, tlačíš doklady, počítaš ceny. Všetko offline, dáta ostávajú len u teba.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- záver -->
+<section class="zaver rv">
+  <h2>Vyskúšaj Kubikovač ešte dnes</h2>
+  <p>Windows, Android aj Linux. Doklady sú uložené len u teba — offline, bez cloudu.
+     Výpočet objemu guľatiny meranej s kôrou, kompatibilný s STN 48 0009.</p>
+  <div class="platformy">
+    <span class="plat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4v7.5H3z M11.5 3.8 21 2.5V11.5h-9.5z M3 12.5h7.5V20L3 18.5z M11.5 12.5H21V21.5l-9.5-1.3z"/></svg> Windows</span>
+    <span class="plat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="11" rx="1"/><path d="M8 7a4 4 0 0 1 8 0M9 4l-1-1.5M15 4l1-1.5M9 21v1M15 21v1"/></svg> Android</span>
+    <span class="plat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/></svg> Linux</span>
+  </div>
+  <div class="cta">
+    <a class="tl" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
+    <a class="tl vedl" href="https://github.com/berforge/kubikovac-releases/releases/latest">Stiahnuť</a>
+    <a class="tl vedl" href="/">Hlavná stránka</a>
+  </div>
+</section>
+
+<footer>
+  Kubikovač guľatiny — výpočet objemu dreva kompatibilný s STN 48 0009 · AGROBERIT s. r. o.
+</footer>
+
+<script>
+  const progres = document.getElementById('progres');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    progres.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  const io = new IntersectionObserver((es) => {
+    es.forEach(x => { if (x.isIntersecting){ x.target.classList.add('on'); io.unobserve(x.target); } });
+  }, {threshold:0.14});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
