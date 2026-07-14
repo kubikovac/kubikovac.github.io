@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="sp3hbCPiwG9lFHeZf06y-oNrHcWPVMDfUQzmZnFVwSw" />
 <title>Kubikovač guľatiny – výpočet objemu dreva kompatibilný s STN 48 0009 | AGROBERIT s.r.o.</title>
-<meta name="description" content="Profesionálny program na kubíkovanie guľatiny kompatibilné s STN 48 0009. Doklad o pôvode dreva LA 43, odpočty, cenník podľa triedy, štatistiky. Windows, Android aj Linux. Funguje offline.">
-<meta name="keywords" content="kubíkovanie guľatiny, výpočet objemu dreva, objem guľatiny, kalkulačka objemu dreva, program na kubíkovanie, kubíkovač, STN 48 0009, doklad o pôvode dreva, LA 43, drevo, píla, lesníctvo">
+<meta name="description" content="Kubikovač – program na meranie guľatiny a výpočet objemu dreva (kubíkovanie) kompatibilný s normou STN 48 0009. Určenie objemu guľatiny, doklad o pôvode dreva LA 43, odpočty, cenník podľa triedy, štatistiky. Windows, Android aj Linux, funguje offline.">
+<meta name="keywords" content="kubikovac, kubíkovač, kubíkovanie guľatiny, kubírovanie, meranie guľatiny, meranie objemu guľatiny, výpočet objemu dreva, určenie objemu dreva, objem guľatiny, drevo objem, kubik dreva, výpočet kubíkov dreva, kalkulačka objemu dreva, program na kubíkovanie, STN 48 0009, doklad o pôvode dreva, LA 43, tlačivo LA43, guľatina smrek, píla, lesníctvo">
 <meta name="author" content="AGROBERIT s. r. o.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://kubikovac.github.io/">
@@ -29,6 +29,8 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Kubikovač guľatiny",
+  "alternateName": ["Kubikovac", "Kubíkovač", "program na meranie guľatiny"],
+  "keywords": "meranie guľatiny, objem guľatiny, výpočet objemu dreva, kubíkovanie, kubírovanie, určenie objemu dreva, STN 48 0009, LA 43",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Windows, Android, Linux",
   "description": "Program na výpočet objemu guľatiny (kubíkovanie) kompatibilný s STN 48 0009 – úradný doklad LA 43, odpočty, cenník podľa kvalitatívnej triedy, štatistiky. Funguje offline.",
@@ -123,8 +125,19 @@
   .mobilUkazka{max-width:320px;margin:0 auto}
   .mobilUkazka img{width:100%;border-radius:20px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
   .mobilUkazka figcaption{text-align:center;color:var(--seda);font-size:.92rem;margin-top:12px}
-  /* riešenia na mieru */
+  /* objednávka a kontakt */
   .namieru{text-align:center}
+  .kmail{display:inline-flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:800;color:var(--text);
+    background:var(--papier);border:2px solid var(--amber);border-radius:14px;padding:13px 26px;
+    text-decoration:none;box-shadow:var(--tien);margin:4px 0 26px}
+  .kmail:hover{filter:brightness(1.03)}
+  .ksluzby{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 26px;text-align:left}
+  .ksl{background:var(--papier);border:1px solid var(--ciara);border-radius:13px;padding:18px 20px;box-shadow:var(--tien)}
+  .ksl b{display:flex;gap:9px;align-items:center;margin-bottom:6px;font-size:1rem}
+  .ksl b .ic{color:var(--zelena2);width:20px;height:20px}
+  .ksl p{margin:0;color:var(--seda);font-size:.92rem}
+  .mail-hint{margin-top:10px;font-size:.98rem;opacity:.95}
+  .mail-hint a{color:#fff;font-weight:700}
   /* pätka */
   footer{background:var(--zelena);color:#fff;padding:30px 0;margin-top:20px}
   footer .obal{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:.9rem;opacity:.92}
@@ -133,6 +146,8 @@
   @media (max-width:760px){
     .hero h1{font-size:1.9rem}.funkcie,.kroky{grid-template-columns:1fr}
     .galeria.dvojica{grid-template-columns:1fr}
+    .ksluzby{grid-template-columns:1fr}
+    .kmail{font-size:1.05rem;padding:11px 16px}
     .nahlad{margin-top:-26px}
   }
 </style>
@@ -149,13 +164,14 @@
   </div>
   <div class="obal hero">
     <h1>Kubíkovanie guľatiny bez papiera a chýb</h1>
-    <p class="pod">Presný výpočet objemu guľatiny <strong>meranej s kôrou</strong>, kompatibilný s STN 48 0009 — v kancelárii aj v teréne.</p>
+    <p class="pod">Presný výpočet objemu guľatiny <strong>meranej s kôrou</strong>, kompatibilný s normou STN 48 0009 — v kancelárii aj v teréne.</p>
     <div class="tlac">
       <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
       <a class="cta druhy" href="ako-to-funguje.html">Ako to funguje</a>
       <a class="cta druhy" href="#stiahnut">Stiahnuť</a>
     </div>
     <div class="cena-hint">Od 129 € jednorazovo — licencia navždy · alebo 49 € / rok</div>
+    <div class="mail-hint">✉ Objednávky aj skúšobná verzia: <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></div>
   </div>
 </header>
 
@@ -179,8 +195,8 @@
   <div class="funkcie">
     <div class="karta">
       <span class="znak"><svg class="ic"><use href="#i-doklad"/></svg></span>
-      <h3>Kompatibilné s STN 48 0009</h3>
-      <p>Objem guľatiny <strong>meranej s kôrou</strong> (priemer aj dĺžka s kôrou) pre smrek, jedľu, borovicu, smrekovec, buk, dub, topoľ aj príbuzné dreviny. Objem počíta z Huberovho vzorca so zrážkou kôry; výsledky sú kompatibilné s STN 48 0009.</p>
+      <h3>Kompatibilné s STN 48 0009</h3>
+      <p>Objem guľatiny <strong>meranej s kôrou</strong> (priemer aj dĺžka s kôrou) pre smrek, jedľu, borovicu, smrekovec, buk, dub, topoľ aj príbuzné dreviny. Objem počíta z Huberovho vzorca so zrážkou kôry; výsledky sú kompatibilné s normou STN 48 0009.</p>
     </div>
     <div class="karta">
       <span class="znak"><svg class="ic"><use href="#i-teren"/></svg></span>
@@ -189,18 +205,18 @@
     </div>
     <div class="karta">
       <span class="znak"><svg class="ic"><use href="#i-tlac"/></svg></span>
-      <h3>Úradný doklad LA 43</h3>
+      <h3>Úradný doklad LA 43</h3>
       <p>Doklad o pôvode dreva na jeden klik — na šírku aj na výšku, vytlačíte alebo uložíte do PDF.</p>
     </div>
     <div class="karta zvyraz">
       <span class="znak"><svg class="ic"><use href="#i-vyber"/></svg></span>
       <h3>Rýchly doklad pre naloženú drevinu</h3>
-      <p>Pri nakladaní na odvoz jednoducho zaškrtnete, ktoré kusy sa naložili — a LA 43 sa vytvorí len pre ne. Za pár sekúnd.</p>
+      <p>Pri nakladaní na odvoz jednoducho zaškrtnete, ktoré kusy sa naložili — a LA 43 sa vytvorí len pre ne. Za pár sekúnd.</p>
     </div>
     <div class="karta zvyraz">
       <span class="znak"><svg class="ic"><use href="#i-doklady"/></svg></span>
       <h3>Samostatný doklad pre každú drevinu</h3>
-      <p>Máte všetko v jednom zozname? Program automaticky rozdelí dreviny a vytvorí samostatný LA 43 pre každú z nich.</p>
+      <p>Máte všetko v jednom zozname? Program automaticky rozdelí dreviny a vytvorí samostatný LA 43 pre každú z nich.</p>
     </div>
     <div class="karta zvyraz">
       <span class="znak"><svg class="ic"><use href="#i-skratit"/></svg></span>
@@ -273,14 +289,14 @@
     </figure>
   </div>
 
-  <h3 class="ukazka-nadpis">Úradný doklad LA 43 — na šírku aj na výšku</h3>
+  <h3 class="ukazka-nadpis">Úradný doklad LA 43 — na šírku aj na výšku</h3>
   <div class="galeria dvojica">
     <figure>
-      <img src="obrazky/la43_sirka.png" alt="Doklad o pôvode dreva LA 43 na šírku">
+      <img src="obrazky/la43_sirka.png" alt="Doklad o pôvode dreva LA 43 na šírku">
       <figcaption>Na šírku — 4 stĺpce kusov na stranu</figcaption>
     </figure>
     <figure>
-      <img src="obrazky/la43_vyska.png" alt="Doklad o pôvode dreva LA 43 na výšku s 3 stĺpcami">
+      <img src="obrazky/la43_vyska.png" alt="Doklad o pôvode dreva LA 43 na výšku s 3 stĺpcami">
       <figcaption>Na výšku — 3 stĺpce kusov na stranu</figcaption>
     </figure>
   </div>
@@ -300,7 +316,7 @@
   <h2>Ako to funguje</h2>
   <p class="podnadpis">Od objednávky po prvý doklad za pár minút.</p>
   <div class="kroky">
-    <div class="krok"><h3>Objednáte a nainštalujete</h3><p>Napíšete nám, dostanete faktúru a odkaz na stiahnutie. Inštalácia je bežná — Ďalej, Dokončiť.</p></div>
+    <div class="krok"><h3>Objednáte a nainštalujete</h3><p>Napíšete nám, dostanete faktúru a odkaz na stiahnutie. Alebo si najprv vyžiadate <strong>skúšobnú verziu</strong> s dočasnou licenciou. Inštalácia je bežná — Ďalej, Dokončiť.</p></div>
     <div class="krok"><h3>Aktivujete licenciu</h3><p>Program ukáže kód zariadenia, pošlete nám ho a my vám vydáme licenciu presne na vaše zariadenie.</p></div>
     <div class="krok"><h3>Kubíkujete</h3><p>Zadávate kusy, program počíta objem, robí súčty a tlačí doklady. Funguje aj offline.</p></div>
   </div>
@@ -337,23 +353,35 @@
   </div>
 </section></div>
 
-<section class="obal namieru">
-  <h2>Riešenia na mieru</h2>
-  <p class="podnadpis">Potrebujete niečo navyše? Program prispôsobíme podľa vašich potrieb — vlastné tlačové zostavy,
-    úprava cenníka, prepojenie s vašou evidenciou či ďalšie funkcie. Napíšte nám, čo potrebujete, a pripravíme riešenie.</p>
-  <a class="cta" href="mailto:agroberit@gmail.com?subject=Rie%C5%A1enie%20na%20mieru%20%E2%80%93%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20rie%C5%A1enie%20na%20mieru.%20Pop%C3%AD%C5%A1em%20po%C5%BEiadavku%3A%0A%0A">Napíšte nám požiadavku</a>
+<section class="obal namieru" id="objednat">
+  <h2>Objednávka a kontakt</h2>
+  <p class="podnadpis">Všetko vybavíte jedným e-mailom — odpovedáme spravidla do 24 hodín.</p>
+  <a class="kmail" href="mailto:agroberit@gmail.com?subject=Kubikova%C4%8D">✉ agroberit@gmail.com</a>
+  <div class="ksluzby">
+    <div class="ksl"><b><svg class="ic"><use href="#i-ok"/></svg> Skúšobná verzia zdarma</b>
+      <p>Požiadajte o <strong>dočasnú licenciu</strong> a vyskúšajte si program v plnej výbave na vlastných dokladoch — bez záväzkov.</p></div>
+    <div class="ksl"><b><svg class="ic"><use href="#i-kluc"/></svg> Funkcie na požiadanie</b>
+      <p>Chýba vám niečo? <strong>Doprogramujeme funkcionalitu podľa vašich potrieb</strong> — tlačové zostavy, cenník, prepojenie s evidenciou.</p></div>
+    <div class="ksl"><b><svg class="ic"><use href="#i-osoba"/></svg> Pomoc s inštaláciou</b>
+      <p>Poradíme a nainštalujeme <strong>na diaľku</strong>, po dohode možné aj <strong>osobné stretnutie</strong> a inštalácia u vás.</p></div>
+  </div>
+  <a class="cta" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu%20programu%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Vyžiadať skúšobnú verziu</a>
+  <a class="cta" style="margin-left:10px" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
 </section>
 
 <footer><div class="obal">
   <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171</span>
   <span>·</span>
   <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a>
-  <span class="odd">Kubikovač guľatiny — výpočet kompatibilný s STN 48 0009</span>
+  <span class="odd">Kubikovač guľatiny — výpočet kompatibilný s normou STN 48 0009</span>
 </div>
-<div class="obal" style="font-size:.78rem;opacity:.7;padding-top:6px">STN 48 0009 je technická norma; Kubikovač je nezávislý softvérový nástroj, ktorého výpočet je s ňou kompatibilný.</div>
+<div class="obal" style="font-size:.82rem;opacity:.8;padding-top:8px">Kubikovač je program na <strong>meranie guľatiny</strong> a <strong>určenie objemu dreva</strong> — výpočet objemu guľatiny (kubíkovanie) pre smrek, jedľu, borovicu, smrekovec, buk, dub a ďalšie dreviny, s dokladom o pôvode dreva LA 43.</div>
+<div class="obal" style="font-size:.78rem;opacity:.7;padding-top:6px">STN 48 0009 je technická norma; Kubikovač je nezávislý softvérový nástroj, ktorého výpočet je s ňou kompatibilný.</div>
 </footer>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-kluc" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"/></symbol>
+  <symbol id="i-osoba" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 8h5M18.5 5.5v5"/></symbol>
   <symbol id="i-doklad" viewBox="0 0 24 24"><path d="M6 3h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></symbol>
   <symbol id="i-tlac" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></symbol>
   <symbol id="i-teren" viewBox="0 0 24 24"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></symbol>

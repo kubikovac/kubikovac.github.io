@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ako funguje Kubikovač guľatiny – prehliadka programu krok po kroku</title>
-<meta name="description" content="Kompletná prehliadka programu Kubikovač guľatiny: zadávanie kusov, terénny režim na mobile, odpočty, úradný doklad LA 43, cenník podľa triedy, prídavok 1 %, štatistiky a archív. Kompatibilné s STN 48 0009.">
+<meta name="description" content="Ako funguje Kubikovač – program na meranie guľatiny a výpočet objemu dreva: zadávanie kusov, terénny režim na mobile, odpočty, úradný doklad LA 43, cenník podľa triedy, prídavok 1 %, štatistiky. Kompatibilný s normou STN 48 0009.">
 <link rel="canonical" href="https://kubikovac.github.io/ako-to-funguje.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png">
@@ -141,6 +141,16 @@
   .zkrok p{margin:0;font-size:.92rem;color:var(--seda)}
   @media (max-width:720px){.zkroky{grid-template-columns:1fr}}
 
+  /* kontaktný box */
+  .ztrial{margin-top:28px;background:var(--jemna);border:1.5px solid var(--zelena2);border-radius:14px;
+    padding:20px 24px;text-align:center}
+  .ztrial .zmail{display:inline-block;font-size:1.25rem;font-weight:800;color:var(--text);text-decoration:none;
+    background:var(--papier);border:2px solid var(--amber);border-radius:12px;padding:10px 20px;margin-bottom:12px}
+  .zsluzby{list-style:none;padding:0;margin:16px auto 0;max-width:620px;display:flex;flex-direction:column;gap:12px;text-align:left}
+  .zsluzby li{display:flex;gap:11px;align-items:flex-start}
+  .zsluzby li svg{flex:none;width:22px;height:22px;color:var(--zelena2);margin-top:2px}
+  .zsluzby b{display:block;margin-bottom:1px}
+  .zsluzby span{color:var(--seda);font-size:.93rem}
   /* záver */
   .zaver{text-align:center;padding:60px 22px 34px;max-width:820px;margin:0 auto}
   .zaver h2{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 10px}
@@ -177,12 +187,12 @@
 <section class="hero">
   <span class="odznak rv">Prehliadka programu</span>
   <h1 class="rv">Od nameraného kusa po úradný doklad za pár minút</h1>
-  <p class="rv">Kubikovač spočíta objem guľatiny s kôrou, pripraví doklad o pôvode dreva LA 43,
+  <p class="rv">Kubikovač spočíta objem guľatiny s kôrou, pripraví doklad o pôvode dreva LA 43,
      odpočty aj cenu. Beží v kancelárii aj v lese na mobile — a úplne bez internetu.</p>
   <div class="meta rv">
     <span><b>7 krokov</b> pracovného postupu</span>
-    <span><b>15 funkcií</b> v prehľade</span>
-    <span>kompatibilné s <b>STN 48 0009</b></span>
+    <span><b>21 funkcií</b> v prehľade</span>
+    <span>kompatibilné s <b>STN 48 0009</b></span>
   </div>
   <div class="sipka rv">↓</div>
 </section>
@@ -192,7 +202,7 @@
     <video src="video/ukazka.mp4" poster="video/poster.jpg" controls autoplay muted loop playsinline
            preload="metadata" aria-label="Ukážka práce s programom Kubikovač"></video>
   </div>
-  <div class="videoPop">▶ 65-sekundová ukážka: zadanie kusov → odpočet hniloby → terén → tlač dokladu LA 43 → výber kusov na odvoz a rýchly doklad → tmavý režim</div>
+  <div class="videoPop">▶ 65-sekundová ukážka: zadanie kusov → odpočet hniloby → terén → tlač dokladu LA 43 → výber kusov na odvoz a rýchly doklad → tmavý režim</div>
 </section>
 
 <main>
@@ -203,7 +213,7 @@
       <div class="stitok"><span class="cislo">1</span><small>Krok 1 · Zadávanie</small></div>
       <h2>Zadáš kusy, objem sa počíta sám</h2>
       <p class="popis">Do prehľadnej tabuľky zapíšeš drevinu, dĺžku a priemer. Objem každého kusa
-        aj súčty program dopočíta okamžite — s kôrou, kompatibilne s STN 48 0009.</p>
+        aj súčty program dopočíta okamžite — s kôrou, kompatibilne s STN 48 0009.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Smrek, jedľa, borovica, smrekovec, buk, dub, topoľ a ~20 príbuzných drevín</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Ľubovoľná dĺžka — od tenkej guľatiny po mohutné kmene, počíta vlastný algoritmus</li>
@@ -251,19 +261,19 @@
   <div class="krok opacny rv" id="k4">
     <div class="text">
       <div class="stitok"><span class="cislo">4</span><small>Krok 4 · Doklad</small></div>
-      <h2>Úradný doklad LA 43 na jeden klik</h2>
+      <h2>Úradný doklad LA 43 na jeden klik</h2>
       <p class="popis">Vyplníš hlavičku a program vytlačí alebo uloží do PDF <b>Doklad o pôvode
-        dreva LA 43</b> — na šírku aj na výšku. Vieš vytlačiť aj samostatný doklad pre každú drevinu.</p>
+        dreva LA 43</b> — na šírku aj na výšku. Vieš vytlačiť aj samostatný doklad pre každú drevinu.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Tlač na papier alebo PDF — na šírku aj na výšku (3 stĺpce)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Samostatný LA 43 pre jednotlivú drevinu jedným prepínačom</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Samostatný LA 43 pre jednotlivú drevinu jedným prepínačom</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Rýchly doklad pre naloženú drevinu — označíš kusy a vytlačíš len tie</li>
       </ul>
     </div>
     <div>
       <div class="obraz duo">
-        <img src="obrazky/la43_sirka.png" alt="Doklad LA 43 na šírku">
-        <img src="obrazky/la43_vyska.png" alt="Doklad LA 43 na výšku">
+        <img src="obrazky/la43_sirka.png" alt="Doklad LA 43 na šírku">
+        <img src="obrazky/la43_vyska.png" alt="Doklad LA 43 na výšku">
       </div>
       <div class="popiska">Jeden doklad, dve rozloženia — na šírku aj na výšku</div>
     </div>
@@ -355,11 +365,11 @@
     <h2>Všetko, čo v programe nájdeš</h2>
     <p class="pod">Kompletný prehľad funkcií — od výpočtu cez doklady až po štatistiky.</p>
     <div class="mriezka">
-      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklad"/></svg></span><div><b>Kompatibilné s STN 48 0009</b><span>Objem guľatiny meranej s kôrou pre všetky bežné dreviny.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklad"/></svg></span><div><b>Kompatibilné s STN 48 0009</b><span>Objem guľatiny meranej s kôrou pre všetky bežné dreviny.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-teren"/></svg></span><div><b>Terénny režim</b><span>Veľké polia, bežiaci súčet — rýchle zadávanie v lese.</span></div></div>
-      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-tlac"/></svg></span><div><b>Úradný doklad LA 43</b><span>Tlač aj PDF, na šírku aj na výšku, na jeden klik.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-tlac"/></svg></span><div><b>Úradný doklad LA 43</b><span>Tlač aj PDF, na šírku aj na výšku, na jeden klik.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-vyber"/></svg></span><div><b>Rýchly doklad pre naloženú drevinu</b><span>Označíš kusy na aute a vytlačíš doklad len pre ne.</span></div></div>
-      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklady"/></svg></span><div><b>Samostatný doklad pre každú drevinu</b><span>Jedným prepínačom rozdelí LA 43 podľa drevín.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklady"/></svg></span><div><b>Samostatný doklad pre každú drevinu</b><span>Jedným prepínačom rozdelí LA 43 podľa drevín.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-skratit"/></svg></span><div><b>Skrátenie dĺžok</b><span>Skráti všetky či vybrané kusy o zadanú hodnotu s náhľadom.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-minus"/></svg></span><div><b>Odpočty hniloby a odrezkov</b><span>Hrubý aj čistý objem po odpočte — všetko zdokladované.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-percent"/></svg></span><div><b>Prídavok na dĺžku 1&nbsp;%</b><span>Menovitá dĺžka z nameranej (÷ 1,01), max 10 cm alebo bez limitu.</span></div></div>
@@ -370,6 +380,12 @@
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zalozky"/></svg></span><div><b>Záložky a archív</b><span>Viac dokladov naraz, archív s vyhľadávaním a zálohami.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-tema"/></svg></span><div><b>Tmavý režim a veľké písmo</b><span>Čitateľné na slnku aj pre slabší zrak — jedným tlačidlom.</span></div></div>
       <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zar"/></svg></span><div><b>Windows · Android · Linux</b><span>Ten istý program všade, offline, doklady prenositeľné.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-export"/></svg></span><div><b>Export a import JSON / CSV</b><span>Doklad uložíš do súboru a kedykoľvek načítaš späť; CSV otvoríš rovno v Exceli.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zoznam"/></svg></span><div><b>Pracovný zoznam na tlač</b><span>Okrem LA 43 vytlačíš aj jednoduchý zoznam kusov — na sklad či do výroby.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-teren"/></svg></span><div><b>Terén na mieru</b><span>V teréne si zapneš len polia, ktoré potrebuješ — číslo kusa, triedu, poznámku.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-mobil"/></svg></span><div><b>Prenos z mobilu na počítač</b><span>Doklad z terénu uložíš do súboru a na PC ho otvoríš — bez prepisovania.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zaloha"/></svg></span><div><b>Automatické zálohy</b><span>Databáza sa priebežne zálohuje a pri poškodení sa sama obnoví z poslednej zálohy.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-update"/></svg></span><div><b>Ohlási novú verziu</b><span>Program pri štarte zistí novšiu verziu a ponúkne stiahnutie — dáta ostanú zachované.</span></div></div>
     </div>
   </div>
 </section>
@@ -386,6 +402,14 @@
       <div class="zkrok"><span class="zc">3</span><b>Kubíkuješ</b>
         <p>Zadávaš kusy, tlačíš doklady, počítaš ceny. Všetko offline, dáta ostávajú len u teba.</p></div>
     </div>
+    <div class="ztrial rv">
+      <a class="zmail" href="mailto:agroberit@gmail.com?subject=Kubikova%C4%8D">✉ agroberit@gmail.com</a>
+      <ul class="zsluzby">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><div><b>Skúšobná verzia zdarma</b><span>Požiadajte o dočasnú licenciu a vyskúšajte program bez záväzkov.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><div><b>Funkcie na požiadanie</b><span>Doprogramujeme funkcionalitu podľa vašich potrieb.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><div><b>Pomoc s inštaláciou</b><span>Na diaľku, po dohode aj osobné stretnutie a inštalácia u vás.</span></div></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -393,13 +417,14 @@
 <section class="zaver rv">
   <h2>Vyskúšaj Kubikovač ešte dnes</h2>
   <p>Windows, Android aj Linux. Doklady sú uložené len u teba — offline, bez cloudu.
-     Výpočet objemu guľatiny meranej s kôrou, kompatibilný s STN 48 0009.</p>
+     Výpočet objemu guľatiny meranej s kôrou, kompatibilný s normou STN 48 0009.</p>
   <div class="platformy">
     <span class="plat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4v7.5H3z M11.5 3.8 21 2.5V11.5h-9.5z M3 12.5h7.5V20L3 18.5z M11.5 12.5H21V21.5l-9.5-1.3z"/></svg> Windows</span>
     <span class="plat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="11" rx="1"/><path d="M8 7a4 4 0 0 1 8 0M9 4l-1-1.5M15 4l1-1.5M9 21v1M15 21v1"/></svg> Android</span>
     <span class="plat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/></svg> Linux</span>
   </div>
   <div class="cta">
+    <a class="tl" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%3A%0A">Vyžiadať skúšobnú verziu</a>
     <a class="tl" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
     <a class="tl vedl" href="https://github.com/berforge/kubikovac-releases/releases/latest">Stiahnuť</a>
     <a class="tl vedl" href="/">Hlavná stránka</a>
@@ -407,7 +432,7 @@
 </section>
 
 <footer>
-  Kubikovač guľatiny — výpočet objemu dreva kompatibilný s STN 48 0009 · AGROBERIT s. r. o.
+  Kubikovač guľatiny — výpočet objemu dreva kompatibilný s normou STN 48 0009 · AGROBERIT s. r. o.
 </footer>
 
 <script>
@@ -423,6 +448,11 @@
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+  <symbol id="i-zoznam" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-mobil" viewBox="0 0 24 24"><rect x="3" y="6" width="8" height="14" rx="1.5"/><path d="M7 17h.01"/><rect x="13" y="4" width="8" height="6" rx="1"/><path d="M11 9h2"/></symbol>
+  <symbol id="i-zaloha" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-update" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16V8"/><path d="M8.5 11.5 12 8l3.5 3.5"/></symbol>
   <symbol id="i-doklad" viewBox="0 0 24 24"><path d="M6 3h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></symbol>
   <symbol id="i-tlac" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></symbol>
   <symbol id="i-teren" viewBox="0 0 24 24"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></symbol>
