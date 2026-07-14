@@ -24,6 +24,8 @@
     --tien:0 1px 3px rgba(0,0,0,.5),0 14px 38px rgba(0,0,0,.45);
     --tienJemny:0 1px 3px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.3);
   }}
+  .ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .fkarta .zn .ic{width:19px;height:19px}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:var(--pozadie);
@@ -174,7 +176,7 @@
         aj súčty program dopočíta okamžite — s kôrou, kompatibilne s STN 48 0009.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Smrek, jedľa, borovica, smrekovec, buk, dub, topoľ a ~20 príbuzných drevín</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Tenká guľatina od 5 cm, hrubá do 145 cm — ľubovoľná dĺžka</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Ľubovoľná dĺžka — od tenkej guľatiny po mohutné kmene, počíta vlastný algoritmus</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Automatické číslovanie kusov, nový riadok si pamätá drevinu</li>
       </ul>
       <div class="tipbox">💡 <b>Tip:</b> Kvalitatívnu triedu (I, II, III.A–D) vyberieš rovno pri kuse — program z nej neskôr spočíta cenu.</div>
@@ -297,21 +299,21 @@
     <h2>Všetko, čo v programe nájdeš</h2>
     <p class="pod">Kompletný prehľad funkcií — od výpočtu cez doklady až po štatistiky.</p>
     <div class="mriezka">
-      <div class="fkarta"><span class="zn">📐</span><div><b>Kompatibilné s STN 48 0009</b><span>Objem guľatiny meranej s kôrou pre všetky bežné dreviny.</span></div></div>
-      <div class="fkarta"><span class="zn">🌲</span><div><b>Terénny režim</b><span>Veľké polia, bežiaci súčet — rýchle zadávanie v lese.</span></div></div>
-      <div class="fkarta"><span class="zn">📄</span><div><b>Úradný doklad LA 43</b><span>Tlač aj PDF, na šírku aj na výšku, na jeden klik.</span></div></div>
-      <div class="fkarta"><span class="zn">🚚</span><div><b>Rýchly doklad pre naloženú drevinu</b><span>Označíš kusy na aute a vytlačíš doklad len pre ne.</span></div></div>
-      <div class="fkarta"><span class="zn">🌳</span><div><b>Samostatný doklad pre každú drevinu</b><span>Jedným prepínačom rozdelí LA 43 podľa drevín.</span></div></div>
-      <div class="fkarta"><span class="zn">✂️</span><div><b>Skrátenie dĺžok</b><span>Skráti všetky či vybrané kusy o zadanú hodnotu s náhľadom.</span></div></div>
-      <div class="fkarta"><span class="zn">➖</span><div><b>Odpočty hniloby a odrezkov</b><span>Hrubý aj čistý objem po odpočte — všetko zdokladované.</span></div></div>
-      <div class="fkarta"><span class="zn">％</span><div><b>Prídavok na dĺžku 1 %</b><span>Menovitá dĺžka z nameranej (÷ 1,01), max 10 cm alebo bez limitu.</span></div></div>
-      <div class="fkarta"><span class="zn">💶</span><div><b>Cenník podľa triedy</b><span>Ceny €/m³ na drevinu aj triedu I–III.D, cena dokladu.</span></div></div>
-      <div class="fkarta"><span class="zn">📊</span><div><b>Súčty a štatistiky</b><span>Po drevinách aj celkovo, naprieč všetkými zákazkami.</span></div></div>
-      <div class="fkarta"><span class="zn">🔀</span><div><b>Triedenie a výber na viac úrovní</b><span>Podľa dreviny, dĺžky, priemeru, objemu — aj kombinovane.</span></div></div>
-      <div class="fkarta"><span class="zn">🔗</span><div><b>Spojenie viacerých dokladov</b><span>Viac uložených dokladov spojíš do jedného.</span></div></div>
-      <div class="fkarta"><span class="zn">🗂️</span><div><b>Záložky a archív</b><span>Viac dokladov naraz, archív s vyhľadávaním a zálohami.</span></div></div>
-      <div class="fkarta"><span class="zn">🌙</span><div><b>Tmavý režim a veľké písmo</b><span>Čitateľné na slnku aj pre slabší zrak — jedným tlačidlom.</span></div></div>
-      <div class="fkarta"><span class="zn">💻</span><div><b>Windows · Android · Linux</b><span>Ten istý program všade, offline, doklady prenositeľné.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklad"/></svg></span><div><b>Kompatibilné s STN 48 0009</b><span>Objem guľatiny meranej s kôrou pre všetky bežné dreviny.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-teren"/></svg></span><div><b>Terénny režim</b><span>Veľké polia, bežiaci súčet — rýchle zadávanie v lese.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-tlac"/></svg></span><div><b>Úradný doklad LA 43</b><span>Tlač aj PDF, na šírku aj na výšku, na jeden klik.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-vyber"/></svg></span><div><b>Rýchly doklad pre naloženú drevinu</b><span>Označíš kusy na aute a vytlačíš doklad len pre ne.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-doklady"/></svg></span><div><b>Samostatný doklad pre každú drevinu</b><span>Jedným prepínačom rozdelí LA 43 podľa drevín.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-skratit"/></svg></span><div><b>Skrátenie dĺžok</b><span>Skráti všetky či vybrané kusy o zadanú hodnotu s náhľadom.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-minus"/></svg></span><div><b>Odpočty hniloby a odrezkov</b><span>Hrubý aj čistý objem po odpočte — všetko zdokladované.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-percent"/></svg></span><div><b>Prídavok na dĺžku 1&nbsp;%</b><span>Menovitá dĺžka z nameranej (÷ 1,01), max 10 cm alebo bez limitu.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-euro"/></svg></span><div><b>Cenník podľa triedy</b><span>Ceny €/m³ na drevinu aj triedu I–III.D, cena dokladu.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-graf"/></svg></span><div><b>Súčty a štatistiky</b><span>Po drevinách aj celkovo, naprieč všetkými zákazkami.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-sort"/></svg></span><div><b>Triedenie a výber na viac úrovní</b><span>Podľa dreviny, dĺžky, priemeru, objemu — aj kombinovane.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-spoj"/></svg></span><div><b>Spojenie viacerých dokladov</b><span>Viac uložených dokladov spojíš do jedného.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zalozky"/></svg></span><div><b>Záložky a archív</b><span>Viac dokladov naraz, archív s vyhľadávaním a zálohami.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-tema"/></svg></span><div><b>Tmavý režim a veľké písmo</b><span>Čitateľné na slnku aj pre slabší zrak — jedným tlačidlom.</span></div></div>
+      <div class="fkarta"><span class="zn"><svg class="ic"><use href="#i-zar"/></svg></span><div><b>Windows · Android · Linux</b><span>Ten istý program všade, offline, doklady prenositeľné.</span></div></div>
     </div>
   </div>
 </section>
@@ -364,5 +366,27 @@
   }, {threshold:0.14});
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-doklad" viewBox="0 0 24 24"><path d="M6 3h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tlac" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></symbol>
+  <symbol id="i-teren" viewBox="0 0 24 24"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></symbol>
+  <symbol id="i-graf" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21v-6M11 21v-12M16 21v-9"/></symbol>
+  <symbol id="i-skratit" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.5 15.5M14.5 14.5 20 20M8.5 8.5 12 12"/></symbol>
+  <symbol id="i-zar" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.3A6 6 0 1 0 17.5 17.7"/><path d="M4 10.5h9M4 13.5h8"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M6 4v15M6 19l-2.5-2.5M6 19l2.5-2.5"/><path d="M12 6h9M12 11h6M12 16h3"/></symbol>
+  <symbol id="i-zalozky" viewBox="0 0 24 24"><path d="M4 8h5l2-2h9v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4 11h16"/></symbol>
+  <symbol id="i-tema" viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 1 1 10.5 4a6.3 6.3 0 0 0 9.5 9.5z"/></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24"><path d="M12 3l7 2.5v5.2c0 4.3-3 7.6-7 9.3-4-1.7-7-5-7-9.3V5.5z"/><path d="M9.3 12l1.9 1.9L15 10"/></symbol>
+  <symbol id="i-vyber" viewBox="0 0 24 24"><rect x="3" y="4" width="6.5" height="6.5" rx="1.4"/><path d="M4.6 7.2 6 8.6 8 6"/><rect x="3" y="13.5" width="6.5" height="6.5" rx="1.4"/><path d="M12.5 7h8.5M12.5 16.7h8.5"/></symbol>
+  <symbol id="i-doklady" viewBox="0 0 24 24"><path d="M8 3h6l4 4v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M4 7v13a1 1 0 0 0 1 1h9" opacity=".55"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></symbol>
+  <symbol id="i-spoj" viewBox="0 0 24 24"><path d="M4 5v4a3 3 0 0 0 3 3h9"/><path d="M4 19v-4a3 3 0 0 1 3-3"/><path d="M13 8l4 4-4 4"/></symbol>
+  <symbol id="i-win" viewBox="0 0 24 24"><path d="M3 5.5 10.5 4v7.5H3z M11.5 3.8 21 2.5V11.5h-9.5z M3 12.5h7.5V20L3 18.5z M11.5 12.5H21V21.5l-9.5-1.3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-and" viewBox="0 0 24 24"><path d="M5 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M17 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M7 9h10v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z M9 19v2a1 1 0 0 0 2 0v-2 M13 19v2a1 1 0 0 0 2 0v-2 M8 8a4 4 0 0 1 8 0"/><path d="M9 5.5 8 4M15 5.5 16 4"/></symbol>
+  <symbol id="i-lin" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/><path d="M9.5 9h.01M14.5 9h.01"/></symbol>
+</svg>
 </body>
 </html>
