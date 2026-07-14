@@ -69,6 +69,9 @@
   /* náhľad */
   .nahlad{margin:-40px auto 0;max-width:960px;padding:0 20px}
   .nahlad>img{width:100%;border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block}
+  .nahlad>.videoRam{border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c}
+  .nahlad>.videoRam video{width:100%;display:block}
+  .nahlad .videoPop{text-align:center;color:var(--seda);font-size:.85rem;margin-top:10px}
   .p1okno{margin:16px auto 0;max-width:680px}
   .p1okno img{width:100%;border-radius:10px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
   .p1okno figcaption{text-align:center;color:var(--seda);font-size:.9rem;margin-top:8px}
@@ -156,7 +159,10 @@
   </div>
 </header>
 
-<div class="nahlad"><img src="obrazky/desktop.png" alt="Ukážka programu Kubikovač guľatiny s dolnou lištou súhrnu objemov">
+<div class="nahlad">
+  <div class="videoRam"><video src="video/ukazka.mp4" poster="video/poster.jpg" controls autoplay muted loop playsinline preload="metadata"
+      aria-label="Ukážka práce s programom Kubikovač"></video></div>
+  <div class="videoPop">▶ 65-sekundová ukážka programu · viac v <a href="ako-to-funguje.html">prehliadke krok po kroku</a></div>
   <figure class="p1okno">
     <img src="obrazky/cena_triedy.png" alt="Podklad k fakturácii – cena podľa kvalitatívnej triedy">
     <figcaption>Podklad k fakturácii: program vezme cenu €/m³ podľa <strong>kvalitatívnej triedy</strong> každého kusa a spočíta cenu dokladu.</figcaption>

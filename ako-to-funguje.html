@@ -62,6 +62,12 @@
   .hero .sipka{margin-top:26px;color:var(--seda);font-size:1.6rem;animation:hop 1.7s infinite}
   @keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
+  /* video ukážka */
+  .videoSek{max-width:1000px;margin:0 auto;padding:6px 22px 26px}
+  .videoRam{border-radius:16px;overflow:hidden;border:1px solid var(--ciara);box-shadow:var(--tien);
+    background:#0e120c;position:relative}
+  .videoRam video{width:100%;display:block}
+  .videoPop{ text-align:center;color:var(--seda);font-size:.9rem;margin-top:12px}
   /* kroky */
   main{max-width:1100px;margin:0 auto;padding:6px 22px 8px}
   .krok{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center;
@@ -94,6 +100,22 @@
   .rv.on{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero .sipka{animation:none}.obraz:hover{transform:none}}
 
+  /* krátke ukážky */
+  .klipy{padding:64px 22px;border-top:1px solid var(--ciara)}
+  .klipy .obal{max-width:1000px;margin:0 auto}
+  .klipy h2{text-align:center;font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 8px}
+  .klipy .pod{text-align:center;color:var(--seda);margin:0 auto 36px;max-width:560px}
+  .klipZoznam{display:flex;flex-direction:column;gap:30px}
+  .klip{display:grid;grid-template-columns:0.85fr 1.5fr;gap:26px;align-items:center;
+    background:var(--papier);border:1px solid var(--ciara);border-radius:14px;
+    padding:20px 22px;box-shadow:var(--tienJemny)}
+  .klip .kinfo b{display:flex;align-items:center;gap:10px;font-size:1.08rem;margin-bottom:8px}
+  .klip .kinfo .kc{display:inline-flex;align-items:center;justify-content:center;flex:none;
+    width:28px;height:28px;border-radius:8px;background:var(--zelena);color:#fff;font-size:.9rem;font-weight:800}
+  .klip .kinfo span{color:var(--seda);font-size:.95rem;line-height:1.55;display:block}
+  .klip .kvid{border-radius:10px;overflow:hidden;border:1px solid var(--ciara)}
+  .klip video{width:100%;display:block;background:#0e120c}
+  @media (max-width:760px){.klip{grid-template-columns:1fr;gap:14px}}
   /* mriežka všetkých funkcií */
   .vsetko{padding:64px 22px;border-top:1px solid var(--ciara)}
   .vsetko .obal{max-width:1100px;margin:0 auto}
@@ -163,6 +185,14 @@
     <span>kompatibilné s <b>STN 48 0009</b></span>
   </div>
   <div class="sipka rv">↓</div>
+</section>
+
+<section class="videoSek rv">
+  <div class="videoRam">
+    <video src="video/ukazka.mp4" poster="video/poster.jpg" controls autoplay muted loop playsinline
+           preload="metadata" aria-label="Ukážka práce s programom Kubikovač"></video>
+  </div>
+  <div class="videoPop">▶ 65-sekundová ukážka: zadanie kusov → odpočet hniloby → terén → tlač dokladu LA 43 → výber kusov na odvoz a rýchly doklad → tmavý režim</div>
 </section>
 
 <main>
@@ -292,6 +322,32 @@
   </div>
 
 </main>
+
+
+<!-- krátke ukážky funkcií -->
+<section class="klipy rv">
+  <div class="obal">
+    <h2>Krátke ukážky funkcií</h2>
+    <p class="pod">Každá do 15 sekúnd — ťukni na prehratie.</p>
+    <div class="klipZoznam">
+      <figure class="klip"><figcaption class="kinfo"><b><span class="kc">1</span>Cenník podľa triedy</b>
+          <span>Zadáš ceny €/m³ pre kvalitatívne triedy a program hneď prepočíta cenu celého dokladu — hotový podklad k faktúre.</span></figcaption>
+        <div class="kvid"><video src="video/ceny.mp4" poster="video/ceny_poster.jpg" controls muted playsinline preload="none"></video></div></figure>
+      <figure class="klip"><figcaption class="kinfo"><b><span class="kc">2</span>Prídavok na dĺžku 1&nbsp;%</b>
+          <span>Zapneš prídavok, vyberieš režim (najviac 10 cm alebo z celej dĺžky) — súhrn ukáže upozornenie a objemy sa prepočítajú z menovitej dĺžky.</span></figcaption>
+        <div class="kvid"><video src="video/pridavok.mp4" poster="video/pridavok_poster.jpg" controls muted playsinline preload="none"></video></div></figure>
+      <figure class="klip"><figcaption class="kinfo"><b><span class="kc">3</span>Viacúrovňové triedenie</b>
+          <span>Zapneš „viac úrovní", ťukneš na Drevinu a potom na Objem — kusy sa zoskupia podľa drevín a v rámci nich zoradia podľa objemu.</span></figcaption>
+        <div class="kvid"><video src="video/triedenie.mp4" poster="video/triedenie_poster.jpg" controls muted playsinline preload="none"></video></div></figure>
+      <figure class="klip"><figcaption class="kinfo"><b><span class="kc">4</span>Skrátenie dĺžok</b>
+          <span>Zadáš o koľko skrátiť, pozrieš náhľad pred/po a jedným tlačidlom upravíš celý doklad — každý kus dostane poznámku.</span></figcaption>
+        <div class="kvid"><video src="video/skratenie.mp4" poster="video/skratenie_poster.jpg" controls muted playsinline preload="none"></video></div></figure>
+      <figure class="klip"><figcaption class="kinfo"><b><span class="kc">5</span>Menu a prehľady</b>
+          <span>Tlač a export v menu, prehľad Dreviny a tabuľky, štatistika kusov, objemu a ceny naprieč všetkými dokladmi.</span></figcaption>
+        <div class="kvid"><video src="video/menu.mp4" poster="video/menu_poster.jpg" controls muted playsinline preload="none"></video></div></figure>
+    </div>
+  </div>
+</section>
 
 <!-- všetkých 15 funkcií -->
 <section class="vsetko rv">
