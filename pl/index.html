@@ -142,10 +142,16 @@
   .mail-hint{margin-top:10px;font-size:.98rem;opacity:.95}
   .mail-hint a{color:#fff;font-weight:700}
   /* pätka */
-  footer{background:var(--zelena);color:#fff;padding:30px 0;margin-top:20px}
-  footer .obal{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-size:.9rem;opacity:.92}
+  footer{background:var(--zelena);color:#fff;padding:34px 0 28px;margin-top:20px}
   footer a{font-weight:600}
-  footer .odd{margin-left:auto}
+  .pataHore{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between;font-size:.9rem}
+  .pataTag{opacity:.85}
+  .pataInfo{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22)}
+  .pataInfo p{margin:0;font-size:.82rem;line-height:1.6;opacity:.78;max-width:820px}
+  .pataInfo p+p{margin-top:6px;font-size:.78rem;opacity:.62}
+  @media (max-width:760px){
+    .pataHore{flex-direction:column;gap:4px}
+  }
   @media (max-width:760px){
     .hero h1{font-size:1.9rem}.funkcie,.kroky{grid-template-columns:1fr}
     .galeria.dvojica{grid-template-columns:1fr}
@@ -382,14 +388,15 @@
 </section>
 
 <footer><div class="obal">
-  <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171</span>
-  <span>·</span>
-  <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a>
-  <span class="odd">Kubikovač – drewno okrągłe — obliczenia zgodne ze słowacką normą STN 48 0009</span>
-</div>
-<div class="obal" style="font-size:.82rem;opacity:.8;padding-top:8px">Kubikovač to program do <strong>pomiaru drewna okrągłego</strong> a <strong>wyznaczania objętości drewna</strong> — obliczanie objętości drewna okrągłego (kubikowanie) dla świerka, jodły, sosny, modrzewia, buka, dębu i innych gatunków, z dokumentem pochodzenia drewna LA 43.</div>
-<div class="obal" style="font-size:.78rem;opacity:.7;padding-top:6px">STN 48 0009 to słowacka norma techniczna; Kubikovač jest niezależnym narzędziem programowym, którego obliczenia są z nią zgodne.</div>
-</footer>
+  <div class="pataHore">
+    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></span>
+    <span class="pataTag">Kubikovač – drewno okrągłe — obliczenia zgodne ze słowacką normą STN 48 0009</span>
+  </div>
+  <div class="pataInfo">
+    <p>Kubikovač to program do <strong>pomiaru drewna okrągłego</strong> i <strong>wyznaczania objętości drewna</strong> — obliczanie objętości drewna okrągłego (kubikowanie) dla świerka, jodły, sosny, modrzewia, buka, dębu i innych gatunków, z dokumentem pochodzenia drewna LA 43.</p>
+    <p>STN 48 0009 to słowacka norma techniczna; Kubikovač jest niezależnym narzędziem programowym, którego obliczenia są z nią zgodne.</p>
+  </div>
+</div></footer>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-kluc" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"/></symbol>
