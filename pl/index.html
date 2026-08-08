@@ -72,11 +72,19 @@
   .hero .tlac{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .cena-hint{margin-top:16px;font-size:.95rem;opacity:.85}
   /* náhľad */
-  .nahlad{margin:-40px auto 0;max-width:960px;padding:0 20px}
+  .nahlad{margin:-40px auto 0;max-width:1236px;padding:0 20px}
   .nahlad>img{width:100%;border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block}
-  .nahlad>.videoRam{border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c}
-  .nahlad>.videoRam video{width:100%;display:block}
+  .nahlad .videoRam{border-radius:14px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c}
+  .nahlad .videoRam video{width:100%;display:block}
   .nahlad .videoPop{text-align:center;color:var(--seda);font-size:.85rem;margin-top:10px}
+  .duo{display:grid;grid-template-columns:3.64fr 1fr;gap:22px;align-items:end}
+  .monitorRam{background:#0e120c;border:1px solid var(--ciara);border-radius:14px;padding:10px 10px 12px;box-shadow:var(--tien)}
+  .monitorRam video{width:100%;display:block;border-radius:6px}
+  .monitorStojan{width:74px;height:16px;margin:0 auto;background:#0e120c;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+  .monitorPodstavec{width:150px;height:7px;margin:0 auto;background:#0e120c;border-radius:0 0 6px 6px}
+  .mobilRam{border-radius:26px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c;padding:7px}
+  .mobilRam video{width:100%;display:block;border-radius:19px}
+  @media (max-width:760px){.duo{grid-template-columns:1fr}.mobilRam{max-width:260px;margin:0 auto}}
   .p1okno{margin:16px auto 0;max-width:680px}
   .p1okno img{width:100%;border-radius:10px;border:1px solid var(--ciara);box-shadow:var(--tien);display:block;background:#fff}
   .p1okno figcaption{text-align:center;color:var(--seda);font-size:.9rem;margin-top:8px}
@@ -189,9 +197,13 @@
 </header>
 
 <div class="nahlad">
-  <div class="videoRam"><video src="/video/pl/ukazka.mp4" poster="/video/pl/poster.jpg" controls autoplay muted loop playsinline preload="metadata"
-      aria-label="Ukážka práce s programom Kubikovač"></video></div>
-  <div class="videoPop">▶ 65-sekundowa prezentacja programu · więcej w <a href="/pl/ako-to-funguje.html">przewodniku krok po kroku</a></div>
+  <div class="duo">
+  <div class="monitorCelok"><div class="monitorRam"><video src="/video/pl/ukazka.mp4" poster="/video/pl/poster.jpg" controls autoplay muted loop playsinline preload="metadata"
+      aria-label="Ukážka práce s programom Kubikovač"></video></div><div class="monitorStojan"></div><div class="monitorPodstavec"></div></div>
+  <div class="mobilRam"><video src="/video/pl/mobil.mp4" poster="/video/pl/mobil_poster.jpg" controls autoplay muted loop playsinline preload="metadata"
+      aria-label="Tryb terenowy Kubikovača na telefonie — wprowadzanie sztuk i sumy według gatunków"></video></div>
+  </div>
+  <div class="videoPop">▶ Po lewej 65-sekundowa prezentacja programu · po prawej tryb terenowy na telefonie · więcej w <a href="/pl/ako-to-funguje.html">przewodniku krok po kroku</a></div>
   <figure class="p1okno">
     <img src="/obrazky/pl/cena_triedy.png" alt="Podstawa do faktury – cena według klasy jakości">
     <figcaption>Podstawa do fakturowania: program bierze cenę €/m³ według <strong>klasy jakości</strong> każdej sztuki i oblicza cenę dokumentu.</figcaption>
