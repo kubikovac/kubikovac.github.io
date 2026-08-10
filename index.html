@@ -43,12 +43,12 @@
 </script>
 <style>
   :root{
-    --zelena:#2b6a30; --zelena2:#357a3b; --pozadie:#f5f7f1; --papier:#fff;
+    --zelena:#2b6a30; --zelena2:#357a3b; --monitor:#0e120c; --pozadie:#f5f7f1; --papier:#fff;
     --ciara:#e0e5da; --text:#1b2718; --seda:#5d6c57; --amber:#c8871a;
     --tien:0 1px 3px rgba(20,30,15,.08),0 10px 30px rgba(20,30,15,.06);
   }
   @media (prefers-color-scheme:dark){:root{
-    --zelena:#243120; --zelena2:#4a9a51; --pozadie:#12160f; --papier:#1b211a;
+    --zelena:#243120; --zelena2:#4a9a51; --monitor:#3d4737; --pozadie:#12160f; --papier:#1b211a;
     --ciara:#313a2d; --text:#e8eee2; --seda:#9aab90; --amber:#e0b24a;
     --tien:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);}}
   *{box-sizing:border-box}
@@ -76,11 +76,11 @@
   .nahlad .videoRam video{width:100%;display:block}
   .nahlad .videoPop{text-align:center;color:var(--seda);font-size:.85rem;margin-top:10px}
   .duo{display:grid;grid-template-columns:3.64fr 1fr;gap:22px;align-items:end}
-  .monitorRam{background:#0e120c;border:1px solid var(--ciara);border-radius:14px;padding:10px 10px 12px;box-shadow:var(--tien)}
+  .monitorRam{background:var(--monitor);border:1px solid var(--ciara);border-radius:14px;padding:10px 10px 12px;box-shadow:var(--tien)}
   .monitorRam video{width:100%;display:block;border-radius:6px}
-  .monitorStojan{width:74px;height:16px;margin:0 auto;background:#0e120c;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
-  .monitorPodstavec{width:150px;height:7px;margin:0 auto;background:#0e120c;border-radius:0 0 6px 6px}
-  .mobilRam{border-radius:26px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c;padding:7px}
+  .monitorStojan{width:74px;height:16px;margin:0 auto;background:var(--monitor);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+  .monitorPodstavec{width:150px;height:7px;margin:0 auto;background:var(--monitor);border-radius:0 0 6px 6px}
+  .mobilRam{border-radius:26px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:var(--monitor);padding:7px}
   .mobilRam video{width:100%;display:block;border-radius:19px}
   @media (max-width:760px){.duo{grid-template-columns:1fr}.mobilRam{max-width:260px;margin:0 auto}}
   .p1okno{margin:16px auto 0;max-width:680px}
@@ -147,6 +147,37 @@
   .ksl p{margin:0;color:var(--seda);font-size:.92rem}
   .mail-hint{margin-top:10px;font-size:.98rem;opacity:.95}
   .mail-hint a{color:#fff;font-weight:700}
+  /* kontakt: dvojstĺpec info + formulár */
+  .kmriezka{display:grid;grid-template-columns:1fr 1.08fr;gap:20px;align-items:stretch;
+    text-align:left;margin-top:8px}
+  .kinfo{display:flex;flex-direction:column;gap:14px}
+  .kinfo .kmail{margin:0;justify-content:center;width:100%;box-sizing:border-box;font-size:1.18rem}
+  .kinfo .ksluzby{display:flex;flex-direction:column;gap:14px;margin:0;flex:1}
+  .kinfo .ksl{flex:1}
+  .kcta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kcta .cta{margin:0;text-align:center}
+  @media (max-width:920px){
+    .kmriezka{grid-template-columns:1fr}
+    .kcta{grid-template-columns:1fr}
+  }
+  /* kontaktný formulár */
+  .kforma{margin:0;text-align:left;display:flex;flex-direction:column;background:var(--papier);
+    border:1px solid var(--ciara);border-radius:13px;padding:22px 22px 20px;box-shadow:var(--tien)}
+  .kforma h3{margin:0 0 14px;font-size:1.08rem}
+  .kf-mriezka{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+  .kf-pole{display:flex;flex-direction:column;gap:5px}
+  .kf-pole.cely{grid-column:1/-1}
+  .kf-pole label{font-size:.88rem;font-weight:600}
+  .kf-pole label small{font-weight:400;color:var(--seda)}
+  .kf-pole input,.kf-pole select,.kf-pole textarea{font:inherit;color:var(--text);
+    background:var(--pozadie);border:1px solid var(--ciara);border-radius:10px;padding:10px 12px}
+  .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:2px solid var(--zelena2);border-color:var(--zelena2)}
+  .kforma .cta{border:0;cursor:pointer;font:inherit;margin-top:14px}
+  .kf-pozn{margin:10px 0 0;font-size:.78rem;color:var(--seda)}
+  .kf-chyba{margin:10px 0 0;font-weight:600;color:#b23b3b}
+  .kf-ok{display:flex;gap:12px;align-items:center;padding:8px 4px;font-weight:600}
+  .kf-ok .ic{width:34px;height:34px;color:var(--zelena2);flex:none}
+  @media (max-width:640px){.kf-mriezka{grid-template-columns:1fr}}
   /* pätka */
   footer{background:var(--zelena);color:#fff;padding:34px 0 28px;margin-top:20px}
   footer a{font-weight:600}
@@ -179,7 +210,7 @@
     <img src="obrazky/ikona.png" alt="Kubikovač">
     <strong>Kubikovač guľatiny</strong>
     <span class="firma">AGROBERIT s.&nbsp;r.&nbsp;o.</span>
-    <a href="/pl/" style="margin-left:auto;align-self:center;background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem" title="Wersja polska">🇵🇱 Polski</a>
+    <a href="/pl/" style="margin-left:auto;align-self:center;background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem" title="Wersja polska">🇵🇱 PL</a>
   </div>
   <div class="obal hero">
     <h1>Kubíkovanie guľatiny bez papiera a chýb</h1>
@@ -384,6 +415,8 @@
 <section class="obal namieru" id="objednat">
   <h2>Objednávka a kontakt</h2>
   <p class="podnadpis">Všetko vybavíte jedným e-mailom — odpovedáme spravidla do 24 hodín.</p>
+  <div class="kmriezka">
+  <div class="kinfo">
   <a class="kmail" href="mailto:agroberit@gmail.com?subject=Kubikova%C4%8D">✉ agroberit@gmail.com</a>
   <div class="ksluzby">
     <div class="ksl"><b><svg class="ic"><use href="#i-ok"/></svg> Skúšobná verzia zdarma</b>
@@ -393,8 +426,49 @@
     <div class="ksl"><b><svg class="ic"><use href="#i-osoba"/></svg> Pomoc s inštaláciou</b>
       <p>Poradíme a nainštalujeme <strong>na diaľku</strong>, po dohode možné aj <strong>osobné stretnutie</strong> a inštalácia u vás.</p></div>
   </div>
+  <div class="kcta">
   <a class="cta" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu%20programu%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Vyžiadať skúšobnú verziu</a>
-  <a class="cta" style="margin-left:10px" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
+  <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
+  </div>
+  </div>
+
+
+  <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
+        data-sending="Odosielam…" data-success="Ďakujeme! Vaša správa bola odoslaná — ozveme sa vám spravidla do 24 hodín." data-error="Odoslanie sa nepodarilo. Skúste to prosím znova alebo nám napíšte priamo na agroberit@gmail.com.">
+    <h3>Alebo nám napíšte priamo tu</h3>
+    <input type="hidden" name="_subject" value="Dopyt z webu — Kubikovač">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <div class="kf-mriezka">
+      <div class="kf-pole">
+        <label for="kf_meno">Meno / firma</label>
+        <input type="text" id="kf_meno" name="Meno / firma" required autocomplete="name" placeholder="Ján Novák — Píla Novák s.r.o.">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_email">E-mail</label>
+        <input type="email" id="kf_email" name="E-mail" required autocomplete="email" placeholder="jan@priklad.sk">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_tel">Telefón <small>(nepovinné)</small></label>
+        <input type="tel" id="kf_tel" name="Telefón" autocomplete="tel" placeholder="+421 …">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_system">Systém <small>(nepovinné)</small></label>
+        <select id="kf_system" name="Systém">
+          <option value="">— vyberte —</option>
+          <option>Windows</option><option>Android</option><option>Linux</option>
+        </select>
+      </div>
+      <div class="kf-pole cely">
+        <label for="kf_sprava">Správa</label>
+        <textarea id="kf_sprava" name="Správa" rows="5" required placeholder="Dobrý deň, mám záujem o skúšobnú verziu programu Kubikovač…"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="cta">Odoslať správu</button>
+    <p class="kf-pozn">Odoslaním formulára súhlasíte so spracovaním uvedených údajov výlučne na účely vybavenia vášho dopytu.</p>
+  </form>
+</div>
 </section>
 
 <footer><div class="obal">
@@ -432,6 +506,27 @@
   <symbol id="i-and" viewBox="0 0 24 24"><path d="M5 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M17 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M7 9h10v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z M9 19v2a1 1 0 0 0 2 0v-2 M13 19v2a1 1 0 0 0 2 0v-2 M8 8a4 4 0 0 1 8 0"/><path d="M9 5.5 8 4M15 5.5 16 4"/></symbol>
   <symbol id="i-lin" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/><path d="M9.5 9h.01M14.5 9h.01"/></symbol>
 </svg>
+<script>
+(function(){
+  const f=document.getElementById('kontaktForm');
+  if(!f) return;
+  f.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const b=f.querySelector('button[type="submit"]'); const povodny=b.textContent;
+    b.disabled=true; b.textContent=f.dataset.sending;
+    const stara=f.querySelector('.kf-chyba'); if(stara) stara.remove();
+    try{
+      const r=await fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),
+        {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}});
+      if(!r.ok) throw new Error();
+      f.innerHTML='<div class="kf-ok"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 5-6"/></svg><p>'+f.dataset.success+'</p></div>';
+    }catch(_){
+      b.disabled=false; b.textContent=povodny;
+      b.insertAdjacentHTML('afterend','<p class="kf-chyba">'+f.dataset.error+'</p>');
+    }
+  });
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c0e28f8960f49d19bf15dafce39e966"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
