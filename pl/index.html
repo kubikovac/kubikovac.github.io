@@ -149,6 +149,24 @@
   .ksl p{margin:0;color:var(--seda);font-size:.92rem}
   .mail-hint{margin-top:10px;font-size:.98rem;opacity:.95}
   .mail-hint a{color:#fff;font-weight:700}
+  /* kontaktný formulár */
+  .kforma{max-width:720px;margin:26px auto 0;text-align:left;background:var(--papier);
+    border:1px solid var(--ciara);border-radius:13px;padding:22px 22px 20px;box-shadow:var(--tien)}
+  .kforma h3{margin:0 0 14px;font-size:1.08rem}
+  .kf-mriezka{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+  .kf-pole{display:flex;flex-direction:column;gap:5px}
+  .kf-pole.cely{grid-column:1/-1}
+  .kf-pole label{font-size:.88rem;font-weight:600}
+  .kf-pole label small{font-weight:400;color:var(--seda)}
+  .kf-pole input,.kf-pole select,.kf-pole textarea{font:inherit;color:var(--text);
+    background:var(--pozadie);border:1px solid var(--ciara);border-radius:10px;padding:10px 12px}
+  .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:2px solid var(--zelena2);border-color:var(--zelena2)}
+  .kforma .cta{border:0;cursor:pointer;font:inherit;margin-top:14px}
+  .kf-pozn{margin:10px 0 0;font-size:.78rem;color:var(--seda)}
+  .kf-chyba{margin:10px 0 0;font-weight:600;color:#b23b3b}
+  .kf-ok{display:flex;gap:12px;align-items:center;padding:8px 4px;font-weight:600}
+  .kf-ok .ic{width:34px;height:34px;color:var(--zelena2);flex:none}
+  @media (max-width:640px){.kf-mriezka{grid-template-columns:1fr}}
   /* pätka */
   footer{background:var(--zelena);color:#fff;padding:34px 0 28px;margin-top:20px}
   footer a{font-weight:600}
@@ -397,6 +415,42 @@
   </div>
   <a class="cta" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu%20programu%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Poproś o wersję próbną</a>
   <a class="cta" style="margin-left:10px" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów program</a>
+
+  <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
+        data-sending="Wysyłanie…" data-success="Dziękujemy! Twoja wiadomość została wysłana — odezwiemy się zwykle w ciągu 24 godzin." data-error="Wysyłanie nie powiodło się. Spróbuj ponownie albo napisz do nas bezpośrednio na agroberit@gmail.com.">
+    <h3>Albo napisz do nas bezpośrednio tutaj</h3>
+    <input type="hidden" name="_subject" value="Zapytanie ze strony — Kubikovač (PL)">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <div class="kf-mriezka">
+      <div class="kf-pole">
+        <label for="kf_meno">Imię i nazwisko / firma</label>
+        <input type="text" id="kf_meno" name="Imię i nazwisko / firma" required autocomplete="name" placeholder="Jan Kowalski — Tartak Kowalski">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_email">E-mail</label>
+        <input type="email" id="kf_email" name="E-mail" required autocomplete="email" placeholder="jan@przyklad.pl">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_tel">Telefon <small>(opcjonalnie)</small></label>
+        <input type="tel" id="kf_tel" name="Telefon" autocomplete="tel" placeholder="+48 …">
+      </div>
+      <div class="kf-pole">
+        <label for="kf_system">System <small>(opcjonalnie)</small></label>
+        <select id="kf_system" name="System">
+          <option value="">— wybierz —</option>
+          <option>Windows</option><option>Android</option><option>Linux</option>
+        </select>
+      </div>
+      <div class="kf-pole cely">
+        <label for="kf_sprava">Wiadomość</label>
+        <textarea id="kf_sprava" name="Wiadomość" rows="5" required placeholder="Dzień dobry, jestem zainteresowany wersją próbną programu Kubikovač…"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="cta">Wyślij wiadomość</button>
+    <p class="kf-pozn">Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych wyłącznie w celu obsługi Twojego zapytania.</p>
+  </form>
 </section>
 
 <footer><div class="obal">
@@ -434,6 +488,27 @@
   <symbol id="i-and" viewBox="0 0 24 24"><path d="M5 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M17 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M7 9h10v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z M9 19v2a1 1 0 0 0 2 0v-2 M13 19v2a1 1 0 0 0 2 0v-2 M8 8a4 4 0 0 1 8 0"/><path d="M9 5.5 8 4M15 5.5 16 4"/></symbol>
   <symbol id="i-lin" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/><path d="M9.5 9h.01M14.5 9h.01"/></symbol>
 </svg>
+<script>
+(function(){
+  const f=document.getElementById('kontaktForm');
+  if(!f) return;
+  f.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const b=f.querySelector('button[type="submit"]'); const povodny=b.textContent;
+    b.disabled=true; b.textContent=f.dataset.sending;
+    const stara=f.querySelector('.kf-chyba'); if(stara) stara.remove();
+    try{
+      const r=await fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),
+        {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}});
+      if(!r.ok) throw new Error();
+      f.innerHTML='<div class="kf-ok"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 5-6"/></svg><p>'+f.dataset.success+'</p></div>';
+    }catch(_){
+      b.disabled=false; b.textContent=povodny;
+      b.insertAdjacentHTML('afterend','<p class="kf-chyba">'+f.dataset.error+'</p>');
+    }
+  });
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c0e28f8960f49d19bf15dafce39e966"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
