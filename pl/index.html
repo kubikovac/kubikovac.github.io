@@ -149,8 +149,21 @@
   .ksl p{margin:0;color:var(--seda);font-size:.92rem}
   .mail-hint{margin-top:10px;font-size:.98rem;opacity:.95}
   .mail-hint a{color:#fff;font-weight:700}
+  /* kontakt: dvojstĺpec info + formulár */
+  .kmriezka{display:grid;grid-template-columns:1fr 1.08fr;gap:20px;align-items:stretch;
+    text-align:left;margin-top:8px}
+  .kinfo{display:flex;flex-direction:column;gap:14px}
+  .kinfo .kmail{margin:0;justify-content:center;width:100%;box-sizing:border-box;font-size:1.18rem}
+  .kinfo .ksluzby{display:flex;flex-direction:column;gap:14px;margin:0;flex:1}
+  .kinfo .ksl{flex:1}
+  .kcta{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kcta .cta{margin:0;text-align:center}
+  @media (max-width:920px){
+    .kmriezka{grid-template-columns:1fr}
+    .kcta{grid-template-columns:1fr}
+  }
   /* kontaktný formulár */
-  .kforma{max-width:720px;margin:26px auto 0;text-align:left;background:var(--papier);
+  .kforma{margin:0;text-align:left;display:flex;flex-direction:column;background:var(--papier);
     border:1px solid var(--ciara);border-radius:13px;padding:22px 22px 20px;box-shadow:var(--tien)}
   .kforma h3{margin:0 0 14px;font-size:1.08rem}
   .kf-mriezka{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
@@ -404,6 +417,8 @@
 <section class="obal namieru" id="objednat">
   <h2>Zamówienie i kontakt</h2>
   <p class="podnadpis">Wszystko załatwisz jednym e-mailem — odpowiadamy zwykle w ciągu 24 godzin.</p>
+  <div class="kmriezka">
+  <div class="kinfo">
   <a class="kmail" href="mailto:agroberit@gmail.com?subject=Kubikova%C4%8D">✉ agroberit@gmail.com</a>
   <div class="ksluzby">
     <div class="ksl"><b><svg class="ic"><use href="#i-ok"/></svg> Bezpłatna wersja próbna</b>
@@ -413,8 +428,12 @@
     <div class="ksl"><b><svg class="ic"><use href="#i-osoba"/></svg> Pomoc w instalacji</b>
       <p>Doradzimy i zainstalujemy <strong>zdalnie</strong>, po uzgodnieniu możliwe też <strong>spotkanie osobiste</strong> i instalacja u Ciebie.</p></div>
   </div>
+  <div class="kcta">
   <a class="cta" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu%20programu%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Poproś o wersję próbną</a>
-  <a class="cta" style="margin-left:10px" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów program</a>
+  <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów program</a>
+  </div>
+  </div>
+
 
   <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
         data-sending="Wysyłanie…" data-success="Dziękujemy! Twoja wiadomość została wysłana — odezwiemy się zwykle w ciągu 24 godzin." data-error="Wysyłanie nie powiodło się. Spróbuj ponownie albo napisz do nas bezpośrednio na agroberit@gmail.com.">
@@ -451,6 +470,7 @@
     <button type="submit" class="cta">Wyślij wiadomość</button>
     <p class="kf-pozn">Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych wyłącznie w celu obsługi Twojego zapytania.</p>
   </form>
+</div>
 </section>
 
 <footer><div class="obal">
