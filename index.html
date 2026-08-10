@@ -43,12 +43,12 @@
 </script>
 <style>
   :root{
-    --zelena:#2b6a30; --zelena2:#357a3b; --pozadie:#f5f7f1; --papier:#fff;
+    --zelena:#2b6a30; --zelena2:#357a3b; --monitor:#0e120c; --pozadie:#f5f7f1; --papier:#fff;
     --ciara:#e0e5da; --text:#1b2718; --seda:#5d6c57; --amber:#c8871a;
     --tien:0 1px 3px rgba(20,30,15,.08),0 10px 30px rgba(20,30,15,.06);
   }
   @media (prefers-color-scheme:dark){:root{
-    --zelena:#243120; --zelena2:#4a9a51; --pozadie:#12160f; --papier:#1b211a;
+    --zelena:#243120; --zelena2:#4a9a51; --monitor:#3d4737; --pozadie:#12160f; --papier:#1b211a;
     --ciara:#313a2d; --text:#e8eee2; --seda:#9aab90; --amber:#e0b24a;
     --tien:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);}}
   *{box-sizing:border-box}
@@ -76,10 +76,10 @@
   .nahlad .videoRam video{width:100%;display:block}
   .nahlad .videoPop{text-align:center;color:var(--seda);font-size:.85rem;margin-top:10px}
   .duo{display:grid;grid-template-columns:3.64fr 1fr;gap:22px;align-items:end}
-  .monitorRam{background:#0e120c;border:1px solid var(--ciara);border-radius:14px;padding:10px 10px 12px;box-shadow:var(--tien)}
+  .monitorRam{background:var(--monitor);border:1px solid var(--ciara);border-radius:14px;padding:10px 10px 12px;box-shadow:var(--tien)}
   .monitorRam video{width:100%;display:block;border-radius:6px}
-  .monitorStojan{width:74px;height:16px;margin:0 auto;background:#0e120c;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
-  .monitorPodstavec{width:150px;height:7px;margin:0 auto;background:#0e120c;border-radius:0 0 6px 6px}
+  .monitorStojan{width:74px;height:16px;margin:0 auto;background:var(--monitor);clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+  .monitorPodstavec{width:150px;height:7px;margin:0 auto;background:var(--monitor);border-radius:0 0 6px 6px}
   .mobilRam{border-radius:26px;border:1px solid var(--ciara);box-shadow:var(--tien);overflow:hidden;background:#0e120c;padding:7px}
   .mobilRam video{width:100%;display:block;border-radius:19px}
   @media (max-width:760px){.duo{grid-template-columns:1fr}.mobilRam{max-width:260px;margin:0 auto}}
@@ -210,7 +210,7 @@
     <img src="obrazky/ikona.png" alt="Kubikovač">
     <strong>Kubikovač guľatiny</strong>
     <span class="firma">AGROBERIT s.&nbsp;r.&nbsp;o.</span>
-    <a href="/pl/" style="margin-left:auto;align-self:center;background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem" title="Wersja polska">🇵🇱 Polski</a>
+    <a href="/pl/" style="margin-left:auto;align-self:center;background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem" title="Wersja polska">🇵🇱 PL</a>
   </div>
   <div class="obal hero">
     <h1>Kubíkovanie guľatiny bez papiera a chýb</h1>
