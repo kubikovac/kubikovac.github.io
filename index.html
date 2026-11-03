@@ -174,6 +174,9 @@
   .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:2px solid var(--zelena2);border-color:var(--zelena2)}
   .kforma .cta{border:0;cursor:pointer;font:inherit;margin-top:14px}
   .kf-pozn{margin:10px 0 0;font-size:.78rem;color:var(--seda)}
+  .kf-suhlas{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.5}
+  .kf-suhlas input{width:18px;height:18px;margin:3px 0 0;flex:none;accent-color:var(--zelena2)}
+  .kf-suhlas small{color:var(--seda)}
   .kf-chyba{margin:10px 0 0;font-weight:600;color:#b23b3b}
   .kf-ok{display:flex;gap:12px;align-items:center;padding:8px 4px;font-weight:600}
   .kf-ok .ic{width:34px;height:34px;color:var(--zelena2);flex:none}
@@ -381,7 +384,7 @@
   </div>
 </section>
 
-<div class="pruh"><section class="obal">
+<div class="pruh"><section class="obal" id="cena">
   <h2>Cena</h2>
   <p class="podnadpis">Jednoducho a férovo — bez skrytých poplatkov.</p>
   <div class="cena-obal">
@@ -464,16 +467,19 @@
         <label for="kf_sprava">Správa</label>
         <textarea id="kf_sprava" name="Správa" rows="5" required placeholder="Dobrý deň, mám záujem o skúšobnú verziu programu Kubikovač…"></textarea>
       </div>
+      <label class="kf-suhlas cely"><input type="checkbox" name="Dodať licenciu hneď" value="ÁNO – žiadam o dodanie pred uplynutím lehoty na odstúpenie a beriem na vedomie, že tým právo na odstúpenie strácam">
+        <span>Licenciu chcem hneď – žiadam o jej dodanie pred uplynutím 14-dňovej lehoty na odstúpenie od zmluvy a beriem na vedomie,
+        že tým právo na odstúpenie strácam. <small>(bez súhlasu licenciu pošleme po 14 dňoch)</small></span></label>
     </div>
     <button type="submit" class="cta">Odoslať správu</button>
-    <p class="kf-pozn">Odoslaním formulára súhlasíte so spracovaním uvedených údajov výlučne na účely vybavenia vášho dopytu.</p>
+    <p class="kf-pozn">Objednávka sa riadi <a href="podmienky.html">obchodnými podmienkami</a>. Odoslaním formulára súhlasíte so spracovaním uvedených údajov výlučne na účely vybavenia vášho dopytu.</p>
   </form>
 </div>
 </section>
 
 <footer><div class="obal">
   <div class="pataHore">
-    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></span>
+    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a> · <a href="podmienky.html">Obchodné podmienky</a></span>
     <span class="pataTag">Kubikovač guľatiny — výpočet kompatibilný s normou STN 48 0009</span>
   </div>
   <div class="pataInfo">
