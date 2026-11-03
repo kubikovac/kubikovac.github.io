@@ -176,6 +176,9 @@
   .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:2px solid var(--zelena2);border-color:var(--zelena2)}
   .kforma .cta{border:0;cursor:pointer;font:inherit;margin-top:14px}
   .kf-pozn{margin:10px 0 0;font-size:.78rem;color:var(--seda)}
+  .kf-suhlas{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.5}
+  .kf-suhlas input{width:18px;height:18px;margin:3px 0 0;flex:none;accent-color:var(--zelena2)}
+  .kf-suhlas small{color:var(--seda)}
   .kf-chyba{margin:10px 0 0;font-weight:600;color:#b23b3b}
   .kf-ok{display:flex;gap:12px;align-items:center;padding:8px 4px;font-weight:600}
   .kf-ok .ic{width:34px;height:34px;color:var(--zelena2);flex:none}
@@ -383,7 +386,7 @@
   </div>
 </section>
 
-<div class="pruh"><section class="obal">
+<div class="pruh"><section class="obal" id="cena">
   <h2>Cena</h2>
   <p class="podnadpis">Prosto i uczciwie — bez ukrytych opłat.</p>
   <div class="cena-obal">
@@ -466,16 +469,19 @@
         <label for="kf_sprava">Wiadomość</label>
         <textarea id="kf_sprava" name="Wiadomość" rows="5" required placeholder="Dzień dobry, jestem zainteresowany wersją próbną programu Kubikovač…"></textarea>
       </div>
+      <label class="kf-suhlas cely"><input type="checkbox" name="Dostarczyć licencję od razu" value="TAK – żądam dostarczenia przed upływem terminu na odstąpienie od umowy i przyjmuję do wiadomości utratę prawa do odstąpienia">
+        <span>Chcę licencję od razu – żądam jej dostarczenia przed upływem 14-dniowego terminu na odstąpienie od umowy i przyjmuję
+        do wiadomości, że tracę w ten sposób prawo do odstąpienia od umowy. <small>(bez zgody licencję wyślemy po 14 dniach)</small></span></label>
     </div>
     <button type="submit" class="cta">Wyślij wiadomość</button>
-    <p class="kf-pozn">Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych wyłącznie w celu obsługi Twojego zapytania.</p>
+    <p class="kf-pozn">Zamówienie podlega <a href="/pl/podmienky.html">regulaminowi sprzedaży</a>. Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych wyłącznie w celu obsługi Twojego zapytania.</p>
   </form>
 </div>
 </section>
 
 <footer><div class="obal">
   <div class="pataHore">
-    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></span>
+    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a> · <a href="/pl/podmienky.html">Regulamin sprzedaży</a></span>
     <span class="pataTag">Kubikovač – drewno okrągłe — obliczenia zgodne ze słowacką normą STN 48 0009</span>
   </div>
   <div class="pataInfo">
