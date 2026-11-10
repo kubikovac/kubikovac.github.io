@@ -56,6 +56,7 @@
   *{box-sizing:border-box}
   body{margin:0;font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:var(--pozadie);color:var(--text);line-height:1.6}
   a{color:inherit}
+  img,video{height:auto}   /* rozmery v HTML len vyhradzujú miesto; výška sa riadi šírkou */
   .obal{max-width:1080px;margin:0 auto;padding:0 20px}
   .ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.16em}
   /* hlavička */
@@ -177,7 +178,7 @@
   .kf-pole input,.kf-pole select,.kf-pole textarea{font:inherit;color:var(--text);
     background:var(--pozadie);border:1px solid var(--ciara);border-radius:10px;padding:10px 12px}
   .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:2px solid var(--zelena2);border-color:var(--zelena2)}
-  .kforma .cta{border:0;cursor:pointer;font:inherit;margin-top:14px}
+  .kforma .cta{border:0;cursor:pointer;font:inherit;font-weight:700;margin-top:14px;justify-content:center}
   .kf-pozn{margin:10px 0 0;font-size:.78rem;color:var(--seda)}
   .kf-suhlas{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.5}
   .kf-suhlas input{width:18px;height:18px;margin:3px 0 0;flex:none;accent-color:var(--zelena2)}
@@ -186,6 +187,46 @@
   .kf-ok{display:flex;gap:12px;align-items:center;padding:8px 4px;font-weight:600}
   .kf-ok .ic{width:34px;height:34px;color:var(--zelena2);flex:none}
   @media (max-width:640px){.kf-mriezka{grid-template-columns:1fr}}
+  /* horná lišta – ostáva hore pri posúvaní */
+  html{scroll-behavior:smooth}
+  section[id],header[id]{scroll-margin-top:62px}
+  .lista{position:sticky;top:0;z-index:80;background:var(--zelena);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.1)}
+  .listaVnutro{display:flex;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px}
+  .listaZnacka{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;white-space:nowrap}
+  .listaZnacka img{width:30px;height:30px}
+  .listaOdkazy{display:flex;gap:2px;margin-left:auto}
+  .listaOdkazy a,.pasOdkazy a{color:#fff;text-decoration:none;font-size:.93rem;font-weight:600;padding:6px 10px;border-radius:8px;opacity:.92;white-space:nowrap}
+  .listaOdkazy a:hover,.pasOdkazy a:hover{background:rgba(255,255,255,.14);opacity:1}
+  .listaJazyk{background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem;white-space:nowrap}
+  .listaStiahnut{background:var(--amber);color:#241a00;font-weight:700;text-decoration:none;padding:7px 14px;border-radius:9px;font-size:.92rem;white-space:nowrap}
+  .pasOdkazy{display:none}
+  @media (max-width:520px){.znackaDlha{display:none}}
+  #kontaktForm{scroll-margin-top:76px}
+  @media (max-width:880px){
+    .listaOdkazy{display:none}
+    .listaJazyk{margin-left:auto}
+    .listaZnacka strong{font-size:.95rem}
+    .listaVnutro{gap:8px}
+    .pasOdkazy{display:flex;gap:2px;overflow-x:auto;padding:6px 12px 0;scrollbar-width:none}
+    .pasOdkazy::-webkit-scrollbar{display:none}
+  }
+  /* úvod: cesta v troch krokoch */
+  .heroKroky{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin:20px 0 0;padding:0;font-size:.95rem}
+  .heroKroky li{display:flex;align-items:center;gap:8px;opacity:.95}
+  .heroKroky b{display:inline-flex;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);align-items:center;justify-content:center;font-size:.85rem}
+  .cta.obrys{background:transparent;color:var(--text);border:2px solid var(--amber);box-shadow:none}
+  .cenaTlac{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  /* časté otázky */
+  .otazky{max-width:820px;margin:0 auto;display:grid;gap:10px}
+  .otazky details{background:var(--papier);border:1px solid var(--ciara);border-radius:12px;box-shadow:var(--tien)}
+  .otazky summary{cursor:pointer;list-style:none;padding:15px 46px 15px 18px;font-weight:600;position:relative}
+  .otazky summary::-webkit-details-marker{display:none}
+  .otazky summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.4rem;font-weight:400;color:var(--zelena2)}
+  .otazky details[open] summary::after{content:"−"}
+  .otazky details p{margin:0;padding:0 18px 16px;color:var(--seda)}
+  .otazky a{color:var(--zelena2)}
+  .kf-suhlas[hidden]{display:none}
+  .kf-pozn a{color:inherit}
   /* pätka */
   footer{background:var(--zelena);color:#fff;padding:34px 0 28px;margin-top:20px}
   footer a{font-weight:600}
@@ -208,26 +249,31 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Kubikovač – drewno okrągłe","url":"https://kubikovac.github.io/pl/","inLanguage":"pl"}
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Czy mogę najpierw wypróbować program?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Pobierz program, zainstaluj go i prześlij nam kod urządzenia, który pokaże po uruchomieniu. Wystawimy bezpłatną licencję próbną – pełna wersja, bez zobowiązań."}}, {"@type": "Question", "name": "Jak działa licencja?", "acceptedAnswer": {"@type": "Answer", "text": "Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja jednorazowa jest bezterminowa, roczna obowiązuje rok. Program działa także bez internetu."}}, {"@type": "Question", "name": "Co, jeśli wymienię komputer lub telefon?", "acceptedAnswer": {"@type": "Answer", "text": "Prześlij nam kod nowego urządzenia, a wystawimy na nie licencję. Dokumenty przenieś wcześniej przez eksport – w Androidzie odinstalowanie programu je usuwa."}}, {"@type": "Question", "name": "Czy mogę używać programu na komputerze i w telefonie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Każde urządzenie ma własną licencję; drugie urządzenie otrzymuje rabat 50 %. Dokumenty przeniesiesz między urządzeniami przez eksport i import."}}, {"@type": "Question", "name": "Czy potrzebuję internetu?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Program liczy, zapisuje i drukuje także bez internetu – w lesie i w biurze. Internet jest potrzebny tylko do pobrania programu i nowej wersji."}}, {"@type": "Question", "name": "Według czego program liczy objętość?", "acceptedAnswer": {"@type": "Answer", "text": "Objętość drewna okrągłego mierzonego z korą liczy ze wzoru Hubera z potrąceniem kory według gatunku – dla świerka, jodły, sosny, modrzewia, buka, dębu, topoli i gatunków pokrewnych. Wyniki są zgodne ze słowacką normą STN 48 0009."}}, {"@type": "Question", "name": "Jak przebiega zamówienie i płatność?", "acceptedAnswer": {"@type": "Answer", "text": "Zamawiasz przez formularz albo e-mailem. Wysyłamy fakturę, płatność przelewem na rachunek, a licencję otrzymujesz e-mailem. Szczegóły w regulaminie sprzedaży."}}, {"@type": "Question", "name": "Gdzie są zapisane moje dokumenty?", "acceptedAnswer": {"@type": "Answer", "text": "Tylko na Twoim urządzeniu – program nigdzie ich nie wysyła. Automatycznie tworzy kopie zapasowe, a dokumenty możesz w każdej chwili wyeksportować."}}, {"@type": "Question", "name": "Czy aktualizacje są bezpłatne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Program powiadomi o nowej wersji, a ta zainstaluje się na dotychczasowej – dokumenty i licencja zostaną."}}, {"@type": "Question", "name": "Czy pomożecie mi w instalacji?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Instrukcję zobaczysz przy każdym pobraniu, chętnie pomożemy też zdalnie – wystarczy napisać na agroberit@gmail.com."}}]}
+</script>
 <link rel="alternate" hreflang="sk" href="https://kubikovac.github.io/">
 <link rel="alternate" hreflang="pl" href="https://kubikovac.github.io/pl/">
 <link rel="alternate" hreflang="x-default" href="https://kubikovac.github.io/">
 </head>
 <body>
-<header>
-  <div class="obal hlavaVrch">
-    <img src="/obrazky/ikona.png" alt="Kubikovač">
-    <strong>Kubikovač – drewno okrągłe</strong>
-    <span class="firma">AGROBERIT s.&nbsp;r.&nbsp;o.</span>
-    <a href="/" style="margin-left:auto;align-self:center;background:rgba(255,255,255,.14);color:#fff;padding:5px 12px;border-radius:16px;text-decoration:none;font-weight:600;font-size:.9rem" title="Slovenská verzia">🇸🇰 SK</a>
-  </div>
+<nav class="lista"><div class="obal listaVnutro">
+  <a class="listaZnacka" href="#top"><img src="/obrazky/ikona.png" alt="Kubikovač"><strong>Kubikovač<span class="znackaDlha"> – drewno okrągłe</span></strong></a>
+  <div class="listaOdkazy"><a href="#funkcie">Funkcje</a><a href="#ukazky">Zrzuty</a><a href="#cena">Cena</a><a href="#otazky">Pytania</a><a href="#objednat">Kontakt</a></div>
+  <a class="listaJazyk" href="/" title="Slovenská verzia">🇸🇰 SK</a>
+  <a class="listaStiahnut" href="#stiahnut" data-stiahnut-odkaz>Pobierz</a>
+</div></nav>
+<header id="top">
+  <div class="pasOdkazy"><a href="#funkcie">Funkcje</a><a href="#ukazky">Zrzuty</a><a href="#cena">Cena</a><a href="#otazky">Pytania</a><a href="#objednat">Kontakt</a></div>
   <div class="obal hero">
     <h1>Kubikowanie drewna okrągłego bez papieru i błędów</h1>
     <p class="pod">Dokładne obliczanie objętości drewna okrągłego <strong>mierzonego z korą</strong>, zgodne ze słowacką normą STN 48 0009 — w biurze i w terenie.</p>
     <div class="tlac">
-      <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów program</a>
+      <a class="cta" id="heroStiahnut" href="#stiahnut" data-windows="Pobierz dla Windows" data-android="Pobierz na Androida" data-linux="Pobierz dla Linuksa">Pobierz</a>
+      <a class="cta druhy" href="#objednat" data-zaujem="jednorazova">Zamów program</a>
       <a class="cta druhy" href="/pl/ako-to-funguje.html">Jak to działa</a>
-      <a class="cta druhy" id="heroStiahnut" href="#stiahnut" data-windows="Pobierz dla Windows" data-android="Pobierz na Androida" data-linux="Pobierz dla Linuksa">Pobierz</a>
     </div>
+    <ol class="heroKroky"><li><b>1</b> Pobierz i zainstaluj</li><li><b>2</b> Prześlij nam kod urządzenia</li><li><b>3</b> Otrzymasz bezpłatną licencję próbną</li></ol>
     <div class="cena-hint">Od 129 € jednorazowo — licencja bezterminowa · albo 49 € / rok</div>
     <div class="mail-hint">✉ Zamówienia i wersja próbna: <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></div>
   </div>
@@ -235,23 +281,23 @@
 
 <div class="nahlad">
   <div class="duo">
-  <div class="monitorCelok"><div class="monitorRam"><video src="/video/pl/ukazka.mp4" poster="/video/pl/poster.jpg" controls autoplay muted loop playsinline preload="metadata"
+  <div class="monitorCelok"><div class="monitorRam"><video src="/video/pl/ukazka.mp4" poster="/video/pl/poster.jpg" width="1280" height="800" controls muted loop playsinline preload="none" data-auto
       aria-label="Ukážka práce s programom Kubikovač"></video></div><div class="monitorStojan"></div><div class="monitorPodstavec"></div></div>
-  <div class="mobilRam"><video src="/video/pl/mobil.mp4" poster="/video/pl/mobil_poster.jpg" controls autoplay muted loop playsinline preload="metadata"
+  <div class="mobilRam"><video src="/video/pl/mobil.mp4" poster="/video/pl/mobil_poster.jpg" width="390" height="844" controls muted loop playsinline preload="none" data-auto
       aria-label="Tryb terenowy Kubikovača na telefonie — wprowadzanie sztuk i sumy według gatunków"></video></div>
   </div>
   <div class="videoPop">▶ Po lewej 65-sekundowa prezentacja programu · po prawej tryb terenowy na telefonie · więcej w <a href="/pl/ako-to-funguje.html">przewodniku krok po kroku</a></div>
   <figure class="p1okno">
-    <img src="/obrazky/pl/cena_triedy.png" alt="Podstawa do faktury – cena według klasy jakości">
+    <img loading="lazy" decoding="async" src="/obrazky/pl/cena_triedy.png" width="2284" height="170" alt="Podstawa do faktury – cena według klasy jakości">
     <figcaption>Podstawa do fakturowania: program bierze cenę €/m³ według <strong>klasy jakości</strong> każdej sztuki i oblicza cenę dokumentu.</figcaption>
   </figure>
   <figure class="p1okno">
-    <img src="/obrazky/pl/sumar_1p.png" alt="Podsumowanie z włączonym potrąceniem nadmiaru 1 %">
+    <img loading="lazy" decoding="async" src="/obrazky/pl/sumar_1p.png" width="2284" height="170" alt="Podsumowanie z włączonym potrąceniem nadmiaru 1 %">
     <figcaption>Opcjonalne potrącenie <strong>nadmiaru długości 1 %</strong>: ze zmierzonej długości program wyznacza długość nominalną (zmierzona ÷ 1,01 – np. 4,04 m → 4,00 m) i z niej liczy objętość. Do wyboru są dwa tryby – <strong>najwyżej 10 cm na wyrzynek</strong> albo <strong>1 % całej długości bez ograniczenia</strong> (wg ustaleń z odbiorcą). Podsumowanie pokazuje, który tryb jest aktywny.</figcaption>
   </figure>
 </div>
 
-<section class="obal">
+<section class="obal" id="funkcie">
   <h2>Wszystko do kubikowania w jednym miejscu</h2>
   <p class="podnadpis">Od pomiaru sztuk po dokument urzędowy — szybko, przejrzyście i niezawodnie.</p>
   <div class="funkcie">
@@ -338,20 +384,20 @@
   </div>
 </section>
 
-<section class="obal">
+<section class="obal" id="ukazky">
   <h2>Zrzuty z programu</h2>
   <p class="podnadpis">Od szybkiego wprowadzania sztuk w terenie po gotowy dokument urzędowy.</p>
 
   <h3 class="ukazka-nadpis">Tryb terenowy w telefonie</h3>
   <figure class="mobilUkazka">
-    <img src="/obrazky/pl/mobil.png" alt="Tryb terenowy aplikacji mobilnej Kubikovač">
+    <img loading="lazy" decoding="async" src="/obrazky/pl/mobil.png" width="780" height="1600" alt="Tryb terenowy aplikacji mobilnej Kubikovač">
     <figcaption>Duże pola, wybór gatunku i bieżąca suma objętości — sztukę wpiszesz jedną ręką.</figcaption>
   </figure>
 
   <h3 class="ukazka-nadpis">Potrącenie zgnilizny i odrzynków</h3>
   <div class="galeria">
     <figure>
-      <img src="/obrazky/pl/odpocet.png" alt="Potrącenie zgnilizny i odrzynka – objętość brutto i netto">
+      <img loading="lazy" decoding="async" src="/obrazky/pl/odpocet.png" width="2284" height="486" alt="Potrącenie zgnilizny i odrzynka – objętość brutto i netto">
       <figcaption>Podajesz wadliwą część sztuki (zgnilizna, odrzynek), a program pokaże objętość brutto i netto po potrąceniu — np. 2,00 − 0,25 → 1,75 m³.</figcaption>
     </figure>
   </div>
@@ -359,11 +405,11 @@
   <h3 class="ukazka-nadpis">Urzędowy dokument LA 43 — poziomo i pionowo</h3>
   <div class="galeria dvojica">
     <figure>
-      <img src="/obrazky/la43_sirka.png" alt="Doklad o pôvode dreva LA 43 na šírku">
+      <img loading="lazy" decoding="async" src="/obrazky/la43_sirka.png" width="2200" height="1892" alt="Doklad o pôvode dreva LA 43 na šírku">
       <figcaption>Poziomo — 4 kolumny sztuk na stronę</figcaption>
     </figure>
     <figure>
-      <img src="/obrazky/la43_vyska.png" alt="Doklad o pôvode dreva LA 43 na výšku s 3 stĺpcami">
+      <img loading="lazy" decoding="async" src="/obrazky/la43_vyska.png" width="1600" height="1760" alt="Doklad o pôvode dreva LA 43 na výšku s 3 stĺpcami">
       <figcaption>Pionowo — 3 kolumny sztuk na stronę</figcaption>
     </figure>
   </div>
@@ -381,12 +427,12 @@
   <p class="applePozn" id="applePozn" hidden>Kubikovač jest dostępny dla systemów Windows, Android i Linux.</p>
 </section></div>
 
-<section class="obal">
-  <h2>Jak to działa</h2>
-  <p class="podnadpis">Od zamówienia do pierwszego dokumentu w kilka minut.</p>
+<section class="obal" id="zaciatok">
+  <h2>Jak zacząć</h2>
+  <p class="podnadpis">Od pobrania do pierwszego dokumentu w trzech krokach.</p>
   <div class="kroky">
-    <div class="krok"><h3>Zamawiasz i instalujesz</h3><p>Piszesz do nas, otrzymujesz fakturę i link do pobrania. Możesz też najpierw poprosić o <strong>wersję próbną</strong> z licencją czasową. Instalacja jest zwykła — Dalej, Zakończ.</p></div>
-    <div class="krok"><h3>Aktywujesz licencję</h3><p>Program pokaże kod urządzenia, przesyłasz go nam, a my wystawiamy licencję dokładnie na Twoje urządzenie.</p></div>
+    <div class="krok"><h3>Pobierasz i instalujesz</h3><p>Jednym kliknięciem pobierasz wersję dla Windows, Androida lub Linuksa. Instalacja jest zwykła — Dalej, Zakończ.</p></div>
+    <div class="krok"><h3>Przesyłasz nam kod urządzenia</h3><p>Po uruchomieniu program pokaże kod urządzenia. Przesyłasz go nam formularzem lub e-mailem i otrzymujesz licencję dokładnie na swoje urządzenie — <strong>próbną bezpłatnie</strong>, pełną po zamówieniu.</p></div>
     <div class="krok"><h3>Kubikujesz</h3><p>Wpisujesz sztuki, program liczy objętość, robi sumy i drukuje dokumenty. Działa także offline.</p></div>
   </div>
 </section>
@@ -417,14 +463,32 @@
     </div>
   </div>
   <p class="bonus">Używasz programu na komputerze i w telefonie? <strong>Drugie urządzenie z rabatem −50 %.</strong></p>
-  <div style="text-align:center;margin-top:22px">
-    <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów e-mailem</a>
+  <div class="cenaTlac">
+    <a class="cta" href="#objednat" data-zaujem="jednorazova">Zamów licencję</a>
+    <a class="cta obrys" href="#objednat" data-zaujem="skuska">Najpierw wypróbuj za darmo</a>
+  </div>
+</section></div>
+
+<div class="pruh"><section class="obal" id="otazky">
+  <h2>Najczęstsze pytania</h2>
+  <p class="podnadpis">Krótko o licencji, wersji próbnej i pracy z programem.</p>
+  <div class="otazky">
+    <details><summary>Czy mogę najpierw wypróbować program?</summary><p>Tak. Pobierz program, zainstaluj go i prześlij nam kod urządzenia, który pokaże po uruchomieniu. Wystawimy bezpłatną licencję próbną – pełna wersja, bez zobowiązań.</p></details>
+    <details><summary>Jak działa licencja?</summary><p>Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja jednorazowa jest bezterminowa, roczna obowiązuje rok. Program działa także bez internetu.</p></details>
+    <details><summary>Co, jeśli wymienię komputer lub telefon?</summary><p>Prześlij nam kod nowego urządzenia, a wystawimy na nie licencję. Dokumenty przenieś wcześniej przez eksport – w Androidzie odinstalowanie programu je usuwa.</p></details>
+    <details><summary>Czy mogę używać programu na komputerze i w telefonie?</summary><p>Tak. Każde urządzenie ma własną licencję; drugie urządzenie otrzymuje rabat 50 %. Dokumenty przeniesiesz między urządzeniami przez eksport i import.</p></details>
+    <details><summary>Czy potrzebuję internetu?</summary><p>Nie. Program liczy, zapisuje i drukuje także bez internetu – w lesie i w biurze. Internet jest potrzebny tylko do pobrania programu i nowej wersji.</p></details>
+    <details><summary>Według czego program liczy objętość?</summary><p>Objętość drewna okrągłego mierzonego z korą liczy ze wzoru Hubera z potrąceniem kory według gatunku – dla świerka, jodły, sosny, modrzewia, buka, dębu, topoli i gatunków pokrewnych. Wyniki są zgodne ze słowacką normą STN 48 0009.</p></details>
+    <details><summary>Jak przebiega zamówienie i płatność?</summary><p>Zamawiasz przez formularz albo e-mailem. Wysyłamy fakturę, płatność przelewem na rachunek, a licencję otrzymujesz e-mailem. Szczegóły w <a href="/pl/podmienky.html">regulaminie sprzedaży</a>.</p></details>
+    <details><summary>Gdzie są zapisane moje dokumenty?</summary><p>Tylko na Twoim urządzeniu – program nigdzie ich nie wysyła. Automatycznie tworzy kopie zapasowe, a dokumenty możesz w każdej chwili wyeksportować.</p></details>
+    <details><summary>Czy aktualizacje są bezpłatne?</summary><p>Tak. Program powiadomi o nowej wersji, a ta zainstaluje się na dotychczasowej – dokumenty i licencja zostaną.</p></details>
+    <details><summary>Czy pomożecie mi w instalacji?</summary><p>Tak. Instrukcję zobaczysz przy każdym pobraniu, chętnie pomożemy też zdalnie – wystarczy napisać na <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a>.</p></details>
   </div>
 </section></div>
 
 <section class="obal namieru" id="objednat">
   <h2>Zamówienie i kontakt</h2>
-  <p class="podnadpis">Wszystko załatwisz jednym e-mailem — odpowiadamy zwykle w ciągu 24 godzin.</p>
+  <p class="podnadpis">Napisz do nas przez formularz albo e-mailem — odpowiadamy zwykle w ciągu 24 godzin.</p>
   <div class="kmriezka">
   <div class="kinfo">
   <a class="kmail" href="mailto:agroberit@gmail.com?subject=Kubikova%C4%8D">✉ agroberit@gmail.com</a>
@@ -437,20 +501,27 @@
       <p>Doradzimy i zainstalujemy <strong>zdalnie</strong>, po uzgodnieniu możliwe też <strong>spotkanie osobiste</strong> i instalacja u Ciebie.</p></div>
   </div>
   <div class="kcta">
-  <a class="cta" href="mailto:agroberit@gmail.com?subject=Sk%C3%BA%C5%A1obn%C3%A1%20verzia%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20sk%C3%BA%C5%A1obn%C3%BA%20verziu%20programu%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Poproś o wersję próbną</a>
-  <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Zamów program</a>
+  <a class="cta" href="#kontaktForm" data-zaujem="skuska">Poproś o wersję próbną</a>
+  <a class="cta" href="#kontaktForm" data-zaujem="jednorazova">Zamów program</a>
   </div>
   </div>
 
 
   <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
         data-sending="Wysyłanie…" data-success="Dziękujemy! Twoja wiadomość została wysłana — odezwiemy się zwykle w ciągu 24 godzin." data-error="Wysyłanie nie powiodło się. Spróbuj ponownie albo napisz do nas bezpośrednio na agroberit@gmail.com.">
-    <h3>Albo napisz do nas bezpośrednio tutaj</h3>
-    <input type="hidden" name="_subject" value="Zapytanie ze strony — Kubikovač (PL)">
+    <h3>Zamówienie, wersja próbna lub pytanie</h3>
+    <input type="hidden" name="_subject" value="Zapytanie ze strony — Kubikovač (PL)" data-zaklad="Zapytanie ze strony — Kubikovač (PL)">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <div class="kf-mriezka">
+      <div class="kf-pole cely">
+        <label for="kf_zaujem">Interesuje mnie</label>
+        <select id="kf_zaujem" name="Zainteresowanie" required>
+          <option value="">— wybierz —</option>
+          <option data-kluc="skuska">Bezpłatna wersja próbna</option><option data-kluc="jednorazova">Licencja jednorazowa – 129 €</option><option data-kluc="rocna">Abonament roczny – 49 € / rok</option><option data-kluc="ine">Inne / pytanie</option>
+        </select>
+      </div>
       <div class="kf-pole">
         <label for="kf_meno">Imię i nazwisko / firma</label>
         <input type="text" id="kf_meno" name="Imię i nazwisko / firma" required autocomplete="name" placeholder="Jan Kowalski — Tartak Kowalski">
@@ -471,22 +542,30 @@
         </select>
       </div>
       <div class="kf-pole cely">
-        <label for="kf_sprava">Wiadomość</label>
-        <textarea id="kf_sprava" name="Wiadomość" rows="5" required placeholder="Dzień dobry, jestem zainteresowany wersją próbną programu Kubikovač…"></textarea>
+        <label for="kf_kod">Kod urządzenia <small>(jeśli program jest już zainstalowany)</small></label>
+        <input type="text" id="kf_kod" name="Kod urządzenia" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX">
+      </div>
+      <div class="kf-pole cely">
+        <label for="kf_faktura">Dane do faktury <small>(opcjonalnie – nazwa, adres, NIP)</small></label>
+        <textarea id="kf_faktura" name="Dane do faktury" rows="2"></textarea>
+      </div>
+      <div class="kf-pole cely">
+        <label for="kf_sprava">Wiadomość <small>(opcjonalnie)</small></label>
+        <textarea id="kf_sprava" name="Wiadomość" rows="3" placeholder="Wszystko, co powinniśmy wiedzieć…"></textarea>
       </div>
       <label class="kf-suhlas cely"><input type="checkbox" name="Dostarczyć licencję od razu" value="TAK – żądam dostarczenia przed upływem terminu na odstąpienie od umowy i przyjmuję do wiadomości utratę prawa do odstąpienia">
         <span>Chcę licencję od razu – żądam jej dostarczenia przed upływem 14-dniowego terminu na odstąpienie od umowy i przyjmuję
         do wiadomości, że tracę w ten sposób prawo do odstąpienia od umowy. <small>(bez zgody licencję wyślemy po 14 dniach)</small></span></label>
     </div>
-    <button type="submit" class="cta">Wyślij wiadomość</button>
-    <p class="kf-pozn">Zamówienie podlega <a href="/pl/podmienky.html">regulaminowi sprzedaży</a>. Wysyłając formularz, wyrażasz zgodę na przetwarzanie podanych danych wyłącznie w celu obsługi Twojego zapytania.</p>
+    <button type="submit" class="cta">Wyślij</button>
+    <p class="kf-pozn">Zamówienie podlega <a href="/pl/podmienky.html">regulaminowi sprzedaży</a>. Dane z formularza wykorzystamy wyłącznie do obsługi Twojego zapytania lub zamówienia – szczegóły w <a href="/pl/sukromie.html">polityce prywatności</a>.</p>
   </form>
 </div>
 </section>
 
 <footer><div class="obal">
   <div class="pataHore">
-    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a> · <a href="/pl/podmienky.html">Regulamin sprzedaży</a></span>
+    <span><strong>AGROBERIT s. r. o.</strong> · IČO 57 163 171 · <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a> · <a href="/pl/podmienky.html">Regulamin sprzedaży</a> · <a href="/pl/sukromie.html">Polityka prywatności</a></span>
     <span class="pataTag">Kubikovač – drewno okrągłe — obliczenia zgodne ze słowacką normą STN 48 0009</span>
   </div>
   <div class="pataInfo">
@@ -519,6 +598,42 @@
   <symbol id="i-and" viewBox="0 0 24 24"><path d="M5 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M17 10a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0z M7 9h10v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z M9 19v2a1 1 0 0 0 2 0v-2 M13 19v2a1 1 0 0 0 2 0v-2 M8 8a4 4 0 0 1 8 0"/><path d="M9 5.5 8 4M15 5.5 16 4"/></symbol>
   <symbol id="i-lin" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0c0 3 2 5 2 8s-2 6-5 6-5-3-5-6 2-5 2-8z"/><path d="M9.5 9h.01M14.5 9h.01"/></symbol>
 </svg>
+<script>
+/* Formulár: tlačidlá Objednať / Vyskúšať predvolia, o čo ide; súhlas s dodaním hneď len pri platenej licencii;
+   správa je povinná len pri otázke; predmet e-mailu nesie zvolenú možnosť. */
+(function(){
+  var f=document.getElementById('kontaktForm'); if(!f) return;
+  var volba=f.querySelector('#kf_zaujem'), sprava=f.querySelector('#kf_sprava'), suhlas=f.querySelector('.kf-suhlas'),
+      predmet=f.querySelector('input[name="_subject"]');
+  function uprav(){
+    var o=volba.options[volba.selectedIndex], k=(o&&o.dataset.kluc)||'';
+    var platena=(k==='jednorazova'||k==='rocna');
+    if(suhlas){ suhlas.hidden=!platena; if(!platena) suhlas.querySelector('input').checked=false; }
+    sprava.required=(k==='ine');
+    predmet.value=predmet.dataset.zaklad+(k?' – '+o.textContent.trim():'');
+  }
+  volba.addEventListener('change',uprav); uprav();
+  document.querySelectorAll('a[data-zaujem]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      for(var i=0;i<volba.options.length;i++) if(volba.options[i].dataset.kluc===a.dataset.zaujem){ volba.selectedIndex=i; break; }
+      uprav();
+      e.preventDefault();
+      var m=f.querySelector('#kf_meno');
+      if(m && window.matchMedia && matchMedia('(pointer:fine)').matches) m.focus({preventScroll:true});
+      f.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+})();
+/* Videá v úvode: načítajú sa a hrajú, až keď sú na obrazovke (šetrí dáta v mobile). */
+(function(){
+  var v=document.querySelectorAll('video[data-auto]');
+  if(!v.length||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(z){ z.forEach(function(e){
+    if(e.isIntersecting){ var p=e.target.play(); if(p&&p.catch) p.catch(function(){}); } else e.target.pause();
+  }); },{threshold:0.35});
+  v.forEach(function(x){ io.observe(x); });
+})();
+</script>
 <script>
 (function(){
   const f=document.getElementById('kontaktForm');
@@ -555,6 +670,7 @@
   if(moj){
     moj.classList.add('moj');
     if(hero&&hero.dataset[s]){ hero.href=moj.getAttribute('href'); hero.textContent=hero.dataset[s]; }
+    document.querySelectorAll('[data-stiahnut-odkaz]').forEach(function(a){ a.href=moj.getAttribute('href'); });
   }else if(s==='apple'){
     var a=document.getElementById('applePozn'); if(a) a.hidden=false;
   }
