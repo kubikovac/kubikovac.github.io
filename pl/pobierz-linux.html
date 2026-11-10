@@ -73,7 +73,12 @@
   if(location.hash!=='#stiahni') return;
   document.documentElement.classList.add('stahuje');
   try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
-  setTimeout(function(){ location.href=document.getElementById('subor').href; }, 600);
+  /* Súbor sa sťahuje v skrytom rámci – karta s postupom sa nikam nepresmeruje. (Pri presmerovaní celej karty niektoré
+     mobilné prehliadače ukázali prázdnu stránku github.com a po jej zavretí zmizol aj postup.) */
+  setTimeout(function(){
+    var r=document.createElement('iframe'); r.hidden=true; r.title=''; r.setAttribute('aria-hidden','true');
+    r.src=document.getElementById('subor').href; document.body.appendChild(r);
+  }, 600);
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c0e28f8960f49d19bf15dafce39e966"}'></script><!-- End Cloudflare Web Analytics -->
