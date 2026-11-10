@@ -105,6 +105,9 @@
   .stiahni a{display:inline-flex;align-items:center;gap:10px;background:var(--zelena2);color:#fff;text-decoration:none;
     padding:13px 20px;border-radius:11px;font-weight:600}
   .stiahni a small{font-weight:400;opacity:.85}
+  /* systém návštevníka: zvýraznený a prvý v rade */
+  .stiahni a.moj{background:var(--amber);color:#241a00;order:-1;box-shadow:var(--tien)}
+  .verziaInfo,.applePozn{text-align:center;color:var(--seda);font-size:.9rem;margin:14px 0 0}
   /* kroky */
   .kroky{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:k}
   .krok{background:var(--papier);border:1px solid var(--ciara);border-radius:14px;padding:22px;position:relative}
@@ -221,7 +224,7 @@
     <div class="tlac">
       <a class="cta" href="mailto:agroberit@gmail.com?subject=Objedn%C3%A1vka%20Kubikova%C4%8D&body=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20program%20Kubikova%C4%8D.%0A%0AMeno%2Ffirma%3A%0ASyst%C3%A9m%20(Windows%2FAndroid%2FLinux)%3A%0A">Objednať program</a>
       <a class="cta druhy" href="ako-to-funguje.html">Ako to funguje</a>
-      <a class="cta druhy" href="#stiahnut">Stiahnuť</a>
+      <a class="cta druhy" id="heroStiahnut" href="#stiahnut" data-windows="Stiahnuť pre Windows" data-android="Stiahnuť pre Android" data-linux="Stiahnuť pre Linux">Stiahnuť</a>
     </div>
     <div class="cena-hint">Od 129 € jednorazovo — licencia navždy · alebo 49 € / rok</div>
     <div class="mail-hint">✉ Objednávky aj skúšobná verzia: <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></div>
@@ -366,12 +369,14 @@
 
 <div class="pruh"><section class="obal" id="stiahnut">
   <h2>Stiahnutie</h2>
-  <p class="podnadpis">Vyberte verziu pre svoj systém. Po inštalácii dostanete kód zariadenia — pošlite nám ho a vydáme vám licenciu.</p>
+  <p class="podnadpis">Jedným kliknutím stiahnete najnovšiu verziu pre svoj systém. Po inštalácii program ukáže kód zariadenia — pošlite nám ho a vydáme vám licenciu.</p>
   <div class="stiahni">
-    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-win"/></svg> Windows <small>.exe</small></a>
-    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-and"/></svg> Android <small>.apk</small></a>
-    <a href="https://github.com/berforge/kubikovac-releases/releases/latest"><svg class="ic"><use href="#i-lin"/></svg> Linux <small>.deb</small></a>
+    <a href="stiahnut-windows.html#stiahni" data-system="windows"><svg class="ic"><use href="#i-win"/></svg> Windows <small>.exe</small></a>
+    <a href="stiahnut-android.html#stiahni" data-system="android"><svg class="ic"><use href="#i-and"/></svg> Android <small>.apk</small></a>
+    <a href="stiahnut-linux.html#stiahni" data-system="linux"><svg class="ic"><use href="#i-lin"/></svg> Linux <small>.deb</small></a>
   </div>
+  <p class="verziaInfo" id="verziaInfo" data-text="Aktuálna verzia {verzia} · vydaná {datum}" hidden></p>
+  <p class="applePozn" id="applePozn" hidden>Kubikovač je dostupný pre Windows, Android a Linux.</p>
 </section></div>
 
 <section class="obal">
@@ -531,6 +536,35 @@
       b.insertAdjacentHTML('afterend','<p class="kf-chyba">'+f.dataset.error+'</p>');
     }
   });
+})();
+</script>
+<script>
+/* Stiahnutie: tlačidlo pre systém návštevníka je zvýraznené a tlačidlo Stiahnuť v úvode vedie rovno naň;
+   pod tlačidlami číslo a dátum najnovšej verzie (z verejného zoznamu vydaní – keď je nedostupný, riadok sa neukáže). */
+(function(){
+  var ua=navigator.userAgent||'', p=(navigator.userAgentData&&navigator.userAgentData.platform)||'', s=null;
+  if(/Android/i.test(ua)||p==='Android') s='android';
+  else if(/Windows/i.test(ua)||p==='Windows') s='windows';
+  else if(/iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(ua)||p==='macOS'||p==='iOS') s='apple';
+  else if(/CrOS/i.test(ua)) s=null;
+  else if(/Linux|X11/i.test(ua)||p==='Linux') s='linux';
+  var hero=document.getElementById('heroStiahnut');
+  var moj=s&&document.querySelector('.stiahni a[data-system="'+s+'"]');
+  if(moj){
+    moj.classList.add('moj');
+    if(hero&&hero.dataset[s]){ hero.href=moj.getAttribute('href'); hero.textContent=hero.dataset[s]; }
+  }else if(s==='apple'){
+    var a=document.getElementById('applePozn'); if(a) a.hidden=false;
+  }
+  var v=document.getElementById('verziaInfo');
+  if(v&&window.fetch) fetch('https://api.github.com/repos/berforge/kubikovac-releases/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok?r.json():null; })
+    .then(function(d){
+      if(!d||!d.tag_name) return;
+      var datum=d.published_at?new Date(d.published_at).toLocaleDateString('sk-SK',{day:'numeric',month:'numeric',year:'numeric'}):'';
+      v.textContent=v.dataset.text.replace('{verzia}',String(d.tag_name).replace(/^v/,'')).replace('{datum}',datum);
+      v.hidden=false;
+    }).catch(function(){});
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c0e28f8960f49d19bf15dafce39e966"}'></script><!-- End Cloudflare Web Analytics -->
