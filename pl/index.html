@@ -462,10 +462,14 @@
   else if(/iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(ua)||p==='macOS'||p==='iOS') s='apple';
   else if(/CrOS/i.test(ua)) s=null;
   else if(/Linux|X11/i.test(ua)||p==='Linux'){
-    /* Tablet s Androidom v režime „stránky pre počítač“ sa hlási ako počítač s Linuxom. Prezradí ho ovládanie:
-       dotyk je hlavný spôsob ovládania (hrubý ukazovateľ), kým počítač s Linuxom má myš alebo touchpad. */
+    /* Tablet s Androidom v režime „stránky pre počítač“ sa hlási ako počítač s Linuxom. Android prezradia funkcie, ktoré
+       prehliadače majú len v mobilných zariadeniach (výber kontaktov, druh pripojenia) – platia aj v tomto režime.
+       Keby chýbali, rozhodne dotykové ovládanie na zariadení, ktoré nemá procesor bežného počítača (x86).
+       Počítač s Linuxom ostáva Linuxom aj s dotykovou obrazovkou, tablet Androidom aj s pripojenou myšou. */
+    var mobilne=('ContactsManager' in window)||!!(navigator.connection&&navigator.connection.type);
     var dotykovy=(navigator.maxTouchPoints||0)>0&&!!window.matchMedia&&matchMedia('(pointer: coarse)').matches;
-    s=dotykovy?'android':'linux';
+    var pocitac=/x86|i[3-6]86|amd64/i.test(navigator.platform||'');
+    s=(mobilne||(dotykovy&&!pocitac))?'android':'linux';
   }
   var hero=document.getElementById('heroStiahnut');
   var moj=s&&document.querySelector('.stiahni a[data-system="'+s+'"]');
