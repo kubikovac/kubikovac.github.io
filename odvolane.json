@@ -1,11 +1,9 @@
 {
- "odvolane": [
-  "1CAB-25B6-8258-A8ED"
- ],
- "vydane": "2026-11-10T13:47:14Z",
+ "odvolane": [],
+ "vydane": "2026-11-10T13:49:36Z",
  "skusky": {
   "zapnute": true,
   "url": "https://kubikovac-skuska.agroberit.workers.dev"
  },
- "podpis": "0f23c9c56f2337235c128e3e77c4bfddbb882c3d93868bb02313512f50674d11a848fd169882b5e48c26c11a707fc357354084e395a42cbfef94385e765fe602"
+ "podpis": "60aed9ca6d9108c7af7ffce31f39762d58ac032857b9f0cbe3d3b9cd05daee8eab009d1e735ebb5238ea2880854c4b2685fc5e77aa9bb78d973678ec07643905"
 }
