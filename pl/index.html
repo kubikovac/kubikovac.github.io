@@ -39,7 +39,7 @@
   "description": "Program na výpočet objemu guľatiny (kubíkovanie) kompatibilný s STN 48 0009 – úradný doklad LA 43, odpočty, cenník podľa kvalitatívnej triedy, štatistiky. Funguje offline.",
   "url": "https://kubikovac.github.io/",
   "inLanguage": "sk",
-  "offers": { "@type": "Offer", "price": "129", "priceCurrency": "EUR" },
+  "offers": { "@type": "AggregateOffer", "lowPrice": "9", "highPrice": "129", "offerCount": "3", "priceCurrency": "EUR" },
   "publisher": { "@type": "Organization", "name": "AGROBERIT s. r. o.", "email": "agroberit@gmail.com" }
 }
 </script>
@@ -120,7 +120,7 @@
   .krok p{margin:0;color:var(--seda);font-size:.94rem}
   /* cena */
   .cena-obal{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-  .cenkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;padding:28px 30px;min-width:260px;box-shadow:var(--tien)}
+  .cenkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;padding:26px 26px;min-width:240px;flex:1 1 240px;max-width:330px;box-shadow:var(--tien)}
   .cenkarta.hlavna{border-color:var(--amber);border-width:2px}
   .cenkarta .stitok{display:inline-block;background:var(--amber);color:#241a00;font-size:.72rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:20px;margin-bottom:10px}
@@ -225,6 +225,36 @@
   .otazky details[open] summary::after{content:"−"}
   .otazky details p{margin:0;padding:0 18px 16px;color:var(--seda)}
   .otazky a{color:var(--zelena2)}
+  /* formulár – krajší vzhľad */
+  .kforma{padding:26px 28px;border-radius:18px}
+  .kforma h3{font-size:1.3rem;margin:0 0 4px}
+  .kf-uvod{margin:0 0 18px;color:var(--seda);font-size:.95rem}
+  .kf-mriezka{gap:16px}
+  .kf-pole label{font-size:.9rem}
+  .kf-pole input,.kf-pole select,.kf-pole textarea{padding:12px 14px;border:1.5px solid var(--ciara);border-radius:11px;
+    background:var(--pozadie);transition:border-color .15s,box-shadow .15s}
+  .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:none;border-color:var(--zelena2);
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--zelena2) 22%,transparent)}
+  #kf_kod{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1.5px;text-transform:uppercase}
+  #kf_kod::placeholder{opacity:.5}
+  .kf-volby{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .kf-volba{display:flex;flex-direction:column;gap:3px;align-items:flex-start;text-align:left;font:inherit;color:var(--text);cursor:pointer;
+    background:var(--pozadie);border:1.5px solid var(--ciara);border-radius:12px;padding:12px 30px 12px 14px;position:relative;
+    transition:border-color .15s,background .15s}
+  .kf-volba:hover{border-color:var(--zelena2)}
+  .kf-volba b{font-size:.95rem;line-height:1.25}
+  .kf-volba span{font-size:.9rem;color:var(--seda)}
+  .kf-volba span:empty{display:none}
+  .kf-volba[aria-pressed=true]{border-color:var(--zelena2);background:color-mix(in srgb,var(--zelena2) 10%,var(--papier));
+    box-shadow:0 0 0 1px var(--zelena2) inset}
+  .kf-volba[aria-pressed=true]::after{content:"\2713";position:absolute;top:9px;right:11px;font-weight:800;color:var(--zelena2)}
+  .kf-volby.chyba .kf-volba{border-color:#b23b3b}
+  .kf-pole select.kf-skryty{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;padding:0;border:0}
+  .kf-suhlas{background:color-mix(in srgb,var(--amber) 9%,var(--papier));border:1px solid color-mix(in srgb,var(--amber) 35%,var(--ciara));
+    border-radius:11px;padding:12px 14px}
+  .kforma .cta{width:100%;padding:14px 18px;font-size:1.05rem;margin-top:18px}
+  .kf-pozn{text-align:center}
+  @media (max-width:640px){.kforma{padding:20px 16px}}
   .kf-suhlas[hidden]{display:none}
   .kf-pozn a{color:inherit}
   /* pätka */
@@ -250,7 +280,7 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"Kubikovač – drewno okrągłe","url":"https://kubikovac.github.io/pl/","inLanguage":"pl"}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Czy mogę najpierw wypróbować program?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Pobierz program, zainstaluj go i prześlij nam kod urządzenia, który pokaże po uruchomieniu. Wystawimy bezpłatną licencję próbną – pełna wersja, bez zobowiązań."}}, {"@type": "Question", "name": "Jak działa licencja?", "acceptedAnswer": {"@type": "Answer", "text": "Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja jednorazowa jest bezterminowa, roczna obowiązuje rok. Program działa także bez internetu."}}, {"@type": "Question", "name": "Co, jeśli wymienię komputer lub telefon?", "acceptedAnswer": {"@type": "Answer", "text": "Prześlij nam kod nowego urządzenia, a wystawimy na nie licencję. Dokumenty przenieś wcześniej przez eksport – w Androidzie odinstalowanie programu je usuwa."}}, {"@type": "Question", "name": "Czy mogę używać programu na komputerze i w telefonie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Każde urządzenie ma własną licencję; drugie urządzenie otrzymuje rabat 50 %. Dokumenty przeniesiesz między urządzeniami przez eksport i import."}}, {"@type": "Question", "name": "Czy potrzebuję internetu?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Program liczy, zapisuje i drukuje także bez internetu – w lesie i w biurze. Internet jest potrzebny tylko do pobrania programu i nowej wersji."}}, {"@type": "Question", "name": "Według czego program liczy objętość?", "acceptedAnswer": {"@type": "Answer", "text": "Objętość drewna okrągłego mierzonego z korą liczy ze wzoru Hubera z potrąceniem kory według gatunku – dla świerka, jodły, sosny, modrzewia, buka, dębu, topoli i gatunków pokrewnych. Wyniki są zgodne ze słowacką normą STN 48 0009."}}, {"@type": "Question", "name": "Jak przebiega zamówienie i płatność?", "acceptedAnswer": {"@type": "Answer", "text": "Zamawiasz przez formularz albo e-mailem. Wysyłamy fakturę, płatność przelewem na rachunek, a licencję otrzymujesz e-mailem. Szczegóły w regulaminie sprzedaży."}}, {"@type": "Question", "name": "Gdzie są zapisane moje dokumenty?", "acceptedAnswer": {"@type": "Answer", "text": "Tylko na Twoim urządzeniu – program nigdzie ich nie wysyła. Automatycznie tworzy kopie zapasowe, a dokumenty możesz w każdej chwili wyeksportować."}}, {"@type": "Question", "name": "Czy aktualizacje są bezpłatne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Program powiadomi o nowej wersji, a ta zainstaluje się na dotychczasowej – dokumenty i licencja zostaną."}}, {"@type": "Question", "name": "Czy pomożecie mi w instalacji?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Instrukcję zobaczysz przy każdym pobraniu, chętnie pomożemy też zdalnie – wystarczy napisać na agroberit@gmail.com."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Czy mogę najpierw wypróbować program?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Pobierz program, zainstaluj go i prześlij nam kod urządzenia, który pokaże po uruchomieniu. Wystawimy bezpłatną licencję próbną – pełna wersja, bez zobowiązań."}}, {"@type": "Question", "name": "Jak działa licencja?", "acceptedAnswer": {"@type": "Answer", "text": "Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja miesięczna obowiązuje miesiąc, roczna rok, a jednorazowa jest bezterminowa. Program działa także bez internetu."}}, {"@type": "Question", "name": "Co, jeśli wymienię komputer lub telefon?", "acceptedAnswer": {"@type": "Answer", "text": "Prześlij nam kod nowego urządzenia, a wystawimy na nie licencję. Dokumenty przenieś wcześniej przez eksport – w Androidzie odinstalowanie programu je usuwa."}}, {"@type": "Question", "name": "Czy mogę używać programu na komputerze i w telefonie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Każde urządzenie ma własną licencję; drugie urządzenie otrzymuje rabat 50 %. Dokumenty przeniesiesz między urządzeniami przez eksport i import."}}, {"@type": "Question", "name": "Czy potrzebuję internetu?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Program liczy, zapisuje i drukuje także bez internetu – w lesie i w biurze. Internet jest potrzebny tylko do pobrania programu i nowej wersji."}}, {"@type": "Question", "name": "Według czego program liczy objętość?", "acceptedAnswer": {"@type": "Answer", "text": "Objętość drewna okrągłego mierzonego z korą liczy ze wzoru Hubera z potrąceniem kory według gatunku – dla świerka, jodły, sosny, modrzewia, buka, dębu, topoli i gatunków pokrewnych. Wyniki są zgodne ze słowacką normą STN 48 0009."}}, {"@type": "Question", "name": "Jak przebiega zamówienie i płatność?", "acceptedAnswer": {"@type": "Answer", "text": "Zamawiasz przez formularz albo e-mailem. Wysyłamy fakturę, płatność przelewem na rachunek, a licencję otrzymujesz e-mailem. Szczegóły w regulaminie sprzedaży."}}, {"@type": "Question", "name": "Gdzie są zapisane moje dokumenty?", "acceptedAnswer": {"@type": "Answer", "text": "Tylko na Twoim urządzeniu – program nigdzie ich nie wysyła. Automatycznie tworzy kopie zapasowe, a dokumenty możesz w każdej chwili wyeksportować."}}, {"@type": "Question", "name": "Czy aktualizacje są bezpłatne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Program powiadomi o nowej wersji, a ta zainstaluje się na dotychczasowej – dokumenty i licencja zostaną."}}, {"@type": "Question", "name": "Czy pomożecie mi w instalacji?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Instrukcję zobaczysz przy każdym pobraniu, chętnie pomożemy też zdalnie – wystarczy napisać na agroberit@gmail.com."}}]}
 </script>
 <link rel="alternate" hreflang="sk" href="https://kubikovac.github.io/">
 <link rel="alternate" hreflang="pl" href="https://kubikovac.github.io/pl/">
@@ -274,7 +304,7 @@
       <a class="cta druhy" href="/pl/ako-to-funguje.html">Jak to działa</a>
     </div>
     <ol class="heroKroky"><li><b>1</b> Pobierz i zainstaluj</li><li><b>2</b> Prześlij nam kod urządzenia</li><li><b>3</b> Otrzymasz bezpłatną licencję próbną</li></ol>
-    <div class="cena-hint">Od 129 € jednorazowo — licencja bezterminowa · albo 49 € / rok</div>
+    <div class="cena-hint">9 € miesięcznie · 49 € rocznie · 129 € jednorazowo — licencja bezterminowa</div>
     <div class="mail-hint">✉ Zamówienia i wersja próbna: <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></div>
   </div>
 </header>
@@ -441,15 +471,13 @@
   <h2>Cena</h2>
   <p class="podnadpis">Prosto i uczciwie — bez ukrytych opłat.</p>
   <div class="cena-obal">
-    <div class="cenkarta hlavna">
-      <span class="stitok">Polecane</span>
-      <div>Licencja jednorazowa</div>
-      <div class="suma">129 €</div>
-      <div><small>licencja bezterminowa, na 1 urządzenie</small></div>
+    <div class="cenkarta">
+      <div>Abonament miesięczny</div>
+      <div class="suma">9 € <small>/ miesiąc</small></div>
+      <div><small>na sezon lub jedno zlecenie</small></div>
       <ul>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Wszystkie funkcje i gatunki</li>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Windows, Android i Linux</li>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Aktualizacje bezpłatne</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Te same funkcje</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Płacisz tylko za miesiące, których potrzebujesz</li>
       </ul>
     </div>
     <div class="cenkarta">
@@ -459,6 +487,17 @@
       <ul>
         <li><svg class="ic"><use href="#i-ok"/></svg> Te same funkcje</li>
         <li><svg class="ic"><use href="#i-ok"/></svg> Rezygnujesz w dowolnej chwili</li>
+      </ul>
+    </div>
+    <div class="cenkarta hlavna">
+      <span class="stitok">Polecane</span>
+      <div>Licencja jednorazowa</div>
+      <div class="suma">129 €</div>
+      <div><small>licencja bezterminowa, na 1 urządzenie</small></div>
+      <ul>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Wszystkie funkcje i gatunki</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Windows, Android i Linux</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Aktualizacje bezpłatne</li>
       </ul>
     </div>
   </div>
@@ -474,7 +513,7 @@
   <p class="podnadpis">Krótko o licencji, wersji próbnej i pracy z programem.</p>
   <div class="otazky">
     <details><summary>Czy mogę najpierw wypróbować program?</summary><p>Tak. Pobierz program, zainstaluj go i prześlij nam kod urządzenia, który pokaże po uruchomieniu. Wystawimy bezpłatną licencję próbną – pełna wersja, bez zobowiązań.</p></details>
-    <details><summary>Jak działa licencja?</summary><p>Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja jednorazowa jest bezterminowa, roczna obowiązuje rok. Program działa także bez internetu.</p></details>
+    <details><summary>Jak działa licencja?</summary><p>Licencja jest przypisana do jednego urządzenia – komputera, telefonu lub tabletu. Program pokaże kod urządzenia, a my wystawimy licencję dokładnie na nie. Licencja miesięczna obowiązuje miesiąc, roczna rok, a jednorazowa jest bezterminowa. Program działa także bez internetu.</p></details>
     <details><summary>Co, jeśli wymienię komputer lub telefon?</summary><p>Prześlij nam kod nowego urządzenia, a wystawimy na nie licencję. Dokumenty przenieś wcześniej przez eksport – w Androidzie odinstalowanie programu je usuwa.</p></details>
     <details><summary>Czy mogę używać programu na komputerze i w telefonie?</summary><p>Tak. Każde urządzenie ma własną licencję; drugie urządzenie otrzymuje rabat 50 %. Dokumenty przeniesiesz między urządzeniami przez eksport i import.</p></details>
     <details><summary>Czy potrzebuję internetu?</summary><p>Nie. Program liczy, zapisuje i drukuje także bez internetu – w lesie i w biurze. Internet jest potrzebny tylko do pobrania programu i nowej wersji.</p></details>
@@ -510,6 +549,7 @@
   <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
         data-sending="Wysyłanie…" data-success="Dziękujemy! Twoja wiadomość została wysłana — odezwiemy się zwykle w ciągu 24 godzin." data-error="Wysyłanie nie powiodło się. Spróbuj ponownie albo napisz do nas bezpośrednio na agroberit@gmail.com.">
     <h3>Zamówienie, wersja próbna lub pytanie</h3>
+    <p class="kf-uvod">Wypełnienie zajmuje minutę. Odpowiadamy zwykle w ciągu 24 godzin.</p>
     <input type="hidden" name="_subject" value="Zapytanie ze strony — Kubikovač (PL)" data-zaklad="Zapytanie ze strony — Kubikovač (PL)">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
@@ -519,7 +559,7 @@
         <label for="kf_zaujem">Interesuje mnie</label>
         <select id="kf_zaujem" name="Zainteresowanie" required>
           <option value="">— wybierz —</option>
-          <option data-kluc="skuska">Bezpłatna wersja próbna</option><option data-kluc="jednorazova">Licencja jednorazowa – 129 €</option><option data-kluc="rocna">Abonament roczny – 49 € / rok</option><option data-kluc="ine">Inne / pytanie</option>
+          <option data-kluc="skuska">Bezpłatna wersja próbna</option><option data-kluc="mesacna">Abonament miesięczny – 9 € / miesiąc</option><option data-kluc="rocna">Abonament roczny – 49 € / rok</option><option data-kluc="jednorazova">Licencja jednorazowa – 129 €</option><option data-kluc="ine">Inne / pytanie</option>
         </select>
       </div>
       <div class="kf-pole">
@@ -605,14 +645,37 @@
   var f=document.getElementById('kontaktForm'); if(!f) return;
   var volba=f.querySelector('#kf_zaujem'), sprava=f.querySelector('#kf_sprava'), suhlas=f.querySelector('.kf-suhlas'),
       predmet=f.querySelector('input[name="_subject"]');
+  var oznac=function(){};
   function uprav(){
     var o=volba.options[volba.selectedIndex], k=(o&&o.dataset.kluc)||'';
-    var platena=(k==='jednorazova'||k==='rocna');
+    var platena=(k==='jednorazova'||k==='rocna'||k==='mesacna');
     if(suhlas){ suhlas.hidden=!platena; if(!platena) suhlas.querySelector('input').checked=false; }
     sprava.required=(k==='ine');
     predmet.value=predmet.dataset.zaklad+(k?' – '+o.textContent.trim():'');
+    oznac();
   }
   volba.addEventListener('change',uprav); uprav();
+  /* výber ako dlaždice s cenou; zoznam ostáva v stránke ako zdroj hodnoty, ktorá sa odosiela */
+  var dlazdice=document.createElement('div'); dlazdice.className='kf-volby';
+  Array.prototype.forEach.call(volba.options,function(o,i){
+    if(!o.dataset.kluc) return;
+    var casti=o.textContent.trim().split(' – '), b=document.createElement('button');
+    b.type='button'; b.className='kf-volba'; b.dataset.i=i; b.setAttribute('aria-pressed','false');
+    b.appendChild(document.createElement('b')).textContent=casti[0];
+    b.appendChild(document.createElement('span')).textContent=casti[1]||'';
+    b.addEventListener('click',function(){ volba.selectedIndex=i; uprav(); });
+    dlazdice.appendChild(b);
+  });
+  volba.parentNode.insertBefore(dlazdice,volba); volba.classList.add('kf-skryty'); volba.required=false; volba.tabIndex=-1;
+  oznac=function(){
+    Array.prototype.forEach.call(dlazdice.children,function(b){ b.setAttribute('aria-pressed',String(+b.dataset.i===volba.selectedIndex)); });
+    dlazdice.classList.remove('chyba');
+  };
+  oznac();
+  f.addEventListener('submit',function(e){          // bez výberu sa neodosiela – dlaždice sa zvýraznia
+    if(volba.options[volba.selectedIndex].dataset.kluc) return;
+    e.preventDefault(); e.stopImmediatePropagation(); dlazdice.classList.add('chyba'); dlazdice.scrollIntoView({block:'center'});
+  },true);
   document.querySelectorAll('a[data-zaujem]').forEach(function(a){
     a.addEventListener('click',function(e){
       for(var i=0;i<volba.options.length;i++) if(volba.options[i].dataset.kluc===a.dataset.zaujem){ volba.selectedIndex=i; break; }
@@ -632,6 +695,23 @@
     if(e.isIntersecting){ var p=e.target.play(); if(p&&p.catch) p.catch(function(){}); } else e.target.pause();
   }); },{threshold:0.35});
   v.forEach(function(x){ io.observe(x); });
+})();
+</script>
+<script>
+/* Objednávka z programu: odkaz …/#kod=XXXX-XXXX-XXXX-XXXX&s=windows predvyplní kód zariadenia a systém.
+   Kód je za znakom # (na server sa neposiela) a z adresy sa hneď odstráni. */
+(function(){
+  var m = location.hash.match(/^#kod=([0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3})(?:&s=(windows|android|linux))?$/);
+  if(!m) return;
+  history.replaceState(null, '', location.pathname + '#objednat');
+  var f = document.getElementById('kontaktForm'); if(!f) return;
+  f.querySelector('#kf_kod').value = m[1].toUpperCase();
+  var system = f.querySelector('#kf_system'), nazov = {windows: 'Windows', android: 'Android', linux: 'Linux'}[m[2]];
+  for(var i = 0; nazov && i < system.options.length; i++) if(system.options[i].textContent === nazov) system.selectedIndex = i;
+  var volba = f.querySelector('#kf_zaujem');
+  for(var j = 0; j < volba.options.length; j++) if(volba.options[j].dataset.kluc === 'jednorazova') volba.selectedIndex = j;
+  volba.dispatchEvent(new Event('change'));
+  setTimeout(function(){ f.scrollIntoView({block: 'start'}); }, 150);
 })();
 </script>
 <script>

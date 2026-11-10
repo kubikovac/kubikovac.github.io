@@ -37,7 +37,7 @@
   "description": "Program na výpočet objemu guľatiny (kubíkovanie) kompatibilný s STN 48 0009 – úradný doklad LA 43, odpočty, cenník podľa kvalitatívnej triedy, štatistiky. Funguje offline.",
   "url": "https://kubikovac.github.io/",
   "inLanguage": "sk",
-  "offers": { "@type": "Offer", "price": "129", "priceCurrency": "EUR" },
+  "offers": { "@type": "AggregateOffer", "lowPrice": "9", "highPrice": "129", "offerCount": "3", "priceCurrency": "EUR" },
   "publisher": { "@type": "Organization", "name": "AGROBERIT s. r. o.", "email": "agroberit@gmail.com" }
 }
 </script>
@@ -118,7 +118,7 @@
   .krok p{margin:0;color:var(--seda);font-size:.94rem}
   /* cena */
   .cena-obal{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-  .cenkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;padding:28px 30px;min-width:260px;box-shadow:var(--tien)}
+  .cenkarta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;padding:26px 26px;min-width:240px;flex:1 1 240px;max-width:330px;box-shadow:var(--tien)}
   .cenkarta.hlavna{border-color:var(--amber);border-width:2px}
   .cenkarta .stitok{display:inline-block;background:var(--amber);color:#241a00;font-size:.72rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:20px;margin-bottom:10px}
@@ -223,6 +223,36 @@
   .otazky details[open] summary::after{content:"−"}
   .otazky details p{margin:0;padding:0 18px 16px;color:var(--seda)}
   .otazky a{color:var(--zelena2)}
+  /* formulár – krajší vzhľad */
+  .kforma{padding:26px 28px;border-radius:18px}
+  .kforma h3{font-size:1.3rem;margin:0 0 4px}
+  .kf-uvod{margin:0 0 18px;color:var(--seda);font-size:.95rem}
+  .kf-mriezka{gap:16px}
+  .kf-pole label{font-size:.9rem}
+  .kf-pole input,.kf-pole select,.kf-pole textarea{padding:12px 14px;border:1.5px solid var(--ciara);border-radius:11px;
+    background:var(--pozadie);transition:border-color .15s,box-shadow .15s}
+  .kf-pole input:focus,.kf-pole select:focus,.kf-pole textarea:focus{outline:none;border-color:var(--zelena2);
+    box-shadow:0 0 0 3px color-mix(in srgb,var(--zelena2) 22%,transparent)}
+  #kf_kod{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1.5px;text-transform:uppercase}
+  #kf_kod::placeholder{opacity:.5}
+  .kf-volby{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .kf-volba{display:flex;flex-direction:column;gap:3px;align-items:flex-start;text-align:left;font:inherit;color:var(--text);cursor:pointer;
+    background:var(--pozadie);border:1.5px solid var(--ciara);border-radius:12px;padding:12px 30px 12px 14px;position:relative;
+    transition:border-color .15s,background .15s}
+  .kf-volba:hover{border-color:var(--zelena2)}
+  .kf-volba b{font-size:.95rem;line-height:1.25}
+  .kf-volba span{font-size:.9rem;color:var(--seda)}
+  .kf-volba span:empty{display:none}
+  .kf-volba[aria-pressed=true]{border-color:var(--zelena2);background:color-mix(in srgb,var(--zelena2) 10%,var(--papier));
+    box-shadow:0 0 0 1px var(--zelena2) inset}
+  .kf-volba[aria-pressed=true]::after{content:"\2713";position:absolute;top:9px;right:11px;font-weight:800;color:var(--zelena2)}
+  .kf-volby.chyba .kf-volba{border-color:#b23b3b}
+  .kf-pole select.kf-skryty{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;padding:0;border:0}
+  .kf-suhlas{background:color-mix(in srgb,var(--amber) 9%,var(--papier));border:1px solid color-mix(in srgb,var(--amber) 35%,var(--ciara));
+    border-radius:11px;padding:12px 14px}
+  .kforma .cta{width:100%;padding:14px 18px;font-size:1.05rem;margin-top:18px}
+  .kf-pozn{text-align:center}
+  @media (max-width:640px){.kforma{padding:20px 16px}}
   .kf-suhlas[hidden]{display:none}
   .kf-pozn a{color:inherit}
   /* pätka */
@@ -248,7 +278,7 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"Kubikovač guľatiny","url":"https://kubikovac.github.io/"}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Môžem si program najprv vyskúšať?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Stiahnite si program, nainštalujte ho a pošlite nám kód zariadenia, ktorý ukáže po spustení. Vydáme vám skúšobnú licenciu zdarma – s plnou výbavou a bez záväzkov."}}, {"@type": "Question", "name": "Ako funguje licencia?", "acceptedAnswer": {"@type": "Answer", "text": "Licencia je viazaná na jedno zariadenie – počítač, mobil alebo tablet. Program vám ukáže kód zariadenia a my vydáme licenciu presne naň. Jednorazová licencia platí bez časového obmedzenia, ročná jeden rok. Program funguje aj bez internetu."}}, {"@type": "Question", "name": "Čo keď vymením počítač alebo mobil?", "acceptedAnswer": {"@type": "Answer", "text": "Pošlite nám kód nového zariadenia a vydáme vám licenciu naň. Doklady si predtým preneste exportom – v Androide sa pri odinštalovaní programu zmažú."}}, {"@type": "Question", "name": "Môžem program používať na počítači aj v mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Každé zariadenie má vlastnú licenciu; druhé zariadenie má zľavu 50 %. Doklady medzi zariadeniami prenesiete exportom a importom."}}, {"@type": "Question", "name": "Potrebujem internet?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Program počíta, ukladá a tlačí aj bez internetu – v lese aj v kancelárii. Internet treba len na stiahnutie programu a novej verzie."}}, {"@type": "Question", "name": "Podľa čoho program počíta objem?", "acceptedAnswer": {"@type": "Answer", "text": "Objem guľatiny meranej s kôrou počíta z Huberovho vzorca so zrážkou kôry podľa dreviny – pre smrek, jedľu, borovicu, smrekovec, buk, dub, topoľ aj príbuzné dreviny. Výsledky sú kompatibilné s normou STN 48 0009."}}, {"@type": "Question", "name": "Ako prebieha objednávka a platba?", "acceptedAnswer": {"@type": "Answer", "text": "Objednáte formulárom alebo e-mailom. Pošleme vám faktúru, platí sa prevodom na účet a licenciu dostanete e-mailom. Podrobnosti sú v obchodných podmienkach."}}, {"@type": "Question", "name": "Kde sú uložené moje doklady?", "acceptedAnswer": {"@type": "Answer", "text": "Len vo vašom zariadení – program ich nikam neposiela. Automaticky si robí zálohy a doklady viete kedykoľvek exportovať."}}, {"@type": "Question", "name": "Sú aktualizácie zdarma?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Program vás na novú verziu upozorní a tá sa nainštaluje cez pôvodnú – doklady aj licencia ostanú."}}, {"@type": "Question", "name": "Pomôžete mi s inštaláciou?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Postup uvidíte pri každom stiahnutí a radi pomôžeme aj na diaľku – stačí napísať na agroberit@gmail.com."}}]}
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Môžem si program najprv vyskúšať?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Stiahnite si program, nainštalujte ho a pošlite nám kód zariadenia, ktorý ukáže po spustení. Vydáme vám skúšobnú licenciu zdarma – s plnou výbavou a bez záväzkov."}}, {"@type": "Question", "name": "Ako funguje licencia?", "acceptedAnswer": {"@type": "Answer", "text": "Licencia je viazaná na jedno zariadenie – počítač, mobil alebo tablet. Program vám ukáže kód zariadenia a my vydáme licenciu presne naň. Mesačná licencia platí mesiac, ročná rok a jednorazová bez časového obmedzenia. Program funguje aj bez internetu."}}, {"@type": "Question", "name": "Čo keď vymením počítač alebo mobil?", "acceptedAnswer": {"@type": "Answer", "text": "Pošlite nám kód nového zariadenia a vydáme vám licenciu naň. Doklady si predtým preneste exportom – v Androide sa pri odinštalovaní programu zmažú."}}, {"@type": "Question", "name": "Môžem program používať na počítači aj v mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Každé zariadenie má vlastnú licenciu; druhé zariadenie má zľavu 50 %. Doklady medzi zariadeniami prenesiete exportom a importom."}}, {"@type": "Question", "name": "Potrebujem internet?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Program počíta, ukladá a tlačí aj bez internetu – v lese aj v kancelárii. Internet treba len na stiahnutie programu a novej verzie."}}, {"@type": "Question", "name": "Podľa čoho program počíta objem?", "acceptedAnswer": {"@type": "Answer", "text": "Objem guľatiny meranej s kôrou počíta z Huberovho vzorca so zrážkou kôry podľa dreviny – pre smrek, jedľu, borovicu, smrekovec, buk, dub, topoľ aj príbuzné dreviny. Výsledky sú kompatibilné s normou STN 48 0009."}}, {"@type": "Question", "name": "Ako prebieha objednávka a platba?", "acceptedAnswer": {"@type": "Answer", "text": "Objednáte formulárom alebo e-mailom. Pošleme vám faktúru, platí sa prevodom na účet a licenciu dostanete e-mailom. Podrobnosti sú v obchodných podmienkach."}}, {"@type": "Question", "name": "Kde sú uložené moje doklady?", "acceptedAnswer": {"@type": "Answer", "text": "Len vo vašom zariadení – program ich nikam neposiela. Automaticky si robí zálohy a doklady viete kedykoľvek exportovať."}}, {"@type": "Question", "name": "Sú aktualizácie zdarma?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Program vás na novú verziu upozorní a tá sa nainštaluje cez pôvodnú – doklady aj licencia ostanú."}}, {"@type": "Question", "name": "Pomôžete mi s inštaláciou?", "acceptedAnswer": {"@type": "Answer", "text": "Áno. Postup uvidíte pri každom stiahnutí a radi pomôžeme aj na diaľku – stačí napísať na agroberit@gmail.com."}}]}
 </script>
 <link rel="alternate" hreflang="sk" href="https://kubikovac.github.io/">
 <link rel="alternate" hreflang="pl" href="https://kubikovac.github.io/pl/">
@@ -272,7 +302,7 @@
       <a class="cta druhy" href="ako-to-funguje.html">Ako to funguje</a>
     </div>
     <ol class="heroKroky"><li><b>1</b> Stiahnite a nainštalujte</li><li><b>2</b> Pošlite nám kód zariadenia</li><li><b>3</b> Dostanete skúšobnú licenciu zdarma</li></ol>
-    <div class="cena-hint">Od 129 € jednorazovo — licencia navždy · alebo 49 € / rok</div>
+    <div class="cena-hint">9 € mesačne · 49 € ročne · 129 € jednorazovo — licencia navždy</div>
     <div class="mail-hint">✉ Objednávky aj skúšobná verzia: <a href="mailto:agroberit@gmail.com">agroberit@gmail.com</a></div>
   </div>
 </header>
@@ -439,15 +469,13 @@
   <h2>Cena</h2>
   <p class="podnadpis">Jednoducho a férovo — bez skrytých poplatkov.</p>
   <div class="cena-obal">
-    <div class="cenkarta hlavna">
-      <span class="stitok">Odporúčané</span>
-      <div>Jednorazová licencia</div>
-      <div class="suma">129 €</div>
-      <div><small>licencia navždy, na 1 zariadenie</small></div>
+    <div class="cenkarta">
+      <div>Mesačné predplatné</div>
+      <div class="suma">9 € <small>/ mesiac</small></div>
+      <div><small>na sezónu alebo jednu zákazku</small></div>
       <ul>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Všetky funkcie a dreviny</li>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Windows, Android aj Linux</li>
-        <li><svg class="ic"><use href="#i-ok"/></svg> Aktualizácie zdarma</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Rovnaké funkcie</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Platíte len mesiace, ktoré potrebujete</li>
       </ul>
     </div>
     <div class="cenkarta">
@@ -457,6 +485,17 @@
       <ul>
         <li><svg class="ic"><use href="#i-ok"/></svg> Rovnaké funkcie</li>
         <li><svg class="ic"><use href="#i-ok"/></svg> Kedykoľvek zrušíte</li>
+      </ul>
+    </div>
+    <div class="cenkarta hlavna">
+      <span class="stitok">Odporúčané</span>
+      <div>Jednorazová licencia</div>
+      <div class="suma">129 €</div>
+      <div><small>licencia navždy, na 1 zariadenie</small></div>
+      <ul>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Všetky funkcie a dreviny</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Windows, Android aj Linux</li>
+        <li><svg class="ic"><use href="#i-ok"/></svg> Aktualizácie zdarma</li>
       </ul>
     </div>
   </div>
@@ -472,7 +511,7 @@
   <p class="podnadpis">Stručne o licencii, skúšobnej verzii a práci s programom.</p>
   <div class="otazky">
     <details><summary>Môžem si program najprv vyskúšať?</summary><p>Áno. Stiahnite si program, nainštalujte ho a pošlite nám kód zariadenia, ktorý ukáže po spustení. Vydáme vám skúšobnú licenciu zdarma – s plnou výbavou a bez záväzkov.</p></details>
-    <details><summary>Ako funguje licencia?</summary><p>Licencia je viazaná na jedno zariadenie – počítač, mobil alebo tablet. Program vám ukáže kód zariadenia a my vydáme licenciu presne naň. Jednorazová licencia platí bez časového obmedzenia, ročná jeden rok. Program funguje aj bez internetu.</p></details>
+    <details><summary>Ako funguje licencia?</summary><p>Licencia je viazaná na jedno zariadenie – počítač, mobil alebo tablet. Program vám ukáže kód zariadenia a my vydáme licenciu presne naň. Mesačná licencia platí mesiac, ročná rok a jednorazová bez časového obmedzenia. Program funguje aj bez internetu.</p></details>
     <details><summary>Čo keď vymením počítač alebo mobil?</summary><p>Pošlite nám kód nového zariadenia a vydáme vám licenciu naň. Doklady si predtým preneste exportom – v Androide sa pri odinštalovaní programu zmažú.</p></details>
     <details><summary>Môžem program používať na počítači aj v mobile?</summary><p>Áno. Každé zariadenie má vlastnú licenciu; druhé zariadenie má zľavu 50 %. Doklady medzi zariadeniami prenesiete exportom a importom.</p></details>
     <details><summary>Potrebujem internet?</summary><p>Nie. Program počíta, ukladá a tlačí aj bez internetu – v lese aj v kancelárii. Internet treba len na stiahnutie programu a novej verzie.</p></details>
@@ -508,6 +547,7 @@
   <form id="kontaktForm" class="kforma" action="https://formsubmit.co/agroberit@gmail.com" method="POST"
         data-sending="Odosielam…" data-success="Ďakujeme! Vaša správa bola odoslaná — ozveme sa vám spravidla do 24 hodín." data-error="Odoslanie sa nepodarilo. Skúste to prosím znova alebo nám napíšte priamo na agroberit@gmail.com.">
     <h3>Objednávka, skúšobná verzia alebo otázka</h3>
+    <p class="kf-uvod">Vyplnenie trvá minútu. Odpovieme spravidla do 24 hodín.</p>
     <input type="hidden" name="_subject" value="Dopyt z webu — Kubikovač" data-zaklad="Dopyt z webu — Kubikovač">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
@@ -517,7 +557,7 @@
         <label for="kf_zaujem">Mám záujem o</label>
         <select id="kf_zaujem" name="Záujem" required>
           <option value="">— vyberte —</option>
-          <option data-kluc="skuska">Skúšobná verzia zdarma</option><option data-kluc="jednorazova">Jednorazová licencia – 129 €</option><option data-kluc="rocna">Ročné predplatné – 49 € / rok</option><option data-kluc="ine">Iné / otázka</option>
+          <option data-kluc="skuska">Skúšobná verzia zdarma</option><option data-kluc="mesacna">Mesačné predplatné – 9 € / mesiac</option><option data-kluc="rocna">Ročné predplatné – 49 € / rok</option><option data-kluc="jednorazova">Jednorazová licencia – 129 €</option><option data-kluc="ine">Iné / otázka</option>
         </select>
       </div>
       <div class="kf-pole">
@@ -603,14 +643,37 @@
   var f=document.getElementById('kontaktForm'); if(!f) return;
   var volba=f.querySelector('#kf_zaujem'), sprava=f.querySelector('#kf_sprava'), suhlas=f.querySelector('.kf-suhlas'),
       predmet=f.querySelector('input[name="_subject"]');
+  var oznac=function(){};
   function uprav(){
     var o=volba.options[volba.selectedIndex], k=(o&&o.dataset.kluc)||'';
-    var platena=(k==='jednorazova'||k==='rocna');
+    var platena=(k==='jednorazova'||k==='rocna'||k==='mesacna');
     if(suhlas){ suhlas.hidden=!platena; if(!platena) suhlas.querySelector('input').checked=false; }
     sprava.required=(k==='ine');
     predmet.value=predmet.dataset.zaklad+(k?' – '+o.textContent.trim():'');
+    oznac();
   }
   volba.addEventListener('change',uprav); uprav();
+  /* výber ako dlaždice s cenou; zoznam ostáva v stránke ako zdroj hodnoty, ktorá sa odosiela */
+  var dlazdice=document.createElement('div'); dlazdice.className='kf-volby';
+  Array.prototype.forEach.call(volba.options,function(o,i){
+    if(!o.dataset.kluc) return;
+    var casti=o.textContent.trim().split(' – '), b=document.createElement('button');
+    b.type='button'; b.className='kf-volba'; b.dataset.i=i; b.setAttribute('aria-pressed','false');
+    b.appendChild(document.createElement('b')).textContent=casti[0];
+    b.appendChild(document.createElement('span')).textContent=casti[1]||'';
+    b.addEventListener('click',function(){ volba.selectedIndex=i; uprav(); });
+    dlazdice.appendChild(b);
+  });
+  volba.parentNode.insertBefore(dlazdice,volba); volba.classList.add('kf-skryty'); volba.required=false; volba.tabIndex=-1;
+  oznac=function(){
+    Array.prototype.forEach.call(dlazdice.children,function(b){ b.setAttribute('aria-pressed',String(+b.dataset.i===volba.selectedIndex)); });
+    dlazdice.classList.remove('chyba');
+  };
+  oznac();
+  f.addEventListener('submit',function(e){          // bez výberu sa neodosiela – dlaždice sa zvýraznia
+    if(volba.options[volba.selectedIndex].dataset.kluc) return;
+    e.preventDefault(); e.stopImmediatePropagation(); dlazdice.classList.add('chyba'); dlazdice.scrollIntoView({block:'center'});
+  },true);
   document.querySelectorAll('a[data-zaujem]').forEach(function(a){
     a.addEventListener('click',function(e){
       for(var i=0;i<volba.options.length;i++) if(volba.options[i].dataset.kluc===a.dataset.zaujem){ volba.selectedIndex=i; break; }
@@ -630,6 +693,23 @@
     if(e.isIntersecting){ var p=e.target.play(); if(p&&p.catch) p.catch(function(){}); } else e.target.pause();
   }); },{threshold:0.35});
   v.forEach(function(x){ io.observe(x); });
+})();
+</script>
+<script>
+/* Objednávka z programu: odkaz …/#kod=XXXX-XXXX-XXXX-XXXX&s=windows predvyplní kód zariadenia a systém.
+   Kód je za znakom # (na server sa neposiela) a z adresy sa hneď odstráni. */
+(function(){
+  var m = location.hash.match(/^#kod=([0-9A-Fa-f]{4}(?:-[0-9A-Fa-f]{4}){3})(?:&s=(windows|android|linux))?$/);
+  if(!m) return;
+  history.replaceState(null, '', location.pathname + '#objednat');
+  var f = document.getElementById('kontaktForm'); if(!f) return;
+  f.querySelector('#kf_kod').value = m[1].toUpperCase();
+  var system = f.querySelector('#kf_system'), nazov = {windows: 'Windows', android: 'Android', linux: 'Linux'}[m[2]];
+  for(var i = 0; nazov && i < system.options.length; i++) if(system.options[i].textContent === nazov) system.selectedIndex = i;
+  var volba = f.querySelector('#kf_zaujem');
+  for(var j = 0; j < volba.options.length; j++) if(volba.options[j].dataset.kluc === 'jednorazova') volba.selectedIndex = j;
+  volba.dispatchEvent(new Event('change'));
+  setTimeout(function(){ f.scrollIntoView({block: 'start'}); }, 150);
 })();
 </script>
 <script>

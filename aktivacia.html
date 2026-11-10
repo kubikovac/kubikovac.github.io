@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aktivácia licencie – Kubikovač guľatiny</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://kubikovac.github.io/aktivacia.html">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" hreflang="sk" href="https://kubikovac.github.io/aktivacia.html">
+<link rel="alternate" hreflang="pl" href="https://kubikovac.github.io/pl/aktivacia.html">
+<link rel="alternate" hreflang="x-default" href="https://kubikovac.github.io/aktivacia.html">
+<style>
+  :root{
+    --zelena:#2b6a30; --zelena2:#357a3b; --pozadie:#f5f7f1; --papier:#fff;
+    --ciara:#e0e5da; --text:#1b2718; --seda:#5d6c57; --amber:#c8871a;
+    --jemna:#eef2ea;
+    --tienJemny:0 1px 3px rgba(20,30,15,.06),0 8px 22px rgba(20,30,15,.06);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --zelena:#243120; --zelena2:#4a9a51; --pozadie:#12160f; --papier:#1b211a;
+    --ciara:#313a2d; --text:#e8eee2; --seda:#9aab90; --amber:#e0b24a;
+    --jemna:#20281e;
+    --tienJemny:0 1px 3px rgba(0,0,0,.4),0 8px 22px rgba(0,0,0,.3);
+  }}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,'Segoe UI',Roboto,sans-serif;background:var(--pozadie);
+    color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--zelena2)}
+
+  /* horná lišta – ako na podstránke Ako to funguje */
+  header{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--pozadie) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--ciara)}
+  .hbar{max-width:1100px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:12px}
+  .hbar img{width:30px;height:30px;border-radius:7px}
+  .hbar b{font-size:1.02rem;letter-spacing:.2px}
+  .hbar .znacka{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+  .hbar .sp{margin-left:auto}
+  .tl{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:var(--zelena2);
+    color:#fff;padding:8px 15px;border-radius:9px;font-size:.92rem;font-weight:600;white-space:nowrap}
+  .tl.vedl{background:transparent;color:var(--text);border:1px solid var(--ciara)}
+  .tl:hover{filter:brightness(1.06)}
+  @media (max-width:560px){.hbar .vedl{display:none}}
+
+  /* text podmienok */
+  .hero{text-align:center;padding:52px 22px 20px;max-width:840px;margin:0 auto}
+  .odznak{display:inline-block;background:color-mix(in srgb,var(--zelena2) 15%,transparent);
+    color:var(--zelena2);font-weight:700;font-size:.82rem;letter-spacing:.6px;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:clamp(1.7rem,4.6vw,2.5rem);line-height:1.16;margin:.1em 0 .3em}
+  .hero p{color:var(--seda);margin:0}
+  main{max-width:820px;margin:0 auto;padding:10px 22px 40px}
+  .karta{background:var(--papier);border:1px solid var(--ciara);border-radius:16px;box-shadow:var(--tienJemny);
+    padding:6px 28px 22px;margin-bottom:22px}
+  main h2{font-size:1.18rem;margin:24px 0 6px;line-height:1.3}
+  main p{margin:0 0 10px}
+  .tlmeny{color:var(--seda);font-size:.92rem}
+  .formular{background:var(--jemna);border-radius:12px;padding:14px 18px;margin:8px 0 6px;font-size:.95rem}
+  .formular p{margin:0 0 4px}
+  @media (max-width:560px){.karta{padding:4px 18px 18px}}
+
+  footer{text-align:center;color:var(--seda);font-size:.86rem;padding:28px 22px 46px;border-top:1px solid var(--ciara)}
+  .akt{padding-top:18px}
+  .akt .stav{font-size:1.08rem;font-weight:600;margin:6px 0 4px}
+  .akt .riadokTl{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
+  .akt .tl{border:0;cursor:pointer;font:inherit;font-weight:600;padding:11px 18px}
+  .akt .tl.velke{font-size:1.08rem;padding:14px 24px}
+  .akt [hidden]{display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hbar">
+    <a class="znacka" href="/" title="Domov"><img src="obrazky/ikona.png" alt="Kubikovač"><b>Kubikovač guľatiny</b></a>
+    <span class="sp"></span>
+    <a class="tl vedl" href="/pl/aktivacia.html" title="Wersja polska">🇵🇱 PL</a>
+    <a class="tl vedl" href="/">Domov</a>
+    <a class="tl" href="/#stiahnut">Stiahnuť</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="odznak">Licencia z e-mailu</span>
+  <h1>Aktivácia licencie</h1>
+  <p>Program Kubikovač guľatiny</p>
+</section>
+
+<main>
+<div class="karta akt">
+  <p class="stav" id="stav">Načítavam licenciu…</p>
+  <p class="tlmeny" id="udaje"></p>
+  <div id="android" hidden>
+    <p>Aplikácia Kubikovač musí byť v tomto mobile nainštalovaná.</p>
+    <div class="riadokTl"><a class="tl velke" id="btnAplikacia" href="#">Aktivovať v aplikácii</a></div>
+    <p class="tlmeny">Neotvorila sa aplikácia? Skopírujte licenčný kód a v aplikácii ťuknite na „Vložiť licenčný kód“.</p>
+  </div>
+  <div id="pocitac" hidden>
+    <p>V programe kliknite na <strong>Vložiť licenčný kód</strong> a vložte kód, ktorý si tu skopírujete. Alebo si stiahnite súbor a v programe kliknite na <strong>Nahrať licenčný súbor</strong>.</p>
+  </div>
+  <div class="riadokTl" id="tlacidla" hidden>
+    <button class="tl" id="btnKopirovat">Kopírovať licenčný kód</button>
+    <button class="tl vedl" id="btnSubor">Stiahnuť súbor licencia.lic</button>
+  </div>
+  <p class="tlmeny">Licencia platí len pre uvedené zariadenie a funguje aj bez internetu.</p>
+</div>
+</main>
+
+<script>
+/* Licencia je v adrese za znakom # – na server sa neposiela. Po načítaní sa z adresy odstráni (ostáva len v tejto karte). */
+(function(){
+  var T = {"chyba": "Odkaz je neúplný. Otvorte ho z e-mailu ešte raz, alebo v programe kliknite na „Vložiť licenčný kód“ a vložte kód z e-mailu.", "pre": "Licencia pre", "zariadenie": "zariadenie", "navzdy": "bez časového obmedzenia", "do": "platí do", "skopirovane": "Skopírované ✓", "btn_kop": "Kopírovať licenčný kód"};
+  var $ = function(id){ return document.getElementById(id); };
+  var kod = (location.hash || '').slice(1);
+  if(location.hash) history.replaceState(null, '', location.pathname);
+  try{ if(!kod) kod = sessionStorage.getItem('kubLicencia') || ''; }catch(e){}
+  var m = kod.replace(/\s+/g, '').match(/KUB1\.(\d{1,5})\.([A-Za-z0-9_-]+)/), lic = null;
+  if(m && m[2].length >= +m[1]){
+    try{
+      var b = m[2].slice(0, +m[1]).replace(/-/g, '+').replace(/_/g, '/'); while(b.length % 4) b += '=';
+      lic = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b), function(c){ return c.charCodeAt(0); })));
+    }catch(e){ lic = null; }
+  }
+  if(!lic || typeof lic !== 'object' || !lic.zariadenie){ $('stav').textContent = T.chyba; return; }
+  kod = 'KUB1.' + m[1] + '.' + m[2].slice(0, +m[1]);
+  try{ sessionStorage.setItem('kubLicencia', kod); }catch(e){}
+  var d = String(lic.platnost || '').match(/^(\d{4})-(\d\d)-(\d\d)$/);
+  $('stav').textContent = T.pre + ': ' + (lic.zakaznik || '—');
+  $('udaje').textContent = T.zariadenie + ' ' + lic.zariadenie + ' · ' + (d ? T.do + ' ' + (+d[3]) + '. ' + (+d[2]) + '. ' + d[1] : T.navzdy);
+  var android = /Android/i.test(navigator.userAgent);
+  $(android ? 'android' : 'pocitac').hidden = false;
+  $('tlacidla').hidden = false;
+  $('btnAplikacia').href = 'intent://aktivuj?t=' + kod + '#Intent;scheme=kubikovac;package=sk.kubikovac.app;end';
+  $('btnKopirovat').addEventListener('click', function(){
+    var hotovo = function(){ $('btnKopirovat').textContent = T.skopirovane; setTimeout(function(){ $('btnKopirovat').textContent = T.btn_kop; }, 1800); };
+    var nahrada = function(){ var t = document.createElement('textarea'); t.value = kod; t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select(); try{ if(document.execCommand('copy')) hotovo(); }catch(e){} t.remove(); };
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(kod).then(hotovo, nahrada); else nahrada();
+  });
+  $('btnSubor').addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(lic, null, 1)], {type: 'application/octet-stream'}));
+    a.download = 'licencia.lic'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 5000);
+  });
+})();
+</script>
+
+
+<footer>
+  Kubikovač guľatiny — výpočet objemu dreva kompatibilný s normou STN 48 0009 · AGROBERIT s. r. o. · <a href="/">Hlavná stránka</a>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c0e28f8960f49d19bf15dafce39e966"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
